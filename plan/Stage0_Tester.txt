@@ -1,0 +1,62 @@
+HEXBOUND - STAGE 0 - TESTER
+
+Goal of this stage: find the holes in the design before anyone builds on them, and decide how we will check later that the game plays the way it should. Budget is about 5 hours.
+
+
+1. Review the design document for gaps
+
+Read the whole design document and write down every place where two people could build the same rule in two different ways. For each point write: what is unclear, why it matters, and a suggested answer if you have one. Send the list to the PM.
+
+Some questions to start with (not the full list):
+- Health: does it carry over between fights and between levels? How do you heal besides villages and chests?
+- Food: what happens when food runs out?
+- Death: when you retry a level, do you restart with the deck, gold and health you had at the start of the level, or at the moment of death? Are slots dealt again?
+- Map: can you go back to a tile you already visited? Does a cleared tile stay empty? Can you walk past a monster tile without fighting?
+- Visibility: "details appear within 2 tiles" of the player only, or of the planned route too?
+- Keys: does a key carry over to the next level? Is there always a locked chest on the same level as the elite?
+- Combat: does block reset every turn? What happens to unplayed cards? Is there a hand size limit? When does the draw pile reshuffle?
+- Keywords: exact meaning of Freeze, Chill, Exhaust and Draw. Is the ice hazard "chill" the same thing as the Chill keyword?
+- Hazards: how much damage does lava deal, and when?
+- Villages: what is a bounty? How much do rest, food and card removal cost?
+- Mystery events: what dice, and how are odds shown?
+- Score: how is it calculated?
+
+
+2. Check the screen list
+
+When the UI / level designer sends the screen list and sketches, check for missing screens and missing states: what the player sees when they cannot afford something, when the deck is empty, when a fight is won or lost, when there are no lives left.
+
+
+3. Turn the pillars into a playtest checklist
+
+For each design pillar, write 2-3 questions you can answer by watching someone play or by asking them afterwards. For example:
+- The route is the main decision: did the player look at more than one route before moving? Did different routes lead to a noticeably different state at the boss?
+- The map feeds the fight: did the player notice a hazard or a visited place changing the next fight?
+- Few rules, real choices: on each screen, were there at least two options the player actually considered? Was any option always the right one?
+- Growth you chose: by level 3, can the player say what their deck is built around?
+
+Add the measurable targets from the design document, so playtests can be checked against numbers:
+- A full run takes 35-45 minutes.
+- A normal fight lasts 2-4 turns, a boss fight 6-10.
+- Food on each level covers the direct route plus about 3 spare steps.
+- Gold on each level pays for about two village purchases.
+- No single route always wins.
+
+Also make a simple table to fill in during playtests: player, level, route taken, food left, health at boss, fight lengths, run time, deaths, comments.
+
+
+4. Agree with the programmer
+
+- How you report bugs: the bug report template, where reports go, how severity is marked.
+- How you know which build you are testing (version or commit shown somewhere in the game).
+- Whether runs can be repeated with a seed, so bugs can be reproduced.
+
+
+Hand off at the end of stage 0
+
+- To the PM: the list of gaps and open questions.
+- To the UI / level designer: missing screens and states, if any.
+- To everyone: the playtest checklist and the playtest table.
+
+
+Stage 0 is done for you when the PM has your gap list, the checklist exists, and you know how to report bugs.

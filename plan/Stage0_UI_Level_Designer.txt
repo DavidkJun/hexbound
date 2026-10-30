@@ -1,0 +1,73 @@
+HEXBOUND - STAGE 0 - UI / LEVEL DESIGNER
+
+Goal of this stage: decide how the game looks and what screens it has, before anyone builds them. Budget is about 5 hours, so keep everything rough. Sketches and short notes are enough; nothing here needs to be final art.
+
+
+1. Pick the visual direction
+
+Collect 2-3 options (a few reference images each) and pick one together with the team. When choosing, keep in mind:
+- One person makes all the art in under two months, so the style must be cheap to produce. Flat/vector shapes, simple pixel art, or one consistent free asset pack all work. Painted illustration does not.
+- The game is mostly read, not watched: cards, numbers, icons and the map must be readable at a glance.
+- Three lands must look different: swamp, ice, lava.
+
+Write it down on one page:
+- Colour palette (a few main colours, plus one colour per land).
+- One or two fonts (one for headings, one for card text and numbers).
+- Icon style. You will need icons for: monster, elite, chest, locked chest, village, shrine, mystery, boss; health, food, gold, lives, energy, block, key; and the four keywords (Freeze, Chill, Exhaust, Draw).
+- How the four card families look different: weapons, spells, armour, items.
+
+
+2. List every screen
+
+Write the list, and for each screen one or two lines on what it must show and what the player can do there. Start from this list and add what is missing:
+- Main menu
+- Map
+- Fight
+- Card reward (pick 1 of 3)
+- Chest
+- Village (buy food, rest, buy cards, remove cards, take a bounty)
+- Shrine (pick 1 of 3 blessings)
+- Mystery event (choices with cost and dice odds on the buttons)
+- Level intro / level complete
+- Death and retry (spend a life)
+- Run over and score
+- Deck view (look at your cards from anywhere)
+- Tutorial hints for the first fight
+
+Also decide what is always on screen (top bar): health, food, gold, lives, keys, blessings.
+
+
+3. Sketch the two main screens
+
+Rough wireframes, on paper or in Figma, for:
+- The map screen: the 9x7 hex grid, the player, location icons, how a planned route and its food cost are shown, how "details visible within 2 tiles" looks, where the boss and its signature move are shown.
+- The fight screen: the enemy with its next move (intent), player health and block, energy, the hand of 5 cards, draw and discard piles, end turn button.
+
+The other screens can wait until stage 1 and 2.
+
+
+4. Sketch the hex grid
+
+- Pointy-top or flat-top hexes. Pick one with the programmer, it affects their code.
+- Tile size and how the 9x7 grid fits the screen.
+- How each terrain looks (normal, swamp, ice, lava) and how slow terrain is marked.
+
+
+5. Agree with the programmer
+
+These are shared decisions, settle them together:
+- Target screen size (for example 1280x720, desktop browser only, or must it work on a phone too).
+- Hex orientation and coordinates (step 4).
+- How you will build screens in their project: what game data each screen can read, and where your files go.
+- How maps are stored. You will build the three maps as data files in the format the programmer defines.
+- Asset naming and folders, image format and sizes.
+
+
+Hand off at the end of stage 0
+
+- To the PM: visual direction page, for approval.
+- To the programmer: screen list, map and fight wireframes, hex grid decisions, screen size, asset naming.
+- To the tester: screen list and wireframes, so they can check for missing screens or states.
+
+
+Stage 0 is done for you when the visual direction is approved, the screen list exists, the map and fight screens are sketched, and the shared decisions with the programmer are written down.

@@ -1,0 +1,85 @@
+HEXBOUND - STAGE 0 - PROGRAMMER
+
+Goal of this stage: a repository everyone can work in, a project structure the rest of the game fits into, and a data-file format for content and maps. At the end, an almost empty build runs in the browser. Budget is about 7 hours.
+
+
+1. Pick the tech stack
+
+The game is a 2D, turn-based browser game where most of the work is UI: cards, menus, shops, a hex map. Nothing moves fast. Decide based on what you and the UI / level designer already know, because they will build screens in the same project.
+
+Reasonable options:
+- TypeScript + Vite, screens in plain HTML/CSS (or a small UI library), the hex map on a canvas or SVG. Simplest, very fast to iterate, screens are easy for the UI designer.
+- TypeScript + Phaser 3. A proper game framework: scenes, sprites, tweens, input. Good if you want game-like feel; UI-heavy screens take more work.
+- Godot exported to the web. Good editor for maps and scenes. Use GDScript, and check that the web export works on all target browsers before committing.
+- Unity WebGL is possible but heavy: large download, slow builds. Not recommended for this project.
+
+Whatever you pick, use a typed language (TypeScript or GDScript with types). Write the choice and the reason in the README.
+
+
+2. Set up the GitHub repository
+
+- Create the repository under one account (or a free organisation) and add all four members.
+- Protect the main branch: changes only through pull requests, with at least one approval. This is how "every change is reviewed by another member" works in practice. Note: branch protection on a private repository needs GitHub Pro, which is free with the GitHub Student Developer Pack. Or keep the repository public.
+- Add: README (what the game is, how to install and run, how to contribute), .gitignore, .editorconfig.
+- Add a formatter and a linter (for TypeScript: Prettier and ESLint) so the code has one style without arguing about it.
+- Agree on branch names (for example feature/map-movement, fix/food-cost) and a short pull request template: what changed, how to test it.
+- Add a bug report template for the tester: build or commit, steps, expected, actual, screenshot.
+- Set up automatic deployment of the main branch to GitHub Pages (GitHub Actions). Then the team always has a link to the latest playable build, and every stage can end with "everyone tries the build".
+- Keep art in the repository as normal files. Do not set up Git LFS unless files get big; the free LFS quota is small.
+- Ask the PM whether the task board will be GitHub Projects or something else, and link it from the README.
+
+
+3. Decide the project structure
+
+The important decision is to keep game rules separate from drawing:
+- Game logic (map, movement, food, combat, cards, effects, enemies, lives, score) as plain code that knows nothing about the screen. It takes the current game state and a player action, and returns the new state.
+- Screens only read the game state and send player actions. They never change the state directly.
+
+This pays off later: the tester can reproduce bugs, the stage 3 fight simulator is just the game logic run in a loop without screens, and the UI designer can work on screens without touching rules.
+
+Two more small decisions that are cheap now and expensive later:
+- Use one seeded random number generator for everything random (dealing locations into slots, card draws, dice in events). A run with the same seed plays the same way, so bugs can be reproduced.
+- Keep all text the player sees in data files, not in code.
+
+A possible folder layout (adjust to your stack):
+- src/core - game state and rules
+- src/screens - one folder per screen
+- src/data - loading and checking data files
+- data - cards, enemies, blessings, events, levels (maps)
+- assets - images, fonts, sounds
+
+
+4. Define the data-file format
+
+All content must live in data files so it can be balanced without code changes. Define the format now, so the PM can start writing level-1 content and the UI designer can start building map 1.
+
+Write one example file for each type:
+- Card: id, name, family (weapon / spell / armour / item), energy cost, effects, text.
+- Enemy: id, health, list of moves (intents) and the order or rule for picking them.
+- Blessing: id, name, effect.
+- Event: id, text, choices with cost, odds and outcome.
+- Level map: the 9x7 grid with terrain per tile, start, boss, villages, and slots with the location types allowed in each.
+
+Effects are the part that needs the most thought: cards, blessings, hazards and events all change the game, so try to describe them all with the same small set of effect types (deal damage, gain block, draw, apply Freeze, apply Chill, Exhaust, gain food, and so on). Check the data on load and show a clear error for a bad file, so content mistakes are found immediately.
+
+JSON is the simplest choice. Godot resources work too if you picked Godot.
+
+
+5. Agree with the UI / level designer
+
+- Hex orientation (pointy-top or flat-top) and coordinate system. The Red Blob Games hex grid guide (redblobgames.com/grids/hexagons) covers everything you need.
+- Target screen size.
+- How screens get game data and send actions.
+- Where art files go and how they are named.
+- The map file format (step 4), since they will author the maps.
+
+
+Hand off at the end of stage 0
+
+- To everyone: repository access, how to run the project, link to the deployed build.
+- To the PM: the data-file format with examples, so content writing can start.
+- To the UI / level designer: where screens and assets go, how screens read the game state, the map file format.
+- To the tester: build link and the bug report template.
+
+
+Stage 0 is done for you when the project builds, the deployed link opens in the browser and shows something (for example an empty hex grid drawn from a map data file), and the other three can run it locally.
