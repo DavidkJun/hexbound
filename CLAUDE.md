@@ -2,6 +2,27 @@
 
 Single-player, turn-based fantasy roguelite for the browser: cross a hand-made 9×7 hex map, pick a route, fight with a deck of cards. University team project, 4 people, under 2 months.
 
+## Current state
+
+Update this section whenever a stage ends or a decision changes.
+
+- **Stage 0 (kick-off).** See `plan/HexBound_Team_Plan.md` → Stage 0.
+- **There is no game code yet.** The tech stack, project structure, content data format (cards, enemies, blessings, events, effects) and the game state and actions that screens can use are **the programmer's open stage 0 tasks** (`plan/Stage0_Programmer.txt`). Don't pick them on your own. If your task depends on one, ask the programmer, or say it's undecided.
+- **UI / level design stage 0 is done**, in `design/`:
+  - fixed UI rules, tokens, layout, map and fight wireframes, the map file format, icons and fonts
+  - the visual direction is still **waiting for PM approval**
+- **Open question for the PM:** the language of in-game text. The heading font, Cinzel, has no Cyrillic letters, so Ukrainian text would need another heading font.
+
+## Decisions that override the stage briefs
+
+The stage 0 briefs were written before these were decided. Where a brief says otherwise, this list wins:
+
+| Brief says | Decided |
+|---|---|
+| Programmer defines the map file format (`Stage0_Programmer.txt` §4) | The UI / Level designer defines it: `design/levels/map-format.md`. The programmer writes the loader and the checks listed there. |
+| Branch names like `feature/map-movement` (`Stage0_Programmer.txt` §2) | `<type>/<scope>`, e.g. `feat/stage-1`. See **Git naming** below. |
+| Screen size, hex orientation, asset folders and names "to be agreed" (both briefs, §5) | Fixed in `design/ui-rules.md`: 1280×720 canvas scaled to fit, flat-top odd-q hexes, `assets/` layout and kebab-case names. |
+
 ## Where things are
 
 | Path | What | Owner |

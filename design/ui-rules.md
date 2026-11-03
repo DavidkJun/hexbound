@@ -77,7 +77,7 @@ assets/
   icons/   SVG, one colour, tinted by code from tokens
   ui/      panels, card frames, buttons (SVG or PNG)
   art/     player, enemies, bosses, level backgrounds (PNG)
-  fonts/   Cinzel, Inter (woff2, bundled; both OFL licensed)
+  fonts/   Cinzel, Inter: variable woff2 + fonts.css (@font-face), OFL licence files
 ```
 
 - File names: kebab-case, `<group>-<name>[-<variant>].<ext>`.
@@ -88,6 +88,7 @@ assets/
   - `ui/card-frame-weapon.png`
   - `art/enemy-bog-rat.png`, `art/boss-goblin-chief.png`
   - `art/terrain-swamp.png`
+- Fonts: load `assets/fonts/fonts.css`, never a font CDN. Its family names match `tokens.font.*`. Cinzel has Latin letters only; Inter has Latin and Cyrillic.
 - Raster art is exported at **2×** its on-screen size (a 200 × 200 enemy slot gets a 400 × 400 PNG), so it stays sharp when the canvas scales up.
 - Icons come from game-icons.net (CC BY 3.0). Every icon used is listed in `assets/icons/CREDITS.md`, and the game shows a credits screen.
 - Git LFS is not used. Keep every file under 1 MB.
