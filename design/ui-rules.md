@@ -47,6 +47,10 @@ These are used in the design but aren't Figma variables yet. Until they are, use
 - Every element the code places has a **PascalCase** name: `TopBar`, `EndTurnButton`, `EnemyIntent`.
 - The same name is used in the Figma layer, in the screen spec and in the code (component name, class, or DOM id).
 - Figma layers with lowercase names (`spacer`, `hex-3-4`) are decoration or repeated parts and are not exported.
+- Also not exported:
+  - Figma's automatic names (`Vector`, `Rectangle`, `Frame`, `Group`…)
+  - text layers still named after their own text
+  - any name that appears more than once on a screen. The exporter reports these; rename the layers.
 
 ## 5. Hex grid
 

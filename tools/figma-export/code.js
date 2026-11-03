@@ -2,6 +2,13 @@ const SCREENS_PAGE = 'Screens';
 const SCREEN_W = 1280;
 const SCREEN_H = 720;
 const EXPORTED_NAME = /^[A-Z][A-Za-z0-9]*$/;
+const FIGMA_DEFAULT_NAMES = new Set(['Vector', 'Rectangle', 'Ellipse', 'Polygon', 'Star', 'Line', 'Arrow', 'Frame', 'Group', 'Section', 'Slice', 'Image', 'Text', 'Component', 'Instance', 'Union', 'Subtract', 'Intersect', 'Exclude']);
+
+function isExported(node) {
+  if (!EXPORTED_NAME.test(node.name) || FIGMA_DEFAULT_NAMES.has(node.name)) return false;
+  if (node.type === 'TEXT' && node.autoRename) return false;
+  return true;
+}
 
 const round = v => Math.round(v * 100) / 100;
 
@@ -81,14 +88,19 @@ async function exportLayout(errors) {
     }
     const origin = screen.absoluteBoundingBox;
     const items = {};
-    for (const node of screen.findAll(n => EXPORTED_NAME.test(n.name))) {
+    const repeated = new Set();
+    for (const node of screen.findAll(isExported)) {
       if (!isShown(node, screen) || !node.absoluteBoundingBox) continue;
       if (items[node.name]) {
-        errors.push(`${screen.name}: name "${node.name}" is used twice — rename one (PascalCase names must be unique per screen)`);
+        repeated.add(node.name);
         continue;
       }
       const box = node.absoluteBoundingBox;
       items[node.name] = { x: round(box.x - origin.x), y: round(box.y - origin.y), w: round(box.width), h: round(box.height) };
+    }
+    for (const name of repeated) {
+      delete items[name];
+      errors.push(`${screen.name}: "${name}" is used more than once, left out — rename the layers (lowercase if they are decoration)`);
     }
     layout.screens[screen.name] = items;
   }

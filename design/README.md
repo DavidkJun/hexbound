@@ -13,7 +13,7 @@ The repo copy is what the code is built from. Figma is where it's designed.
 |---|---|---|
 | [`ui-rules.md`](ui-rules.md) | Fixed rules for all UI code: screen size, tokens, layout, names, hex grid, assets | fixed |
 | [`tokens.json`](tokens.json) | Colours, fonts, font sizes, spacing, radii, sizes (exported from Figma variables) | v0 |
-| `layout.json` | Rectangle of every named element on every screen (exported from Figma) | **not exported yet** |
+| [`layout.json`](layout.json) | Rectangle of every named element on every screen (exported from Figma) | v0 (MapScreen, FightScreen) |
 | [`visual-direction.md`](visual-direction.md) | Chosen style, palette, lands, card families, icon list | draft, waiting for PM approval |
 | [`screens.md`](screens.md) | Every screen, top bar, states every screen handles | draft, for tester review |
 | [`screens/map.md`](screens/map.md) + [`map.png`](screens/map.png) | Map screen spec and snapshot | draft |
@@ -46,10 +46,8 @@ A small Figma plugin in [`tools/figma-export/`](../tools/figma-export/). It work
 ## To do next (UI / Level designer)
 
 - [ ] Share the Figma file with the team (view access is enough).
-- [ ] Run the export plugin for the first time and commit `layout.json`.
-- [ ] Re-export two snapshots taken before small Figma tweaks:
-  - `fight.png`: `EnemyName` and `EnemyStatus` are now centred on x 640
-  - `levels/hex-grid.png`: the ice marker now reads "slow·chill"
+- [ ] Install the export plugin and run it once to check it works. layout.json v0 was exported through Figma's API with the same rules.
+- [ ] In Figma, rename the 8 icons inside MapScreen → `Legend` to lowercase (e.g. `legend-icon`). They are still named `LocationIcon`, so the exporter reports them as repeated.
 - [ ] In Figma, change the `FightModifiers` placeholder from "Swamp mud" to an ice example, and re-export `fight.png`.
 - [ ] Add Figma variables for the values in [ui-rules.md → 2a](ui-rules.md#2a-values-not-in-tokensjson-yet) and export tokens.json again.
 - [ ] Get the visual direction approved by the PM.
