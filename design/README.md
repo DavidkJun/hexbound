@@ -48,7 +48,6 @@ A small Figma plugin in [`tools/figma-export/`](../tools/figma-export/). It work
 - [ ] Share the Figma file with the team (view access is enough).
 - [ ] Install the export plugin and run it once to check it works. layout.json v0 was exported through Figma's API with the same rules.
 - [ ] In Figma, rename the 8 icons inside MapScreen → `Legend` to lowercase (e.g. `legend-icon`). They are still named `LocationIcon`, so the exporter reports them as repeated.
-- [ ] In Figma, change the `FightModifiers` placeholder from "Swamp mud" to an ice example, and re-export `fight.png`.
 - [ ] Add Figma variables for the values in [ui-rules.md → 2a](ui-rules.md#2a-values-not-in-tokensjson-yet) and export tokens.json again.
 - [ ] Get the visual direction approved by the PM.
 - [ ] Send `screens.md` and the two wireframes to the tester.

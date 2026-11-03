@@ -13,7 +13,7 @@ Rectangles are `x, y, w, h` on the 1280 × 720 canvas.
 | Name | Rect | Shows (reads) | Does (sends) |
 |---|---|---|---|
 | `TopBar` | 0, 0, 1280, 56 | Same as on the map | `DeckButton`, `MenuButton` |
-| `FightModifiers` | 24, 72, auto, 34 | Effects on this fight from the map (terrain crossed, places visited). One pill per effect, in a row going right. The effect texts come from the game rules. The mockup's "Swamp mud" pill is a placeholder: the rules don't give swamp a fight effect. A real example is ice: "Chilled: −1 energy on turn 1" | Hover → full text |
+| `FightModifiers` | 24, 72, auto, 34 | Effects on this fight from the map (terrain crossed, places visited). One pill per effect, in a row going right. The effect texts come from the game rules; the mockup's pill is a placeholder. Example: ice gives "Chilled: −1 energy on turn 1" | Hover → full text |
 | `TurnCounter` | right-aligned to x 1256, y 76 | "Turn N", Cinzel h3 | — |
 | `EnemyIntent` | 580, 104, 120, 40 | Enemy's next move: kind (ATK / BLK / BUFF / debuff name) and value. Always visible | — |
 | `EnemySprite` | 540, 152, 200, 200 | Enemy art (`art/enemy-<id>.png`) | — |
