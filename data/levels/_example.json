@@ -1,0 +1,39 @@
+{
+  "id": "_example",
+  "name": "Example map",
+  "land": "whisperwood",
+  "hazard": "swamp",
+  "startFood": 13,
+  "terrain": [
+    ".........",
+    ".........",
+    "...ss....",
+    "...ss....",
+    "..s......",
+    ".........",
+    "........."
+  ],
+  "start": [0, 6],
+  "boss": { "at": [8, 0], "enemy": "goblin-chief" },
+  "fixed": [
+    { "at": [1, 3], "type": "village" }
+  ],
+  "slots": [
+    { "at": [2, 5], "allow": ["monster"] },
+    { "at": [3, 4], "allow": ["chest", "mystery"] },
+    { "at": [5, 3], "allow": ["elite"] },
+    { "at": [6, 2], "allow": ["monster"] },
+    { "at": [7, 3], "allow": ["chest"] },
+    { "at": [2, 1], "allow": ["monster"] },
+    { "at": [5, 1], "allow": ["locked-chest"] },
+    { "at": [4, 5], "allow": ["mystery", "chest"] },
+    { "at": [6, 5], "allow": ["shrine"] },
+    { "at": [7, 5], "allow": ["monster"] },
+    { "at": [4, 0], "allow": ["mystery"] }
+  ],
+  "intendedRoutes": {
+    "direct": [[0, 6], [1, 5], [2, 5], [3, 4], [4, 4], [5, 3], [6, 3], [7, 2], [8, 2], [8, 1], [8, 0]],
+    "safe": [[0, 6], [1, 5], [1, 4], [1, 3], [1, 2], [2, 2], [3, 1], [4, 1], [5, 0], [6, 0], [7, 0], [8, 0]],
+    "rich": [[0, 6], [1, 5], [2, 5], [3, 4], [4, 4], [5, 4], [6, 5], [7, 4], [8, 4], [8, 3], [8, 2], [8, 1], [8, 0]]
+  }
+}

@@ -1,0 +1,38 @@
+<style>
+  body { font: 13px Inter, sans-serif; margin: 16px; color: #1b1f27; }
+  button { font: inherit; padding: 8px 12px; margin: 4px 4px 4px 0; cursor: pointer; }
+  #errors { color: #c0392b; white-space: pre-wrap; }
+  #status { color: #555; }
+</style>
+<p>Exports <b>tokens.json</b> (all variables) and <b>layout.json</b> (PascalCase layers inside every *Screen frame on the Screens page).</p>
+<button id="run">Export</button>
+<div id="downloads" hidden>
+  <button id="tokens">Download tokens.json</button>
+  <button id="layout">Download layout.json</button>
+</div>
+<p id="status"></p>
+<p id="errors"></p>
+<script>
+  let result = null;
+  const save = (name, text) => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+    a.download = name;
+    a.click();
+  };
+  document.getElementById('run').onclick = () => parent.postMessage({ pluginMessage: { type: 'export' } }, '*');
+  document.getElementById('tokens').onclick = () => save('tokens.json', result.tokens);
+  document.getElementById('layout').onclick = () => save('layout.json', result.layout);
+  onmessage = e => {
+    result = e.data.pluginMessage;
+    if (result.type === 'failed') {
+      document.getElementById('downloads').hidden = true;
+      document.getElementById('status').textContent = 'Export failed.';
+      document.getElementById('errors').textContent = result.errors.join('\n');
+      return;
+    }
+    document.getElementById('downloads').hidden = false;
+    document.getElementById('status').textContent = 'Done. Put both files into design/ in the repo.';
+    document.getElementById('errors').textContent = result.errors.length ? 'Fix before committing:\n' + result.errors.join('\n') : '';
+  };
+</script>
