@@ -2,7 +2,7 @@
 
 Owner: UI / Level designer. Everything about how Hexbound looks and how its maps are built.
 
-**Figma (source of truth for visuals):** https://www.figma.com/design/yO4H87NpPMV2u7rOcO0qRz
+**Figma (source of truth for visuals):** https://www.figma.com/design/1meb36Hx2PgO7MkSCFxt55
 Pages: **Foundations** (style, palette, type, components) · **Screens** (one 1280 × 720 frame per screen) · **Levels** (hex grid, maps).
 
 The repo copy is what the code is built from. Figma is where it's designed.
