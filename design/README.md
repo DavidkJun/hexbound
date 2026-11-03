@@ -12,7 +12,7 @@ The repo copy is what the code is built from. Figma is where it's designed.
 | File | What | Status |
 |---|---|---|
 | [`ui-rules.md`](ui-rules.md) | Fixed rules for all UI code: screen size, tokens, layout, names, hex grid, assets | fixed |
-| [`tokens.json`](tokens.json) | Colours, fonts, font sizes, spacing, radii, sizes (exported from Figma variables) | v0 |
+| [`tokens.json`](tokens.json) | Colours, fonts, font sizes and weights, spacing, radii, sizes, opacities, strokes (exported from Figma variables) | v1 |
 | [`layout.json`](layout.json) | Rectangle of every named element on every screen (exported from Figma) | v0 (MapScreen, FightScreen) |
 | [`visual-direction.md`](visual-direction.md) | Chosen style, palette, lands, card families, icon list | draft, waiting for PM approval |
 | [`screens.md`](screens.md) | Every screen, top bar, states every screen handles | draft, for tester review |
@@ -20,7 +20,8 @@ The repo copy is what the code is built from. Figma is where it's designed.
 | [`screens/fight.md`](screens/fight.md) + [`fight.png`](screens/fight.png) | Fight screen spec and snapshot | draft |
 | [`screens/_template.md`](screens/_template.md) | Template for every new screen spec | — |
 | [`levels/`](levels/) | Hex grid sketch, map file format, list of maps | format fixed, maps not started |
-| [`foundations.png`](foundations.png) | Snapshot of the Foundations page (palette, type, components) | v0 |
+| [`foundations.png`](foundations.png) | Snapshot of the Foundations page (palette, type, components, icons) | v1 |
+| [`../assets/icons/`](../assets/icons/) | 28 icons (SVG, one colour) + [`CREDITS.md`](../assets/icons/CREDITS.md) | v1, to review |
 
 ## How a design reaches the code
 
@@ -46,9 +47,8 @@ A small Figma plugin in [`tools/figma-export/`](../tools/figma-export/). It work
 ## To do next (UI / Level designer)
 
 - [ ] Share the Figma file with the team (view access is enough).
-- [ ] Install the export plugin and run it once to check it works. layout.json v0 was exported through Figma's API with the same rules.
-- [ ] In Figma, rename the 8 icons inside MapScreen → `Legend` to lowercase (e.g. `legend-icon`). They are still named `LocationIcon`, so the exporter reports them as repeated.
-- [ ] Add Figma variables for the values in [ui-rules.md → 2a](ui-rules.md#2a-values-not-in-tokensjson-yet) and export tokens.json again.
+- [ ] Install the export plugin and run it once to check it works for you. Its export code has been run inside Figma and produced the current tokens.json and layout.json.
+- [ ] Review the icons (Figma → Foundations → `Icons`) and swap any you don't like. See the note at the end of [visual-direction.md](visual-direction.md#icons).
 - [ ] Get the visual direction approved by the PM.
 - [ ] Send `screens.md` and the two wireframes to the tester.
 - [ ] Send `ui-rules.md` and `levels/map-format.md` to the programmer.

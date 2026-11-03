@@ -44,14 +44,23 @@ Exact values: [`tokens.json`](tokens.json). Picture: [`foundations.png`](foundat
 
 All cards are 140 × 196. A card has: an energy cost circle (top left), a name, an art box tinted with the family colour, rules text, and the family label at the bottom. The frame colour is the family colour. Picture: [`foundations.png`](foundations.png), right side.
 
-## Icons needed
+## Icons
 
-game-icons.net SVGs, saved as `assets/icons/<group>-<name>.svg` (see [ui-rules.md](ui-rules.md#7-assets)):
+28 game-icons.net icons, saved in [`assets/icons/`](../assets/icons/) as `<group>-<name>.svg` (see [ui-rules.md](ui-rules.md#7-assets)). In Figma they are components named `icon/<group>-<name>` (Foundations → `Icons`), and every component uses them.
 
-- Locations (`loc-`): start, monster, elite, chest, locked-chest, village, shrine, mystery, boss
-- Resources (`res-`): health, food, gold, lives, energy, block, key
-- Keywords (`kw-`): freeze, chill, exhaust, draw
-- Card families (`family-`): weapon, spell, armour, item
-- Intents (`intent-`): attack, block, buff, debuff
+| Group | Icons |
+|---|---|
+| Locations (`loc-`) | start, monster, elite, chest, locked-chest, village, shrine, mystery, boss |
+| Resources (`res-`) | health, food, gold, lives, energy, block, key |
+| Keywords (`kw-`) | freeze, chill, exhaust, draw |
+| Card families (`family-`) | weapon, spell, armour, item |
+| Intents (`intent-`) | attack, block, buff, debuff |
 
-Until real icons are added, Figma uses placeholders: a letter in a circle for locations and a coloured dot for resources.
+How they're used:
+- Location: a white icon (`size.icon.glyph`) in a coloured circle (`size.icon.location`)
+- Resource chips and intents: the icon in the resource or intent colour
+- Cards: the family icon next to the family label
+
+Authors and license: [`assets/icons/CREDITS.md`](../assets/icons/CREDITS.md).
+
+To review: `kw-draw` and `kw-exhaust` look alike at small sizes, and `res-lives` (an ankh) may not read as "lives". Both are candidates for swapping.

@@ -28,7 +28,7 @@ Rectangles are `x, y, w, h` on the 1280 × 720 canvas.
 
 Tile positions follow the hex formula in [ui-rules.md](../ui-rules.md#5-hex-grid). For a tile whose top-left corner inside `HexGrid` is `(tx, ty)`:
 
-- **Location icon**: 36 × 36 at `(tx + 28, ty + 16)`.
+- **Location icon**: the `LocationIcon` component, 36 × 36 at `(tx + 28, ty + 16)`. It's a coloured circle with a 22 px `loc-*` icon in the middle: white, or `text.inverse` on the light start and locked-chest circles.
 - **Detail label** (only within 2 tiles of the player): `text.small`, Inter Semi Bold, centred on the tile at `ty + 54`, e.g. the monster name or the chest contents.
 - **PlayerToken**: 28 × 28 circle, `accent.primary` with a 3 px `text.primary` ring, at `(tx + 32, ty + 26)`.
 - **Route step**: hex outline inset 3 px, 4 px stroke in `accent.primary`; number badge 22 × 22 (`accent.primary`, number in `text.inverse`) at `(tx + 64, ty + 6)`. Steps are numbered from 1; the player's tile is not numbered.

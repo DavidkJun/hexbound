@@ -11,6 +11,7 @@ Single-player, turn-based fantasy roguelite for the browser: cross a hand-made 9
 | `plan/Stage0_*.txt` | Stage 0 brief for each role | PM / Game designer |
 | `design/` | How the game looks: UI rules, tokens, layout, screen specs, map format. Start at `design/README.md` | UI / Level designer |
 | `data/levels/` | Map files (JSON) | UI / Level designer |
+| `assets/` | Icons, art, fonts. Icon credits in `assets/icons/CREDITS.md` | UI / Level designer |
 | `tools/figma-export/` | Figma plugin that exports `design/tokens.json` and `design/layout.json` | UI / Level designer |
 | `tests/` | Test cases and results | Tester |
 

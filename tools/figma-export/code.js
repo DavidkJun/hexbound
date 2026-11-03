@@ -58,7 +58,8 @@ async function exportTokens(errors) {
       const variable = await figma.variables.getVariableByIdAsync(id);
       const value = await resolveValue(variable, collection.defaultModeId, errors);
       if (value === null) continue;
-      setPath(tokens, variable.name, variable.resolvedType === 'COLOR' ? toHex(value) : value, errors);
+      const clean = variable.resolvedType === 'COLOR' ? toHex(value) : typeof value === 'number' ? Math.round(value * 10000) / 10000 : value;
+      setPath(tokens, variable.name, clean, errors);
     }
   }
   return tokens;
@@ -80,7 +81,16 @@ async function exportLayout(errors) {
     errors.push(`No page named "${SCREENS_PAGE}"`);
     return {};
   }
-  await page.loadAsync();
+  const original = figma.currentPage;
+  await figma.setCurrentPageAsync(page);
+  try {
+    return collectScreens(page, errors);
+  } finally {
+    await figma.setCurrentPageAsync(original);
+  }
+}
+
+function collectScreens(page, errors) {
   const layout = { screen: { width: SCREEN_W, height: SCREEN_H }, screens: {} };
   for (const screen of screenFrames(page)) {
     if (screen.width !== SCREEN_W || screen.height !== SCREEN_H) {

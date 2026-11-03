@@ -15,11 +15,11 @@ Rectangles are `x, y, w, h` on the 1280 × 720 canvas.
 | `TopBar` | 0, 0, 1280, 56 | Same as on the map | `DeckButton`, `MenuButton` |
 | `FightModifiers` | 24, 72, auto, 34 | Effects on this fight from the map (terrain crossed, places visited). One pill per effect, in a row going right. The effect texts come from the game rules; the mockup's pill is a placeholder. Example: ice gives "Chilled: −1 energy on turn 1" | Hover → full text |
 | `TurnCounter` | right-aligned to x 1256, y 76 | "Turn N", Cinzel h3 | — |
-| `EnemyIntent` | 580, 104, 120, 40 | Enemy's next move: kind (ATK / BLK / BUFF / debuff name) and value. Always visible | — |
+| `EnemyIntent` | 580, 104, 120, 40 | Enemy's next move: intent icon (`intent-*`, 20 px, in `color.intent.*`) and value, inside a pill with a border in the same colour. Always visible | — |
 | `EnemySprite` | 540, 152, 200, 200 | Enemy art (`art/enemy-<id>.png`) | — |
 | `EnemyName` | centred on x 640, y 360 | Enemy name, Cinzel h3 | — |
 | `EnemyHealthBar` | 520, 392, 240, 20 | Health fill in `resource.health`; `EnemyHealthText` "current / max" centred on it | — |
-| `EnemyStatus` | centred on x 640, y 420 | Status pills, e.g. "Chill 1", "Freeze", in the keyword colour | Hover → keyword text |
+| `EnemyStatus` | centred on x 640, y 420 | Status pills: keyword icon (14 px) + text, e.g. "Chill 1", in the keyword colour | Hover → keyword text |
 | `PlayerSprite` | 160, 200, 160, 160 | Wayfarer art | — |
 | `PlayerHealthBar` | 140, 372, 200, 20 | Health; `PlayerHealthText` centred on it | — |
 | `PlayerBlock` | 140, 402, auto, 32 | Current block; hidden when block is 0 | — |

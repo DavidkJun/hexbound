@@ -27,20 +27,18 @@ Owner: UI / Level designer. These are fixed decisions. Code that draws anything 
 - Until `layout.json` contains a screen, use the numbers in that screen's spec.
 - In every rect and position, `x` and `y` are the **top-left corner**. "Centred on x 640, y 360" means centred horizontally on x 640, with its top edge at y 360. "Right-aligned to x 1256" means its right edge is at x 1256.
 
-## 2a. Values not in tokens.json yet
+## 2a. Which token to use where
 
-These are used in the design but aren't Figma variables yet. Until they are, use these exact values:
-
-| What | Value |
+| What | Token |
 |---|---|
-| Font weights | headings Cinzel Bold · numbers Inter Bold · card titles Inter Semi Bold · everything else Inter Regular |
-| Line height | font default ("auto") |
-| Disabled / unaffordable | opacity 0.4 |
-| Tiles more than 2 steps from the player | opacity 0.7 |
-| Strokes | borders 1 px `line.default` · hex tile edge 2 px `bg.base` · card frame 3 px family colour · route step 4 px `accent.primary` · energy orb 4 px `resource.energy` |
-| Intent colours | attack `accent.danger` · block `resource.block` · buff `accent.primary` · debuff the colour of the keyword it applies, e.g. `keyword.chill` |
-| Icon sizes | location icon 36 · player token 28 · route step badge 22 · resource icon 20 (`size.icon.sm`) |
-| `EndTurnButton` | 160 × 56, deliberately bigger than the normal 48 px button |
+| Font weights | `font.weight.heading` (Cinzel) · `font.weight.number` · `font.weight.card-title` · `font.weight.body` |
+| Line height | not a token: font default ("auto") |
+| Disabled / unaffordable | `opacity.disabled` (0–1) |
+| Tiles more than 2 steps from the player | `opacity.far-tile` |
+| Strokes | `stroke.border` with `line.default` · `stroke.hex` with `bg.base` · `stroke.card` with the family colour · `stroke.route` with `accent.primary` · `stroke.orb` with `resource.energy` |
+| Intent colours | `color.intent.attack / block / buff / debuff` |
+| Icon sizes | `size.icon.location` (circle) with a `size.icon.glyph` icon inside · `size.icon.sm` in chips and intents · `size.icon.card-family` on cards · `size.token.player` · `size.badge.step` |
+| `EndTurnButton` | `size.button.end-turn.*` (160 × 56), deliberately bigger than the normal `size.button.height` |
 
 ## 4. Names
 
