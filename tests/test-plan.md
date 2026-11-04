@@ -44,7 +44,7 @@ The tester tests against **written rules**, never against "what the code does":
 ## 4. Bug reports (agreed with the programmer)
 
 - **Where:** GitHub Issues, using the programmer's template `.github/ISSUE_TEMPLATE/bug_report.yml`. Its fields are build and seed, severity, steps, expected, actual and screenshot, which covers everything the tester brief asks for (TC-S0-10).
-- **Until the issues are used:** reports live in [`bugs/`](bugs/README.md) with the same fields.
+- **Stage 0 bugs:** issues #3–#14. Each also has a full report in [`bugs/`](bugs/README.md) with the same fields and its evidence.
 - **Severity:**
     - Blocker: the run can't continue (or a stage can't close)
     - Major: a rule or screen is wrong
