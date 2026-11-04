@@ -1,0 +1,49 @@
+name: Bug report
+description: Something in the game doesn't work as designed
+labels: [bug]
+body:
+  - type: input
+    id: build
+    attributes:
+      label: Build and seed
+      description: Bottom-left corner of the game. Open the game with ?seed=<seed> to replay a run.
+      placeholder: build a1b2c3d · seed 483921
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Blocker (the run can't continue)
+        - Major (a rule or screen is wrong, but the run can go on)
+        - Minor (looks wrong, or small inconvenience)
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Drag an image in here.
