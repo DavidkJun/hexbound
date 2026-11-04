@@ -1,0 +1,16 @@
+[
+  {
+    "id": "iron-skin",
+    "name": "Iron skin",
+    "text": "Start each fight with 3 block.",
+    "trigger": "fightStart",
+    "effects": [{ "type": "gainBlock", "amount": 3 }]
+  },
+  {
+    "id": "full-pack",
+    "name": "Full pack",
+    "text": "Gain 3 food when you take this blessing.",
+    "trigger": "onPickup",
+    "effects": [{ "type": "gainFood", "amount": 3 }]
+  }
+]

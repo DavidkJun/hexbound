@@ -1,0 +1,29 @@
+[
+  {
+    "id": "old-well",
+    "name": "The old well",
+    "text": "A coin glints at the bottom of a mossy well. Something moves below it.",
+    "choices": [
+      {
+        "label": "Reach in",
+        "cost": { "health": 3 },
+        "outcomes": [
+          {
+            "chance": 50,
+            "text": "You pull out a heavy purse.",
+            "effects": [{ "type": "gainGold", "amount": 30 }]
+          },
+          {
+            "chance": 50,
+            "text": "Only cold water and a bite on the hand.",
+            "effects": []
+          }
+        ]
+      },
+      {
+        "label": "Walk on",
+        "outcomes": [{ "chance": 100, "text": "You leave the well behind.", "effects": [] }]
+      }
+    ]
+  }
+]
