@@ -1,0 +1,19 @@
+# npm run build — node v24.22.2
+
+> hexbound@0.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 137 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                              0.39 kB │ gzip:  0.26 kB
+dist/assets/inter-cyrillic-DqGufNeO.woff2   18.74 kB
+dist/assets/cinzel-latin-DMUuCU8H.woff2     25.90 kB
+dist/assets/inter-latin-Dx4kXJAl.woff2      48.25 kB
+dist/assets/index-n20DLXm3.css               1.94 kB │ gzip:  0.75 kB
+dist/assets/index-D9qvQZis.js              131.86 kB │ gzip: 41.46 kB
+
+✓ built in 101ms
+exit=0

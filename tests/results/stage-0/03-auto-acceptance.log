@@ -1,0 +1,319 @@
+# tester acceptance suite — 2026-11-04T22:51:29+02:00 — node v24.22.2 — commit under test b9977c9
+
+ RUN  v4.1.12 /root/code/js/kpi/gamedev
+
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-01 start and boss are in opposite corners, 9–10 steps apart 3ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-02 startFood covers the direct route plus about 3 spare steps (2–4) 0ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-03 direct is the cheapest of the three routes in food 0ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-04 every intended route is affordable with startFood 0ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-05 direct passes an elite, safe passes a village, rich passes a chest or shrine 0ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-06 the three routes are different 0ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-07 the boss can be reached without stepping on any hazard tile 1ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-08 no route visits a tile twice 1ms
+ ✓ tests/auto/level-targets.test.ts > TC-LVL map _example > TC-LVL-09 the map uses its hazard (at least one hazard tile) 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-01 layout.json > TC-DES-01a declares the 1280 × 720 screen from ui-rules.md §1 2ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-01 layout.json > TC-DES-01b every rect on every screen is inside the 1280 × 720 canvas 2ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-01 layout.json > TC-DES-01c every element name is PascalCase (ui-rules.md §4) 3ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-01 layout.json > TC-DES-01d the TopBar is identical on every screen that has it 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-02 TopBar (screens.md "Always on screen") > TC-DES-02a is 1280 × 56 at the top and matches the topbar height token 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-02 TopBar (screens.md "Always on screen") > TC-DES-02b padding 16 left and right 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-02 TopBar (screens.md "Always on screen") > TC-DES-02c 12 px gap between items 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-02 TopBar (screens.md "Always on screen") > TC-DES-02d every item is vertically centred in the bar 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-02 TopBar (screens.md "Always on screen") > TC-DES-02e LevelName is centred in the space between BlessingsRow and DeckButton 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-02 TopBar (screens.md "Always on screen") > TC-DES-02f the two buttons are 48 high (size.button.height) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03a every element in design/screens/map.md exists in layout.json 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03a every element in design/screens/fight.md exists in layout.json 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03b every fixed rect "x, y, w, h" in design/screens/map.md equals layout.json 2ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03b every fixed rect "x, y, w, h" in design/screens/fight.md equals layout.json 2ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03c "centred on x 640" elements of the fight screen are centred on 640 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > BUG-005 TC-DES-03d TurnCounter is right-aligned to x 1256 as fight.md says 9ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03e the map side panel is a 16 px stack of 304-wide children (map.md SidePanel) 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03f the map grid and tooltip mockup stay inside MapArea 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03g a hand of 5 cards is exactly the Hand rect: 140 × 196 with 12 px gaps (fight.md) 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03h EndTurnButton uses the end-turn size tokens (160 × 56) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03i static fight elements do not overlap each other 2ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-03 screen specs agree with layout.json > TC-DES-03j a hovered card (24 px up) does not cover EnemyStatus or the health bars 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > TC-DES-04a design/ui-rules.md 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > TC-DES-04a design/screens.md 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > TC-DES-04a design/screens/map.md 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > TC-DES-04a design/screens/fight.md 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > TC-DES-04a design/visual-direction.md 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > TC-DES-04b every colour token is a #RRGGBB value 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > TC-DES-04c every land has ground, hazard and accent colours (map-format.md land) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-04 every token a spec names exists in tokens.json > BUG-006 TC-DES-04d every padding the specs ask for is a tokens.space value 2ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06a UI text text.primary on bg.base is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06a UI text text.primary on bg.panel is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06a UI text text.primary on bg.raised is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06a UI text text.muted on bg.panel is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06a UI text text.muted on bg.raised is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06a UI text text.inverse on accent.primary is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06b resource.energy icons on chips (bg.raised) are at least 3:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06b resource.block icons on chips (bg.raised) are at least 3:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06b resource.food icons on chips (bg.raised) are at least 3:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06b resource.gold icons on chips (bg.raised) are at least 3:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > TC-DES-06b resource.key icons on chips (bg.raised) are at least 3:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > BUG-011 TC-DES-06c whisperwood hazard tiles stand out from ground by at least 3:1 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > BUG-011 TC-DES-06c frostpeak hazard tiles stand out from ground by at least 3:1 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > BUG-011 TC-DES-06c ashen hazard tiles stand out from ground by at least 3:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > BUG-012 TC-DES-06d detail label text.primary on whisperwood ground is at least 4.5:1 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > BUG-012 TC-DES-06d marker text.primary on ashen lava is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > BUG-012 TC-DES-06d detail label text.primary on frostpeak ground is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) > BUG-012 TC-DES-06d accent.danger price/route text on bg.raised is at least 4.5:1 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05a all 28 icons in the list exist, and no others 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-start.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-monster.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-elite.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-chest.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-locked-chest.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-village.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-shrine.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-mystery.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b loc-boss.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b res-health.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b res-food.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b res-gold.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b res-lives.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b res-energy.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b res-block.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b res-key.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b kw-freeze.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b kw-chill.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b kw-exhaust.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b kw-draw.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b family-weapon.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b family-spell.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b family-armour.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b family-item.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b intent-attack.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b intent-block.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b intent-buff.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05b intent-debuff.svg is credited in CREDITS.md with an author 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-start.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-monster.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 4ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-elite.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-chest.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-locked-chest.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-village.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-shrine.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-mystery.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c loc-boss.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c res-health.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c res-food.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c res-gold.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c res-lives.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c res-energy.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c res-block.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c res-key.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c kw-freeze.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c kw-chill.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c kw-exhaust.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c kw-draw.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c family-weapon.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c family-spell.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c family-armour.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c family-item.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c intent-attack.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c intent-block.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c intent-buff.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05c intent-debuff.svg is one colour, tintable (fill="currentColor", no hard-coded colour) 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05d every asset file name is kebab-case 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05e every file in assets/ and design/ is under 1 MB (no Git LFS) 1ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05f fonts.css declares the families named in tokens.font and its files exist 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05g fonts are local: no font CDN in fonts.css or index.html 0ms
+ ✓ tests/auto/design-consistency.test.ts > TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) > TC-DES-05h Inter covers Cyrillic, Cinzel does not (open language question in CLAUDE.md) 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-00 baseline > TC-MAP-00 the example map is valid as written 20ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-01 rule 1: id equals the file name > TC-MAP-01a accepts the id of a renamed file when they match 2ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-01 rule 1: id equals the file name > TC-MAP-01b rejects an id that differs from the file name 5ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-01 rule 1: id equals the file name > TC-MAP-01c rejects an id that is not kebab-case 2ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-02 rule 2: land and hazard go together > TC-MAP-02a accepts whisperwood + swamp 3ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-02 rule 2: land and hazard go together > TC-MAP-02a accepts frostpeak + ice 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-02 rule 2: land and hazard go together > TC-MAP-02a accepts ashen + lava 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-02 rule 2: land and hazard go together > TC-MAP-02b rejects whisperwood + ice 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-02 rule 2: land and hazard go together > TC-MAP-02b rejects frostpeak + lava 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-02 rule 2: land and hazard go together > TC-MAP-02b rejects ashen + swamp 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-02 rule 2: land and hazard go together > TC-MAP-02c rejects an unknown land 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03a accepts an all-normal map 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03b rejects 6 rows 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03c rejects 8 rows 2ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03d rejects a row of 8 characters and names the row 2ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03e rejects a row of 10 characters 7ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03f rejects another level's hazard and names the tile 2ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03g rejects an unknown character 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard > TC-MAP-03h rejects terrain that is not a list of strings 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04a accepts a slot on the corner 0,0 (boundary) 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04a accepts a slot on the corner 8,0 (boundary) 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04a accepts a slot on the corner 0,6 (boundary) 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04a accepts a slot on the corner 8,6 (boundary) 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04b rejects a slot at col -1 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04b rejects a slot at col 9 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04b rejects a slot at row -1 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04b rejects a slot at row 7 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04b rejects a slot at a fraction 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04b rejects a slot at three numbers 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04b rejects a slot at one number 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04c rejects a start outside the grid 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > TC-MAP-04d rejects a route step outside the grid 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-04 rule 4: every coordinate is inside the grid > BUG-004 TC-MAP-04e the message for a tile outside the grid shows the bad coordinate 6ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-05 rule 5: start and boss are on normal tiles > TC-MAP-05a rejects a start on swamp 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-05 rule 5: start and boss are on normal tiles > TC-MAP-05b rejects a boss on swamp 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-05 rule 5: start and boss are on normal tiles > TC-MAP-05c allows a fixed village on a hazard tile 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-05 rule 5: start and boss are on normal tiles > TC-MAP-05d allows a slot on a hazard tile 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-06 rule 6: no two places share a tile > TC-MAP-06a rejects a slot on the start tile 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-06 rule 6: no two places share a tile > TC-MAP-06b rejects a fixed location on the boss tile 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-06 rule 6: no two places share a tile > TC-MAP-06c rejects two slots on one tile 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-06 rule 6: no two places share a tile > TC-MAP-06d rejects start and boss on the same tile 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07a accepts the type monster 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07a accepts the type elite 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07a accepts the type chest 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07a accepts the type locked-chest 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07a accepts the type village 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07a accepts the type shrine 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07a accepts the type mystery 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07b rejects the type "start" 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07b rejects the type "boss" 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07b rejects the type "shop" 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07b rejects the type "Village" 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07b rejects the type "" 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07c rejects an empty allow list 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07d rejects an unknown type inside an allow list 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-07 rule 7: location types and allow lists > TC-MAP-07e accepts a map with no fixed locations and no slots 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-08 rule 8: intended routes are walkable > TC-MAP-08a rejects a route that does not start at start 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-08 rule 8: intended routes are walkable > TC-MAP-08b rejects a route that does not end at the boss 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-08 rule 8: intended routes are walkable > TC-MAP-08c rejects a jump between tiles that are not neighbours and names the step 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-08 rule 8: intended routes are walkable > TC-MAP-08d uses odd-q neighbours: [1,5] → [2,5] is a step, [1,5] → [2,4] is not 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-08 rule 8: intended routes are walkable > TC-MAP-08e rejects a route of one tile 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-08 rule 8: intended routes are walkable > TC-MAP-08f rejects a missing route 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-08 rule 8: intended routes are walkable > TC-MAP-08g rejects a fourth, unknown route 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09a accepts startFood equal to the direct cost (boundary) 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09b rejects startFood one below the direct cost (boundary) 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09c counts a swamp step as 2 food 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09d rejects startFood 0 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09d rejects startFood -3 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09d rejects startFood 12.5 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01a accepts the family weapon 23ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01a accepts the family spell 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01a accepts the family armour 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01a accepts the family item 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01b rejects the family "armor" 3ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01b rejects the family "Weapon" 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01b rejects the family "curse" 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01c accepts cost 0 (boundary) and rejects -1 and 1.5 5ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01d rejects a card with no effects 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01e rejects an empty name and an empty text 3ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01f rejects the id "Strike" (not kebab-case) 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01f rejects the id "strike_1" (not kebab-case) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01f rejects the id "ice shard" (not kebab-case) 6ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01f rejects the id "-strike" (not kebab-case) 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01g rejects the same id used twice in one file 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01h rejects an empty cards file 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-01 cards > TC-DATA-01i the same id may be used by a card and a blessing (ids are unique per folder) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts dealDamage with amount 1 (boundary) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts gainBlock with amount 1 (boundary) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts gainEnergy with amount 1 (boundary) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts draw with amount 1 (boundary) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts applyFreeze with amount 1 (boundary) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts applyChill with amount 1 (boundary) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts heal with amount 1 (boundary) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts loseHealth with amount 1 (boundary) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts gainFood with amount 1 (boundary) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts loseFood with amount 1 (boundary) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts gainGold with amount 1 (boundary) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02a accepts loseGold with amount 1 (boundary) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects dealDamage with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects gainBlock with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects gainEnergy with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects draw with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects applyFreeze with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects applyChill with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects heal with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects loseHealth with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects gainFood with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects loseFood with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects gainGold with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02b rejects loseGold with amount 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02c rejects an amount that is missing, negative, a fraction or a string 3ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02d accepts exhaust without an amount and rejects it with one 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02e rejects the unknown effect "dealdamage" 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02e rejects the unknown effect "damage" 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02e rejects the unknown effect "gainShield" 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-02 effects (one shared vocabulary) > TC-DATA-02e rejects the unknown effect "applyBurn" 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03a accepts kind normal without a signature 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03a accepts kind elite without a signature 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03b requires a signature on a boss 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03c rejects a cycle that names a move the enemy does not have 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03d rejects an empty cycle 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03e rejects random weights of 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03f accepts the intent attack 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03f accepts the intent block 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03f accepts the intent buff 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03f accepts the intent debuff 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03g rejects health 0 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > BUG-001 TC-DATA-03h rejects random weights with no moves at all 7ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > TC-DATA-03i-control the same enemy with two distinct move ids is valid 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-03 enemies > BUG-003 TC-DATA-03i rejects two moves with the same id in one enemy 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-04 blessings > TC-DATA-04a accepts the trigger onPickup 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-04 blessings > TC-DATA-04a accepts the trigger levelStart 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-04 blessings > TC-DATA-04a accepts the trigger fightStart 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-04 blessings > TC-DATA-04a accepts the trigger turnStart 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09d rejects startFood 13 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost > TC-MAP-09d rejects startFood null 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-10 rule 10: boss.enemy is an existing enemy > TC-MAP-10a accepts the example boss goblin-chief 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-10 rule 10: boss.enemy is an existing enemy > TC-MAP-10b rejects an unknown boss id when enemy files exist 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-10 rule 10: boss.enemy is an existing enemy > TC-MAP-10c skips the check while there are no enemy files (stage 0) 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-11 file-level checks > TC-MAP-11a reports broken JSON with the file name 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-11 file-level checks > TC-MAP-11b rejects an unknown field (typo protection) 0ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-11 file-level checks > TC-MAP-11c reports every problem at once 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-12 levels.json > TC-MAP-12a plays the levels in the listed order 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-12 levels.json > TC-MAP-12b reports a listed level without a file 1ms
+ ✓ tests/auto/map-format.test.ts > TC-MAP-12 levels.json > BUG-002 TC-MAP-12c rejects a level listed twice in levels.json 2ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-04 blessings > TC-DATA-04b rejects an unknown trigger 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05a rejects an event with one choice (needs at least two) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05b chances [50,49] → valid: false (must add up to 100) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05b chances [50,51] → valid: false (must add up to 100) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05b chances [100] → valid: true (must add up to 100) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05b chances [1,99] → valid: true (must add up to 100) 0ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05b chances [34,33,33] → valid: true (must add up to 100) 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05c rejects a chance of 0 and of 101 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-05 events > TC-DATA-05d accepts a cost in gold, food and health, and rejects other costs 1ms
+ ✓ tests/auto/data-format.test.ts > TC-DATA-06 the real game data (empty in stage 0) > TC-DATA-06a the game files that exist load without problems 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-01 replay > TC-SEED-01a the same seed gives the same whole game state, 100 seeds 9ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-01 replay > TC-SEED-01b the seed shown to the player is kept in the state 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-01 replay > TC-SEED-01c dealing does not change the state it started from 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-01 replay > TC-SEED-01d the generator moves on: the next random number after a deal differs from before 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) > TC-SEED-02a every slot gets a type from its own allow list, 500 seeds 109ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-01 grid size > TC-HEX-01a has 9 × 7 = 63 tiles, each once 2ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-01 grid size > TC-HEX-01b hex radius token is 46 px (ui-rules.md §5) 0ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-01 grid size > TC-HEX-01c whole grid is 644 × 597.6 px and equals the HexGrid rect in layout.json 1ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) > TC-HEX-02a tile 0,0 is centred at x 46, y 39.84 0ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) > TC-HEX-02a tile 1,0 is centred at x 115, y 79.67 0ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) > TC-HEX-02a tile 8,6 is centred at x 598, y 517.87 0ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) > TC-HEX-02b every tile matches the formula in ui-rules.md 5ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) > TC-HEX-02c odd columns are pushed down by half a hex (odd-q) 0ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) > TC-HEX-02d every tile lies fully inside the HexGrid rect 8ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-03 neighbours > TC-HEX-03a neighbourhood is symmetric: a next to b ⇔ b next to a 7ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-03 neighbours > TC-HEX-03b every inner tile has 6 neighbours, corners 2 or 3 2ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-03 neighbours > TC-HEX-03c neighbours are exactly the tiles whose centres are √3·R apart (geometry oracle) 4ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-03 neighbours > TC-HEX-03d never returns a tile outside the grid 3ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-04 distance > TC-HEX-04a equals the BFS step count for all 63 × 63 pairs 137ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-04 distance > TC-HEX-04b corner to opposite corner is 10 steps (design doc: 9–10) 0ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-04 distance > TC-HEX-04c is 0 to itself, 1 to a neighbour, and symmetric 3ms
+ ✓ tests/auto/hex-grid.test.ts > TC-HEX-04 distance > TC-HEX-04d "within 2 tiles" of the mockup player [1,5] matches map.png 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) > TC-SEED-02b fixed locations stay where the map puts them 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) > TC-SEED-02c every allowed type of a two-way slot shows up across seeds (a level is never a memorised replay) 1ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) > TC-SEED-02d at least 10 different deals across 100 seeds 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03a pick() over 3 items is roughly uniform (chi-square, 30 000 draws, p ≈ 0.001) 2ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03b nextFloat stays in [0, 1) for 100 000 draws 575ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03c seed 0 is accepted and replayable 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03c seed 1 is accepted and replayable 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03c seed 4294967295 is accepted and replayable 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03c seed -1 is accepted and replayable 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03c seed 999999 is accepted and replayable 0ms
+ ✓ tests/auto/seed-rng.test.ts > TC-SEED-03 generator quality > TC-SEED-03d no source file calls Math.random or Date-based randomness in game logic 2ms
+
+ Test Files  6 passed (6)
+      Tests  294 passed | 13 expected fail (307)
+   Start at  22:51:30
+   Duration  1.03s (transform 458ms, setup 0ms, import 1.06s, tests 1.17s, environment 1ms)
+
+JUNIT report written to /root/code/js/kpi/gamedev/tests/results/stage-0/auto-junit.xml
+exit=0
