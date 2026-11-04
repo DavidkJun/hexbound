@@ -1,0 +1,16 @@
+{
+  "name": "hexbound-qa",
+  "private": true,
+  "description": "Tester-owned automation for Hexbound: npm --prefix tests run auto | e2e. See tests/README.md.",
+  "type": "module",
+  "scripts": {
+    "auto": "cd .. && vitest run --config tests/auto/vitest.config.ts",
+    "e2e": "playwright test --config e2e/playwright.config.ts",
+    "all": "npm run auto && npm run e2e",
+    "browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "pngjs": "7.0.0"
+  }
+}
