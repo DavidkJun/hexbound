@@ -1,0 +1,23 @@
+.hex-grid {
+  overflow: visible;
+}
+
+/* Figma draws the stroke inside the shape, SVG centres it on the edge: twice as wide looks the same,
+   because the outer half lands on the same colour. */
+.hex-tile {
+  stroke: var(--color-bg-base);
+  stroke-width: calc(var(--stroke-hex) * 2);
+}
+
+/* Colour is never the only signal (ui-rules.md §8): slow and hazard tiles also carry a word. */
+.hex-marker {
+  dominant-baseline: text-before-edge;
+  fill: var(--color-text-primary);
+  font-size: var(--text-small);
+  text-anchor: middle;
+}
+
+/* Ice is the one light hazard colour. */
+[data-land='frostpeak'] .hex-marker {
+  fill: var(--color-text-inverse);
+}

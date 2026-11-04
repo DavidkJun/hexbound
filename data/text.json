@@ -1,0 +1,8 @@
+{
+  "terrain.swamp": "slow",
+  "terrain.ice": "slow·chill",
+  "terrain.lava": "burn",
+  "build.commit": "build",
+  "build.seed": "seed",
+  "dataError.title": "Bad data file"
+}
