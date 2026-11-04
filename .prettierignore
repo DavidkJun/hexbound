@@ -1,0 +1,11 @@
+dist
+package-lock.json
+
+# Owned by other roles and written by hand or exported from Figma.
+CLAUDE.md
+assets
+data/levels
+design
+plan
+tests
+tools
