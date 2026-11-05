@@ -17,7 +17,7 @@ A bad file gives a message with the file, the field and the problem, in the term
 | `blessings/*.json`       | A list of blessings                                | PM / Game designer  |
 | `events/*.json`          | A list of events                                   | PM / Game designer  |
 | `levels/<level-id>.json` | One map: [format](../design/levels/map-format.md)  | UI / Level designer |
-| `levels/levels.json`     | Which levels the game plays, in order              | UI / Level designer |
+| `levels/levels.json`     | Which levels the game plays, in order, each once   | UI / Level designer |
 | `text.json`              | All other text on screen: labels, buttons, markers | Whoever adds it     |
 
 Split a folder into as many files as you like, for example `cards/starter.json` and `cards/blade.json`. Ids must be unique across a folder, in kebab-case.

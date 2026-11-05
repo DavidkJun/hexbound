@@ -176,6 +176,23 @@ describe('level order', () => {
       { file: 'data/levels/levels.json', field: '', message: 'no level file for "gone"' },
     ]);
   });
+
+  it('reports a level listed twice', () => {
+    expect(problemsOf([level('aaa'), file('data/levels/levels.json', ['aaa', 'aaa'])])).toEqual([
+      { file: 'data/levels/levels.json', field: '', message: '"aaa" is listed twice' },
+    ]);
+  });
+
+  it('reports a level listed twice along with a level with no file', () => {
+    const problems = problemsOf([
+      level('aaa'),
+      file('data/levels/levels.json', ['aaa', 'aaa', 'gone']),
+    ]);
+    expect(problems.map(({ message }) => message)).toEqual([
+      '"aaa" is listed twice',
+      'no level file for "gone"',
+    ]);
+  });
 });
 
 describe('content files', () => {
