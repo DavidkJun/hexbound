@@ -258,6 +258,19 @@ describe('content files', () => {
     expect(problems[0]).toMatchObject({ field: '[0].pattern.order[0]', message: 'no move "nope"' });
   });
 
+  it('requires at least one move in random weights', () => {
+    const problems = problemsOf([
+      file('data/enemies/a.json', [{ ...boss, pattern: { type: 'random', weights: {} } }]),
+    ]);
+    expect(problems).toEqual([
+      {
+        file: 'data/enemies/a.json',
+        field: '[0].pattern.weights',
+        message: 'needs at least one move',
+      },
+    ]);
+  });
+
   it('requires a signature on a boss', () => {
     const problems = problemsOf([file('data/enemies/a.json', [{ ...boss, signature: undefined }])]);
     expect(problems[0]).toMatchObject({ field: '[0].signature' });

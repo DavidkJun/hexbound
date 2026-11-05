@@ -59,7 +59,12 @@ const moveSchema = z.strictObject({
 
 const movePatternSchema = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('cycle'), order: z.array(idSchema).min(1) }),
-  z.strictObject({ type: z.literal('random'), weights: z.record(idSchema, amountSchema) }),
+  z.strictObject({
+    type: z.literal('random'),
+    weights: z
+      .record(idSchema, amountSchema)
+      .refine((weights) => Object.keys(weights).length > 0, 'needs at least one move'),
+  }),
 ]);
 
 const enemySchema = z
