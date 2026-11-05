@@ -14,10 +14,10 @@ Owner: Tester. Every report follows the fields of the team's issue template (`.g
 |---|---|---|---|---|---|---|
 | [BUG-009](BUG-009.md) | [#11](https://github.com/DavidkJun/hexbound/issues/11) | Major (process) | Repo owner (`DavidkJun`) | `main` is not protected; reviews are not enforced | TC-S0-08 | 2026-11-04 |
 | [BUG-010](BUG-010.md) | [#12](https://github.com/DavidkJun/hexbound/issues/12) | Minor | PM (`DavidkJun`) | The design PDF can't be searched or copied (fonts without a Unicode map) | design review | 2026-11-04 |
-| [BUG-013](BUG-013.md) | — | Minor | Programmer (`alomj`) | A normal or elite enemy is accepted as the boss (new map rule 10) | TC-MAP-10d | 2026-11-05 |
-| [BUG-014](BUG-014.md) | — | Minor | Programmer (`alomj`); a question for UI / LD (`koksha19`) | A missing `levels.json` is not a data error (new map rule, N-06) | TC-MAP-12d | 2026-11-05 |
-| [BUG-015](BUG-015.md) | — | Minor | Programmer (`alomj`) | An `allow` list that repeats a type is accepted (new map rule 7) | TC-MAP-07f | 2026-11-05 |
-| [BUG-016](BUG-016.md) | — | Minor | UI / LD (`koksha19`) | `BlessingsRow` (96 px) is too narrow for the 4 slots the spec asks for | TC-DES-02g | 2026-11-05 |
+| [BUG-013](BUG-013.md) | [#16](https://github.com/DavidkJun/hexbound/issues/16) | Minor | Programmer (`alomj`) | A normal or elite enemy is accepted as the boss (new map rule 10) | TC-MAP-10d | 2026-11-05 |
+| [BUG-014](BUG-014.md) | [#17](https://github.com/DavidkJun/hexbound/issues/17) | Minor | Programmer (`alomj`); a question for UI / LD (`koksha19`) | A missing `levels.json` is not a data error (new map rule, N-06) | TC-MAP-12d | 2026-11-05 |
+| [BUG-015](BUG-015.md) | [#18](https://github.com/DavidkJun/hexbound/issues/18) | Minor | Programmer (`alomj`) | An `allow` list that repeats a type is accepted (new map rule 7) | TC-MAP-07f | 2026-11-05 |
+| [BUG-016](BUG-016.md) | [#19](https://github.com/DavidkJun/hexbound/issues/19) | Minor | UI / LD (`koksha19`) | `BlessingsRow` (96 px) is too narrow for the 4 slots the spec asks for | TC-DES-02g | 2026-11-05 |
 
 ## Fixed and verified
 
