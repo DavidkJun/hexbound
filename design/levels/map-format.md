@@ -11,6 +11,7 @@ Each level is one JSON file in `data/levels/<level-id>.json`, written by hand. A
   ["whisperwood", "frostpeak", "ashen-citadel"]
   ```
   The game loads exactly these files, in this order. It's created together with the first real map.
+- **A missing `levels.json` is a data error.** `npm run check:data` and the built game both show "levels.json is missing", and the game never falls back to loading level files by name. One exception, until the first real map exists: in local development (`npm run dev`) the build may show `_example.json`, with a visible "Example map" warning on screen.
 - Files starting with `_` are examples or drafts. They are never loaded by the game, but the map check still validates them.
 
 Coordinates are always `[col, row]` on the flat-top, odd-q grid from [`../ui-rules.md`](../ui-rules.md#5-hex-grid): `col` 0–8, `row` 0–6.
@@ -56,10 +57,10 @@ The loader checks these and fails with a clear message if one breaks:
 4. Every coordinate is inside the grid.
 5. `start` and `boss` are on normal (`.`) tiles. Locations in `fixed` and `slots` may be on hazard tiles.
 6. No two of `start`, `boss`, `fixed`, `slots` share a tile.
-7. Every `fixed[].type` and every entry of every `allow` list is a location type. `allow` lists are non-empty.
+7. Every `fixed[].type` and every entry of every `allow` list is a location type. `allow` lists are non-empty and **list each type at most once**: `["monster", "monster", "chest"]` is an error. Each type in a list is equally likely. If a slot ever needs weights, that will be a new field, not repeated types.
 8. Every route in `intendedRoutes` starts at `start`, ends at `boss`, and each step is a neighbour of the previous one.
 9. `startFood` is a positive whole number, at least the food cost of the `direct` route. Design target: about 3 more than that cost.
-10. Once enemy content files exist: `boss.enemy` is an existing enemy id.
+10. Once enemy content files exist: `boss.enemy` is an existing enemy with `"kind": "boss"`. A normal or elite enemy as the boss is an error.
 
 Every rule failing blocks loading, including the `intendedRoutes` rules: a broken map is caught on the first run instead of in a playtest.
 
