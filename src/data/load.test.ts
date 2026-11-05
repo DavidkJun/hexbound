@@ -76,7 +76,19 @@ describe('map rules from design/levels/map-format.md', () => {
       'terrain[0]',
       'tile 0,0: "i"',
     ],
-    ['4: tiles inside the grid', { start: [9, 0] }, 'start[0]', 'Too big'],
+    [
+      '4: a column inside the grid',
+      { start: [9, 0] },
+      'start[0]',
+      'tile 9,0 is outside the grid (col 0–8, row 0–6)',
+    ],
+    [
+      '4: a row inside the grid',
+      { start: [0, 7] },
+      'start[1]',
+      'tile 0,7 is outside the grid (col 0–8, row 0–6)',
+    ],
+    ['4: no negative numbers', { start: [0, -1] }, 'start[1]', 'tile 0,-1 is outside the grid'],
     [
       '5: start on normal terrain',
       { terrain: Array<string>(7).fill('sssssssss') },
