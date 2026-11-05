@@ -1,0 +1,21 @@
+# Deployed build and repository checks — 2026-11-04T22:49:08+02:00
+
+$ curl -sI https://davidkjun.github.io/hexbound/
+HTTP/2 404 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+etag: "6abcf5c5-239b"
+content-security-policy: default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'
+
+$ curl -s https://api.github.com/repos/DavidkJun/hexbound (selected fields)
+{'full_name': 'DavidkJun/hexbound', 'private': False, 'default_branch': 'main', 'has_pages': False, 'visibility': 'public', 'message': None}
+
+$ curl -s https://api.github.com/repos/DavidkJun/hexbound/branches/main (protected?)
+{'name': 'main', 'protected': False, 'message': None}
+
+$ curl -s .../pulls?state=all
+2 open feat/stage-0-project-setup - feat(stage-0): add project setup, game core and data format
+1 closed feat/stage-0 - [UI-Level-Design] - Stage 0
+
+$ curl -s .../actions/runs?per_page=5
+CI feat/stage-0-project-setup pull_request completed success 2026-11-04T17:24:58Z

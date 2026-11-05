@@ -1,0 +1,2 @@
+date,player,in_team,build,seed,level,route_taken,routes_looked_at,food_left_at_boss,health_at_boss,gold_at_boss,gold_at_village,deck_size_at_boss,fight_turns,boss_turns,deaths,lives_left,beat_boss,run_minutes,p1_why_route,p2_noticed_map_effect,p3_options_considered,p4_deck_direction,comments
+2026-11-04,EXAMPLE ROW - delete,no,b9977c9,123,whisperwood,direct,2,3,38/60,45,60,12,"3;2;4",8,0,3,yes,14,"short and I had food",yes,"reward:2;village:3",Blade,"asked what Chill does twice"

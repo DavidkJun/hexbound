@@ -1,0 +1,38 @@
+# Reproduction of BUG-007 — clean copy of b9977c9, node v22.4.1, npm 10.8.1
+$ npm ci
+49 packages are looking for funding
+  run `npm fund` for details
+
+10 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+exit=0
+
+$ npm test
+
+> hexbound@0.0.0 test
+> vitest run
+
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: Cannot find native binding. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.
+    at file://<clean-copy>/node_modules/rolldown/dist/shared/binding-BXYS21Tf.mjs:599:34
+    at file://<clean-copy>/node_modules/rolldown/dist/shared/rolldown-runtime-DYf_mQCB.mjs:9:49
+    ... 4 lines matching cause stack trace ...
+    at async CAC.run (file://<clean-copy>/node_modules/vitest/dist/chunks/cac.DzDtg8hz.js:2318:2) {
+  cause: Error: Cannot find module '@rolldown/binding-wasm32-wasi'
+exit=1
+
+$ npm run build
+
+> hexbound@0.0.0 build
+> vite build
+
+file://<clean-copy>/node_modules/rolldown/dist/shared/binding-BXYS21Tf.mjs:599
+			const error = /* @__PURE__ */ new Error("Cannot find native binding. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.");
