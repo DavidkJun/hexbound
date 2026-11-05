@@ -13,7 +13,11 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repo = fileURLToPath(new URL('../..', import.meta.url));
-const SHOTS = join(repo, 'tests/results/stage-0/screenshots');
+const OUT = join(repo, process.env.E2E_OUT ?? 'tests/results/latest');
+const SHOTS = join(OUT, 'screenshots');
+
+// Builds its own broken copy, so it only runs against the local build.
+test.skip(Boolean(process.env.E2E_BASE_URL), 'needs a local build of a broken copy');
 const PORT = 4174;
 let copy = '';
 let server: ChildProcess | undefined;
@@ -73,5 +77,5 @@ test('TC-E2E-06b the same problem is reported by `npm run check:data` in the ter
     expect(e.status).toBe(1);
   }
   expect(output).toContain('data/levels/whisperwood.json › start[1]');
-  writeFileSync(join(repo, 'tests/results/stage-0/check-data-broken-map.txt'), output);
+  writeFileSync(join(OUT, 'check-data-broken-map.txt'), output);
 });

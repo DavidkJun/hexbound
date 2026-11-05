@@ -1,5 +1,6 @@
 node_modules/
-results/*/e2e-artifacts/
+results/**/e2e-artifacts/
+results/latest/
 
 # The root .gitignore drops *.log; run logs here are test evidence and are kept.
 !results/**/*.log

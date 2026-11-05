@@ -1,7 +1,8 @@
 // Turns the JUnit reports of the last run into tests/results/<stage>/test-run-report.md:
 // one row per executed test, grouped by test case ID, with the result.
 //
-// Usage (from the repository root): node tests/tools/junit-to-md.mjs stage-0
+// Usage (from the repository root): node tests/tools/junit-to-md.mjs stage-0 [e2e junit, relative to it]
+//   node tests/tools/junit-to-md.mjs stage-0/retest local/e2e-junit.xml
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const stage = process.argv[2] ?? 'stage-0';
@@ -17,22 +18,26 @@ function cases(file, suite) {
     const result = /<failure|<error/.test(body) ? 'FAIL' : /<skipped/.test(body) ? 'SKIP' : 'PASS';
     const name = attr('name').split(/ > | › /).at(-1);
     const id = /\b(TC-[A-Z0-9]+-\d+[a-z]?(?:-control)?)\b/.exec(name)?.[1] ?? '—';
-    const bug = /\b(BUG-\d{3})\b/.exec(name)?.[1];
-    const title = name.replace(/\b(BUG-\d{3}|TC-[A-Z0-9]+-\d+[a-z]?(?:-control)?)\b\s*/g, '').trim();
+    const bug = /^(BUG-\d{3})\b/.exec(name)?.[1]; // only it.fails tests start with BUG-
+    const title = name.replace(/^(BUG-\d{3})\s*/, '').replace(/\b(TC-[A-Z0-9]+-\d+[a-z]?(?:-control)?)\b\s*/, '').trim();
     return { suite, file: attr('classname'), id, bug, title, result, time: Number(attr('time')) };
   });
 }
 
-const all = [...cases('auto-junit.xml', 'unit / acceptance (Vitest)'), ...cases('e2e-junit.xml', 'e2e (Playwright, Chromium)')];
+const e2eFiles = process.argv.slice(3).length > 0 ? process.argv.slice(3) : ['e2e-junit.xml'];
+const all = [
+  ...cases('auto-junit.xml', 'unit / acceptance (Vitest)'),
+  ...e2eFiles.flatMap((f) => cases(f, `e2e (Playwright, Chromium) ${f.includes('/') ? f.split('/')[0] : ''}`.trim())),
+];
 const count = (pred) => all.filter(pred).length;
 const lines = [
   `# Test run report: ${stage}`,
   '',
-  `Generated from \`auto-junit.xml\` and \`e2e-junit.xml\` by \`tests/tools/junit-to-md.mjs\` on ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC.`,
+  `Generated from \`auto-junit.xml\` and ${e2eFiles.map((f) => `\`${f}\``).join(', ')} by \`tests/tools/junit-to-md.mjs\` on ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC.`,
   '',
   `**${all.length} executed** · ${count((c) => c.result === 'PASS')} passed · ${count((c) => c.result === 'FAIL')} failed · ${count((c) => c.result === 'SKIP')} skipped.`,
   '',
-  `${count((c) => c.bug)} of the passing tests are \`it.fails\` bug tests: they pass because the bug is still there. See [../../bugs/README.md](../../bugs/README.md).`,
+  `${count((c) => c.bug)} of the passing tests are \`it.fails\` bug tests: they pass because the bug is still there. See [bugs/README.md](${'../'.repeat(dir.split('/').length - 1)}bugs/README.md).`,
   '',
   '| Suite | File | Test case | Bug | Check | Result |',
   '|---|---|---|---|---|---|',

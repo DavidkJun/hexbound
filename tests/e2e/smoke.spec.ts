@@ -19,7 +19,10 @@ const level = json<{ land: string; terrain: string[] }>('data/levels/_example.js
 const R = tokens.size.hex.radius;
 const H = Math.sqrt(3) * R;
 const GRID = { x: 150, y: 89 };
-const SHOTS = fileURLToPath(new URL('tests/results/stage-0/screenshots', repo));
+/** Where the build is served: the local `vite preview` by default, or E2E_BASE_URL (e.g. GitHub Pages). */
+const BASE = process.env.E2E_BASE_URL ?? 'http://localhost:4173/';
+const OUT = process.env.E2E_OUT ?? 'tests/results/latest';
+const SHOTS = fileURLToPath(new URL(`${OUT}/screenshots`, repo));
 
 const centreOnPage = (col: number, row: number) => ({
   x: GRID.x + R + col * 1.5 * R,
@@ -40,7 +43,7 @@ async function open(page: Page, query = '?seed=123') {
     if (m.type() === 'error') errors.push(m.text());
   });
   page.on('request', (r) => {
-    if (!r.url().startsWith('http://localhost:4173/') && !r.url().startsWith('data:')) foreign.push(r.url());
+    if (!r.url().startsWith(BASE) && !r.url().startsWith('data:')) foreign.push(r.url());
   });
   await page.goto(query);
   await page.locator('#HexGrid').waitFor();
@@ -70,7 +73,10 @@ test.describe('TC-E2E-01 the build opens', () => {
     const loaded = await page.evaluate(() => [document.fonts.check('700 20px Cinzel'), document.fonts.check('16px Inter')]);
     expect(loaded).toEqual([true, true]);
     expect(fontRequests.length).toBeGreaterThan(0);
-    for (const url of fontRequests) expect(url).toMatch(/^http:\/\/localhost:4173\/.*\.woff2$/);
+    for (const url of fontRequests) {
+      expect(url.startsWith(BASE)).toBe(true);
+      expect(url).toMatch(/\.woff2$/);
+    }
   });
 });
 
@@ -137,7 +143,7 @@ test.describe('TC-E2E-03 terrain drawn from the map file and tokens', () => {
 test.describe('TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4)', () => {
   test('TC-E2E-04a BuildInfo shows the commit of this build and the seed from the URL', async ({ page }) => {
     await open(page, '?seed=483921');
-    const commit = execSync('git rev-parse --short=7 HEAD', { cwd: repo, encoding: 'utf8' }).trim();
+    const commit = (process.env.E2E_COMMIT ?? execSync('git rev-parse HEAD', { cwd: repo, encoding: 'utf8' })).trim().slice(0, 7);
     await expect(page.locator('#BuildInfo')).toHaveText(`build ${commit} · seed 483921`);
     const box = await page.locator('#BuildInfo').boundingBox();
     expect((box?.x ?? 999) < 640 && (box?.y ?? 0) > 360).toBe(true); // bottom-left corner
