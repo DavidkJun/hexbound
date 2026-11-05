@@ -56,7 +56,7 @@ The tester tests against **written rules**, never against "what the code does":
 ## 5. Proposals to the programmer (not decided yet)
 
 1. Run the tester's suites in CI. Add one step to `.github/workflows/ci.yml`: `npm --prefix tests ci && npm --prefix tests run auto` (Vitest only; e2e needs a browser download, about 100 MB).
-2. Add `.npmrc` with `engine-strict=true` (BUG-007).
+2. ~~Add `.npmrc` with `engine-strict=true` (BUG-007).~~ Done in main 5e9931f.
 3. Show the build and seed on the Data error screen too. Today it replaces the whole game, BuildInfo included.
 4. From stage 1, a debug query flag (e.g. `?debug`) that prints the game state as JSON. Tester bug reports could then attach it.
 

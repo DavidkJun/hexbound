@@ -1,6 +1,6 @@
 # TC-FIGHT: fight screen and combat core (stage 1)
 
-Written in stage 0 from `design/screens/fight.md`, `fight.png`, `ui-rules.md` and `data/README.md`. **Status of all: Not run** (not built yet). The cases marked `G-xx` wait for the PM's answer in [`../design-review/design-doc-gaps.md`](../design-review/design-doc-gaps.md).
+Written in stage 0 from `design/screens/fight.md`, `fight.png`, `ui-rules.md` and `data/README.md`. **Status of all: Not run** (not built yet). Cases 25–26 were updated and 29–31 added on 2026-11-05 from the designer's answers. The cases marked `G-xx` wait for the PM's answer in [`../design-review/design-doc-gaps.md`](../design-review/design-doc-gaps.md).
 
 **Setup:** a fight with `bog-rat` (health 20; cycle bite 8 → bite 8 → burrow +5 block) and the starter deck. Seeded with `?seed=1`, 1280 × 720.
 
@@ -30,7 +30,10 @@ Written in stage 0 from `design/screens/fight.md`, `fight.png`, `ui-rules.md` an
 | TC-FIGHT-22 | High | Loss with lives left | Lose all health, lives 3 | Death and retry; lives 2 after retry; state per G-05 | e2e |
 | TC-FIGHT-23 | High | Loss with no lives | Lose at lives 0 (or 1, per G-08) | Run over | e2e |
 | TC-FIGHT-24 | Medium | Overkill and exact kill (boundaries) | Enemy at 6 health: deal 6; separately deal 10 | Both win; health shown as 0, never negative | unit |
-| TC-FIGHT-25 | Medium | Enemy block shown | The enemy uses burrow | Enemy block visible (S-01, not designed yet) | e2e (after S-01) |
-| TC-FIGHT-26 | Medium | The boss signature is visible in the boss fight | Fight `goblin-chief` | The signature text is on screen (S-02) | e2e (after S-02) |
+| TC-FIGHT-25 | Medium | Enemy block shown | The enemy uses burrow | `EnemyBlock` chip with "5", right edge at x 512, centred on `EnemyHealthBar`; hidden again at 0 | e2e |
+| TC-FIGHT-26 | Medium | The boss signature is visible in the boss fight | Fight `goblin-chief`, then a normal enemy | `BossSignature` at 400, 454, 480, 16: the same text as the map's `BossPanel`, `text.small`, `color.text.muted`, centred. Not drawn in the normal fight | e2e |
 | TC-FIGHT-27 | Medium | Fight length target | 10 normal fights with the starter deck (simulator, stage 3) | 2–4 turns on average (DD target) | simulator |
 | TC-FIGHT-28 | Low | Piles can be inspected | Click the draw, discard and exhaust piles | A list overlay (not designed yet: a plain `bg.panel` box) | manual |
+| TC-FIGHT-29 | Medium | Player status pills | The enemy applies Chill to the player | A pill row at `PlayerStatus` (140, 446), the same look as `EnemyStatus`; hidden with no status. Effect waits for G-40 | e2e |
+| TC-FIGHT-30 | Medium | Hand full (boundary) | Hold 10 cards; play a Draw 1 card | The card goes to the discard pile; "Hand full" above `Hand` in `text.small`, `color.text.muted` for 1.5 s; 10 cards still fit inside x 266–1014. The limit waits for G-37 | unit + e2e |
+| TC-FIGHT-31 | Medium | Intent with an extra effect | An enemy move that deals damage and applies Chill | One pill: the attack icon + value, then a 14 px `kw-chill` icon; the pill grows and stays centred on x 640. Waits for G-43 | e2e |

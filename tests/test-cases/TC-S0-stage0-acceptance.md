@@ -26,3 +26,28 @@ Checks the stage 0 "done when" of every role's brief, so the team knows what rea
 | TC-S0-16 | Medium | All content in data files, with an example of each type (Prog §4) | `npm run check:data`; read `data/README.md` | Examples for card, enemy, blessing, event, level; all valid | PASS | `01-programmer-check.log` (`examples: ok (4 cards, 3 enemies, 2 blessings, 1 events, 1 levels)`) |
 | TC-S0-17 | Low | Shipped dependencies have no known vulnerabilities | `npm audit --omit=dev` | 0 | PASS (10 moderate in dev-only tooling, `typescript-eslint`) | `05-npm-audit.log` |
 | TC-S0-18 | High | Deployed build passes the e2e smoke | `npm --prefix tests run e2e` against Pages | 20/20 | BLOCKED by BUG-008 | — |
+
+## Retest 2026-11-05
+
+**Retested on:**
+
+- main 73f39a3: PR #2 and the fixes merged, design fixes in PR #15
+- the deployed build https://davidkjun.github.io/hexbound/
+- the tester's branch at the merge of main
+
+Same environment as the first run. Evidence: [`../results/stage-0/retest/`](../results/stage-0/retest/README.md).
+
+**Result:** 18 cases: 17 passed · 1 failed (BUG-009) · 0 blocked.
+
+| ID | First run | Retest | Evidence |
+|---|---|---|---|
+| TC-S0-03 | FAIL (BUG-007) | **PASS**: Node 22.4 now stops at `npm ci` with "Required: {"node":"^22.13.0 \|\| >=24"}"; Node 24 works | `retest/04-node-22.4-retest.log` |
+| TC-S0-04 | PASS | PASS: `npm run check` with 67 unit tests (61 + 6 for the fixes) | `retest/01-programmer-check.log` |
+| TC-S0-07 | FAIL (BUG-008) | **PASS**: HTTP 200, `has_pages: true`, deploy of 73f39a3 succeeded | `retest/06-deploy-and-repo-retest.log` |
+| TC-S0-08 | FAIL (BUG-009) | FAIL: `main` still not protected | `retest/06-deploy-and-repo-retest.log` |
+| TC-S0-09 | PASS | PASS: CI build and deploy green on main 73f39a3 | `retest/06-deploy-and-repo-retest.log` |
+| TC-S0-14 | PASS, with a remark (BUG-004) | **PASS**: the error now reads `start[1]: tile 0,7 is outside the grid (col 0–8, row 0–6)` | `retest/local/check-data-broken-map.txt`, `retest/local/screenshots/e2e-06-data-error.png` |
+| TC-S0-18 | BLOCKED (BUG-008) | **PASS**: 18/18 e2e on the deployed build (the 2 data-error tests need a local copy and are skipped there). It shows `build 73f39a3 · seed 123` | `retest/07-e2e-deployed.log`, `retest/deployed/screenshots/` |
+| others | PASS | PASS (unchanged) | — |
+
+**Not a regression, for stage 1:** the map tiles in the build still draw the terrain marker as bare text. `map.md` now puts every tile label on a dark pill. The map screen is stage 1 work, covered by TC-MAPSCR-21.
