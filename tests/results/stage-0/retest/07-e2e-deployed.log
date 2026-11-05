@@ -1,0 +1,41 @@
+# e2e retest, deployed build https://davidkjun.github.io/hexbound/ — 2026-11-05T22:03:30+02:00 — expected commit 73f39a3 (origin/main)
+
+> e2e
+> playwright test --config e2e/playwright.config.ts
+
+
+Running 20 tests using 1 worker
+
+  -   1 [chromium] › e2e/data-error.spec.ts:75:1 › TC-E2E-06a a broken real level shows the data error screen with file, field and problem
+  -   2 [chromium] › e2e/data-error.spec.ts:89:1 › TC-E2E-06b the same problem is reported by `npm run check:data` in the terminal
+(node:7094) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7094) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [chromium] › e2e/smoke.spec.ts:53:3 › TC-E2E-01 the build opens › TC-E2E-01a page loads with no errors and no requests to other sites (no font CDN) (932ms)
+  ✓   4 [chromium] › e2e/smoke.spec.ts:67:3 › TC-E2E-01 the build opens › TC-E2E-01b Inter and Cinzel are served from assets/fonts (668ms)
+  ✓   5 [chromium] › e2e/smoke.spec.ts:89:3 › TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02a GameCanvas is exactly 1280 × 720 at a 1280 × 720 window (475ms)
+  ✓   6 [chromium] › e2e/smoke.spec.ts:100:3 › TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02b HexGrid sits at x 150, y 89, 644 × 597.56 (layout.json) (458ms)
+  ✓   7 [chromium] › e2e/smoke.spec.ts:110:3 › TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02c draws 63 tiles, flat-top, odd columns pushed down (545ms)
+  ✓   8 [chromium] › e2e/smoke.spec.ts:127:3 › TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03a every tile centre has the land colour of its terrain (pixel check on a screenshot) (492ms)
+  ✓   9 [chromium] › e2e/smoke.spec.ts:148:3 › TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03b slow tiles carry a word marker too (colour is never the only signal, ui-rules.md §8) (457ms)
+  ✓  10 [chromium] › e2e/smoke.spec.ts:157:3 › TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03c space outside the grid is bg.base (473ms)
+  ✓  11 [chromium] › e2e/smoke.spec.ts:166:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04a BuildInfo shows the commit of this build and the seed from the URL (595ms)
+  ✓  12 [chromium] › e2e/smoke.spec.ts:182:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04b without ?seed a new seed 0–999999 is chosen and shown (440ms)
+  ✓  13 [chromium] › e2e/smoke.spec.ts:192:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04c a seed that is not a number falls back to a new seed instead of breaking (436ms)
+  ✓  14 [chromium] › e2e/smoke.spec.ts:201:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04d the same seed renders the same screen twice (537ms)
+  ✓  15 [chromium] › e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 960 × 540 (smallest supported window) scales by 0.750, keeps 16:9 and centres the canvas (591ms)
+  ✓  16 [chromium] › e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1920 × 1080 (full HD) scales by 1.500, keeps 16:9 and centres the canvas (715ms)
+  ✓  17 [chromium] › e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1280 × 1000 (tall window: bars top and bottom) scales by 1.000, keeps 16:9 and centres the canvas (593ms)
+  ✓  18 [chromium] › e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1600 × 720 (wide window: bars left and right) scales by 1.000, keeps 16:9 and centres the canvas (522ms)
+  ✓  19 [chromium] › e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1366 × 768 (common laptop, not exactly 16:9) scales by 1.067, keeps 16:9 and centres the canvas (527ms)
+  ✓  20 [chromium] › e2e/smoke.spec.ts:260:3 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05f resizing the window after load rescales the canvas (433ms)
+
+  2 skipped
+  18 passed (10.7s)
+
+To open last HTML report run:
+
+  npx playwright show-report results/stage-0/retest/deployed/e2e-report
+
+exit=0

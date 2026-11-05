@@ -1,0 +1,10 @@
+# BUG-007 retest — clean copy of 89e72ee (main 73f39a3 + tests), node v22.4.1, npm 10.8.1
+$ npm ci
+npm error code EBADENGINE
+npm error engine Unsupported engine
+npm error engine Not compatible with your version of node/npm: hexbound@0.0.0
+npm error notsup Not compatible with your version of node/npm: hexbound@0.0.0
+npm error notsup Required: {"node":"^22.13.0 || >=24"}
+npm error notsup Actual:   {"npm":"10.8.1","node":"v22.4.1"}
+npm error A complete log of this run can be found in: /root/.npm/_logs/2026-11-05T20_00_43_951Z-debug-0.log
+exit=1
