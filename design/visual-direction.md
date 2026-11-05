@@ -25,10 +25,10 @@ Exact values: [`tokens.json`](tokens.json). Picture: [`foundations.png`](foundat
 | Group | Tokens | Use |
 |---|---|---|
 | Background | `bg.base` #14171F, `bg.panel` #1F2430, `bg.raised` #2A3140, `line.default` #3A4354 | Screen, panels, raised items, borders |
-| Text | `text.primary` #F2EDE4, `text.muted` #9AA3B2, `text.inverse` #14171F | Main text, secondary text, text on light fills |
+| Text | `text.primary` #F2EDE4, `text.muted` #9AA3B2, `text.inverse` #14171F, `text.danger` #F07A7A | Main text, secondary text, text on light fills, warnings |
 | Accent | `accent.primary` #E8B04B (gold), `accent.danger` #E05555, `accent.success` #6CC07A | Main buttons and planned route; danger; success |
 | Resources | health #E05555, block #9DB0C4, energy #5FD3E8, food #C98B4E, gold #E8B04B, lives #E86A92, key #D9C38A | Resource icons and numbers |
-| Lands | whisperwood green, frostpeak pale blue/white, ashen dark brown + lava orange (`ground`, `hazard`, `accent` each) | Map tiles, level intro |
+| Lands | whisperwood ground #7FA05C / swamp #2F4A36 · frostpeak ground #D6E2EA / ice #4A82AE · ashen ground #453834 / lava #EE6A35 (plus an `accent` each). Hazard against ground is at least 3:1 on every land | Map tiles, level intro |
 | Card families | weapon #C8553D, spell #8B6CE0, armour #5B8DB8, item #D9A441 | Card frame and family label |
 | Keywords | freeze #8EC3DE, chill #B9DDF0, exhaust #8A8F99, draw #F5D05A | Keyword text and icons |
 
@@ -36,9 +36,11 @@ Exact values: [`tokens.json`](tokens.json). Picture: [`foundations.png`](foundat
 
 | Level | Look | Hazard tile |
 |---|---|---|
-| 1. Whisperwood | green ground | dark green swamp, marker "slow" |
-| 2. Frostpeak Pass | pale grey-blue ground | pale blue ice, marker "slow·chill" |
-| 3. Ashen Citadel | dark brown ground | orange lava, marker "burn" |
+| 1. Whisperwood | light green ground | dark green swamp, marker "slow" (3.3:1 against the ground) |
+| 2. Frostpeak Pass | pale grey-blue ground | deep blue ice, marker "slow·chill" (3.1:1) |
+| 3. Ashen Citadel | dark brown ground | bright orange lava, marker "burn" (3.6:1) |
+
+Markers and labels on tiles sit on small dark pills, so they read the same on every land.
 
 ## Card families
 
@@ -63,4 +65,4 @@ How they're used:
 
 Authors and license: [`assets/icons/CREDITS.md`](../assets/icons/CREDITS.md).
 
-To review: `kw-draw` and `kw-exhaust` look alike at small sizes, and `res-lives` (an ankh) may not read as "lives". Both are candidates for swapping.
+After the stage 0 review, `res-lives` is a soul icon (it was an ankh, which read as crossed swords) and `kw-exhaust` is burning embers (it looked like `kw-draw`).
