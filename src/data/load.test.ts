@@ -275,6 +275,15 @@ describe('content files', () => {
     expect(problems[0]).toMatchObject({ field: '[0].pattern.order[0]', message: 'no move "nope"' });
   });
 
+  it('finds a move id used twice in one enemy', () => {
+    const problems = problemsOf([
+      file('data/enemies/a.json', [{ ...boss, moves: [...boss.moves, ...boss.moves] }]),
+    ]);
+    expect(problems).toEqual([
+      { file: 'data/enemies/a.json', field: '[0].moves[1].id', message: '"hit" is already used' },
+    ]);
+  });
+
   it('requires at least one move in random weights', () => {
     const problems = problemsOf([
       file('data/enemies/a.json', [{ ...boss, pattern: { type: 'random', weights: {} } }]),

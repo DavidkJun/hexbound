@@ -78,7 +78,18 @@ const enemySchema = z
     signature: z.strictObject({ move: idSchema, text: textSchema }).optional(),
   })
   .superRefine((enemy, ctx) => {
-    const moveIds = new Set(enemy.moves.map((move) => move.id));
+    const moveIds = new Set<string>();
+    enemy.moves.forEach(({ id }, i) => {
+      if (moveIds.has(id)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['moves', i, 'id'],
+          message: `"${id}" is already used`,
+        });
+      }
+      moveIds.add(id);
+    });
+
     const requireMove = (id: string, path: (string | number)[]) => {
       if (!moveIds.has(id)) ctx.addIssue({ code: 'custom', path, message: `no move "${id}"` });
     };
