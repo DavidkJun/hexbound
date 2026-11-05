@@ -156,10 +156,12 @@ describe('TC-MAP-04 rule 4: every coordinate is inside the grid', () => {
     expect(fields.some((f) => f.startsWith('intendedRoutes.direct[1]'))).toBe(true);
   });
 
-  // ui-rules.md §9 asks for "file, field, coordinate". The schema message only says "Too big".
-  it.fails('BUG-004 TC-MAP-04e the message for a tile outside the grid shows the bad coordinate', () => {
+  // ui-rules.md §9 asks for "file, field, coordinate". Fixed in main 2cc4570 (was BUG-004, #6).
+  it('TC-MAP-04e the message for a tile outside the grid shows the whole tile (regression BUG-004)', () => {
     const problems = problemsWith({ start: [9, 6] });
-    expect(problems.some((p) => p.message.includes('9'))).toBe(true);
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toMatchObject({ field: 'start[0]' });
+    expect(problems[0]?.message).toBe('tile 9,6 is outside the grid (col 0–8, row 0–6)');
   });
 });
 
@@ -228,6 +230,15 @@ describe('TC-MAP-07 rule 7: location types and allow lists', () => {
     const slots = [...(level.slots as object[]), { at: [0, 0], allow: ['chest', 'casino'] }];
     expect(problemsOf(withLevel({ ...level, slots })).map((p) => p.field)).toEqual([
       'slots[11].allow[1]',
+    ]);
+  });
+  // map-format.md rule 7 (since main abced2c, answer N-07): each type at most once in a list.
+  it('TC-MAP-07f-control accepts an allow list of distinct types', () => {
+    expect(problemsWith({ slots: [{ at: [2, 5], allow: ['monster', 'chest'] }] })).toEqual([]);
+  });
+  it.fails('BUG-015 TC-MAP-07f rejects an allow list that repeats a type', () => {
+    expect(fieldsOf({ slots: [{ at: [2, 5], allow: ['monster', 'monster', 'chest'] }] })).toEqual([
+      'slots[0].allow',
     ]);
   });
   it('TC-MAP-07e accepts a map with no fixed locations and no slots', () => {
@@ -306,6 +317,13 @@ describe('TC-MAP-10 rule 10: boss.enemy is an existing enemy', () => {
   it('TC-MAP-10b rejects an unknown boss id when enemy files exist', () => {
     expect(fieldsOf({ boss: { at: [8, 0], enemy: 'ember-dragon' } })).toEqual(['boss.enemy']);
   });
+  // map-format.md rule 10 (since main abced2c, answer N-05): the boss must have "kind": "boss".
+  it.fails.each([
+    ['a normal enemy', 'bog-rat'],
+    ['an elite', 'frost-wisp'],
+  ])('BUG-013 TC-MAP-10d rejects %s (%s) as the boss', (_, enemy) => {
+    expect(fieldsOf({ boss: { at: [8, 0], enemy } })).toEqual(['boss.enemy']);
+  });
   it('TC-MAP-10c skips the check while there are no enemy files (stage 0)', () => {
     const level = levelWith({ boss: { at: [8, 0], enemy: 'ember-dragon' } });
     expect(problemsOf([rawFile(EXAMPLE_LEVEL_PATH, level)])).toEqual([]);
@@ -350,14 +368,21 @@ describe('TC-MAP-12 levels.json', () => {
     expect(problemsOf(files).map((p) => p.file)).toEqual(['data/levels/levels.json']);
   });
 
-  // map-format.md: "The game loads exactly these files, in this order" — a level listed twice
-  // would be played twice. Nothing in the format allows that, but the loader accepts it.
-  it.fails('BUG-002 TC-MAP-12c rejects a level listed twice in levels.json', () => {
+  // map-format.md: "The game loads exactly these files, in this order". Fixed in main eb2997a.
+  it('TC-MAP-12c rejects a level listed twice in levels.json (regression BUG-002)', () => {
     const files = [
       ...exampleFiles.filter((f) => !f.path.startsWith('data/levels/')),
       realLevel('whisperwood-test'),
       rawFile('data/levels/levels.json', ['whisperwood-test', 'whisperwood-test']),
     ];
-    expect(problemsOf(files)).not.toEqual([]);
+    expect(problemsOf(files)).toEqual([
+      { file: 'data/levels/levels.json', field: '', message: '"whisperwood-test" is listed twice' },
+    ]);
+  });
+
+  // map-format.md (since main abced2c, answer N-06): "A missing levels.json is a data error."
+  it.fails('BUG-014 TC-MAP-12d a real level file without levels.json is a data error', () => {
+    const files = [...exampleFiles.filter((f) => !f.path.startsWith('data/levels/')), realLevel('whisperwood-test')];
+    expect(problemsOf(files).some((p) => p.message.includes('levels.json is missing'))).toBe(true);
   });
 });

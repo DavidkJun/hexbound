@@ -113,10 +113,10 @@ describe('TC-DATA-03 enemies', () => {
     expect(fields(firstEntry(ENEMIES, enemies, enemy({ health: 0 })))).toEqual(['[0].health']);
   });
 
-  // An enemy whose pattern can pick no move has no intent to show (ui-rules.md §8: the intent is
-  // always visible). The loader accepts it, so the fight would break at run time.
-  it.fails('BUG-001 TC-DATA-03h rejects random weights with no moves at all', () => {
-    expect(firstEntry(ENEMIES, enemies, enemy({ pattern: { type: 'random', weights: {} } }))).not.toEqual([]);
+  // An enemy whose pattern can pick no move has no intent to show (ui-rules.md §8). Fixed in main a7351f2.
+  it('TC-DATA-03h rejects random weights with no moves at all (regression BUG-001)', () => {
+    const problems = firstEntry(ENEMIES, enemies, enemy({ pattern: { type: 'random', weights: {} } }));
+    expect(fields(problems)).toEqual(['[0].pattern.weights']);
   });
 
   // Two moves with one id: the cycle `order` and the signature can't tell them apart.
@@ -125,9 +125,11 @@ describe('TC-DATA-03 enemies', () => {
   it('TC-DATA-03i-control the same enemy with two distinct move ids is valid', () => {
     expect(firstEntry(ENEMIES, enemies, enemy({ moves: [moves[0], moves[1]], pattern: onlyFirst }))).toEqual([]);
   });
-  it.fails('BUG-003 TC-DATA-03i rejects two moves with the same id in one enemy', () => {
+  // Fixed in main a2ad415.
+  it('TC-DATA-03i rejects two moves with the same id in one enemy (regression BUG-003)', () => {
     const copy = { ...structuredClone(moves[1]), id: moves[0]?.id };
-    expect(firstEntry(ENEMIES, enemies, enemy({ moves: [moves[0], copy], pattern: onlyFirst }))).not.toEqual([]);
+    const problems = firstEntry(ENEMIES, enemies, enemy({ moves: [moves[0], copy], pattern: onlyFirst }));
+    expect(fields(problems)).toEqual(['[0].moves[1].id']);
   });
 });
 

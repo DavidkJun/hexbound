@@ -99,6 +99,12 @@ describe('TC-DES-02 TopBar (screens.md "Always on screen")', () => {
     const to = (m.DeckButton?.x ?? 0) - 12;
     expect((m.LevelName?.x ?? 0) + (m.LevelName?.w ?? 0) / 2).toBeCloseTo((from + to) / 2, 0);
   });
+  // screens.md: BlessingsRow "shows at most 4 slots", each a 28 px icon. layout.json gives it 96 px:
+  // 3 icons. With 4 slots it is at least 4 × 28 = 112 px wide, so LevelName's centre moves too.
+  it.fails('BUG-016 TC-DES-02g BlessingsRow is wide enough for the 4 slots of 28 px that screens.md asks for', () => {
+    expect(m.BlessingsRow?.w).toBeGreaterThanOrEqual(4 * 28);
+  });
+
   it('TC-DES-02f the two buttons are 48 high (size.button.height)', () => {
     expect(m.DeckButton?.h).toBe(resolveToken('size.button.height'));
     expect(m.MenuButton?.h).toBe(resolveToken('size.button.height'));
@@ -139,8 +145,8 @@ describe('TC-DES-03 screen specs agree with layout.json', () => {
     expect(f.EnemyStatus?.y).toBe(420);
   });
 
-  // fight.md: TurnCounter "right-aligned to x 1256, y 76". layout.json: x 1180 + w 70 = 1250.
-  it.fails('BUG-005 TC-DES-03d TurnCounter is right-aligned to x 1256 as fight.md says', () => {
+  // fight.md: TurnCounter "right-aligned to x 1256, y 76". Fixed in main abced2c.
+  it('TC-DES-03d TurnCounter is right-aligned to x 1256 as fight.md says (regression BUG-005)', () => {
     const r = layout.screens.FightScreen?.TurnCounter as Rect;
     expect(r.x + r.w).toBe(1256);
   });
@@ -184,6 +190,23 @@ describe('TC-DES-03 screen specs agree with layout.json', () => {
     }
   });
 
+  it('TC-DES-03k EnemyBlock ends at x 512 and is centred on the enemy health bar (fight.md, S-01)', () => {
+    const f = layout.screens.FightScreen ?? {};
+    const block = f.EnemyBlock as Rect;
+    const bar = f.EnemyHealthBar as Rect;
+    expect(block.x + block.w).toBe(512);
+    expect(block.x + block.w).toBeLessThanOrEqual(bar.x);
+    expect(block.y + block.h / 2).toBeCloseTo(bar.y + bar.h / 2, 1);
+  });
+
+  it('TC-DES-03l BossSignature is one centred line under the enemy status (fight.md, S-02)', () => {
+    const f = layout.screens.FightScreen ?? {};
+    const sig = f.BossSignature as Rect;
+    expect(sig.x + sig.w / 2).toBe(640);
+    expect(sig.y).toBeGreaterThanOrEqual((f.EnemyStatus?.y ?? 0) + (f.EnemyStatus?.h ?? 0));
+    expect(sig.h).toBe(16);
+  });
+
   it('TC-DES-03h EndTurnButton uses the end-turn size tokens (160 × 56)', () => {
     const r = layout.screens.FightScreen?.EndTurnButton as Rect;
     expect(r.w).toBe(resolveToken('size.button.end-turn.width'));
@@ -192,7 +215,7 @@ describe('TC-DES-03 screen specs agree with layout.json', () => {
 
   it('TC-DES-03i static fight elements do not overlap each other', () => {
     const f = layout.screens.FightScreen ?? {};
-    const names = ['FightModifiers', 'TurnCounter', 'EnemyIntent', 'EnemySprite', 'PlayerSprite', 'PlayerHealthBar', 'PlayerBlock', 'EnergyOrb', 'Hand', 'DrawPile', 'ExhaustPile', 'DiscardPile', 'EndTurnButton', 'EnemyHealthBar'];
+    const names = ['FightModifiers', 'TurnCounter', 'EnemyIntent', 'EnemySprite', 'PlayerSprite', 'PlayerHealthBar', 'PlayerBlock', 'EnergyOrb', 'Hand', 'DrawPile', 'ExhaustPile', 'DiscardPile', 'EndTurnButton', 'EnemyHealthBar', 'EnemyBlock', 'EnemyStatus', 'BossSignature', 'PlayerStatus'];
     const overlap = (a: Rect, b: Rect) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
     for (let i = 0; i < names.length; i++) {
       for (let j = i + 1; j < names.length; j++) {
@@ -206,7 +229,7 @@ describe('TC-DES-03 screen specs agree with layout.json', () => {
   it('TC-DES-03j a hovered card (24 px up) does not cover EnemyStatus or the health bars', () => {
     const f = layout.screens.FightScreen ?? {};
     const hovered = { ...(f.Hand as Rect), y: (f.Hand?.y ?? 0) - 24 };
-    for (const name of ['EnemyStatus', 'EnemyHealthBar', 'PlayerBlock']) {
+    for (const name of ['EnemyStatus', 'EnemyHealthBar', 'PlayerBlock', 'EnemyBlock', 'BossSignature', 'PlayerStatus']) {
       const r = f[name] as Rect;
       expect(r.y + r.h, name).toBeLessThanOrEqual(hovered.y);
     }
@@ -246,9 +269,8 @@ describe('TC-DES-04 every token a spec names exists in tokens.json', () => {
     }
   });
 
-  // ui-rules.md §2: never type a pixel size; a missing value is added as a token. screens.md and
-  // map.md ask for paddings of 6 and 10 px, which are not in tokens.space, so code must hard-code them.
-  it.fails('BUG-006 TC-DES-04d every padding the specs ask for is a tokens.space value', () => {
+  // ui-rules.md §2: never type a pixel size; a missing value is added as a token. Fixed in main abced2c.
+  it('TC-DES-04d every padding the specs ask for is a tokens.space value (regression BUG-006)', () => {
     const space = Object.values(tokens.space as Tree);
     const paddings = [
       ...readText('design/screens.md').matchAll(/padding (\d+)\/(\d+)(?: \((\d+) on the left\))?/g),
@@ -289,20 +311,34 @@ describe('TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphi
     expect(contrast(c(`resource.${r}`), c('bg.raised'))).toBeGreaterThanOrEqual(3);
   });
 
-  // Terrain colour must not be the only signal (ui-rules.md §8) — the marker word covers that —
-  // but a slow tile should still stand out at a glance. Ice on Frostpeak is 1.29:1 against ground.
-  it.fails.each(lands)('BUG-011 TC-DES-06c %s hazard tiles stand out from ground by at least 3:1', (land) => {
+  // A slow tile should stand out at a glance. Fixed in main abced2c (was 1.29:1 for ice).
+  it.each(lands)('TC-DES-06c %s hazard tiles stand out from ground by at least 3:1 (regression BUG-011)', (land) => {
     expect(contrast(c(`land.${land}.ground`), c(`land.${land}.hazard`))).toBeGreaterThanOrEqual(3);
   });
 
-  // 13 px text (text.small) needs 4.5:1. map.md labels are text.primary-coloured in map.png.
-  it.fails.each([
-    ['detail label text.primary on whisperwood ground', 'text.primary', 'land.whisperwood.ground'],
-    ['marker text.primary on ashen lava', 'text.primary', 'land.ashen.hazard'],
-    ['detail label text.primary on frostpeak ground', 'text.primary', 'land.frostpeak.ground'],
-    ['accent.danger price/route text on bg.raised', 'accent.danger', 'bg.raised'],
-  ])('BUG-012 TC-DES-06d %s is at least 4.5:1', (_, fg, bg) => {
+  // 13 px text (text.small) needs 4.5:1. Fixed in main abced2c (was BUG-012): every tile label sits
+  // on a `color.label.bg` pill, and warning text uses `color.text.danger`.
+  it.each([
+    ['tile label (marker or detail) on its pill', 'text.primary', 'label.bg'],
+    ['warning text on chips and buttons', 'text.danger', 'bg.raised'],
+    ['warning text on panels', 'text.danger', 'bg.panel'],
+  ])('TC-DES-06d %s: color.%s on color.%s is at least 4.5:1 (regression BUG-012)', (_, fg, bg) => {
     expect(contrast(c(fg), c(bg))).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it('TC-DES-06e map.md puts tile labels on the label pill, and the specs use text.danger for text', () => {
+    const map = readText('design/screens/map.md');
+    expect(map).toMatch(/pill[\s\S]{0,200}`color\.label\.bg`/);
+    expect(map).toMatch(/`color\.text\.primary`/);
+    expect(readText('design/ui-rules.md')).toContain('color.text.danger');
+  });
+
+  it('TC-DES-06f a label on a far tile (opacity.far-tile over bg.base) is still at least 4.5:1', () => {
+    const a = Number(resolveToken('opacity.far-tile'));
+    const mix = (fg: string, bg: string) =>
+      '#' + [1, 3, 5].map((i) => Math.round(parseInt(fg.slice(i, i + 2), 16) * a + parseInt(bg.slice(i, i + 2), 16) * (1 - a)).toString(16).padStart(2, '0')).join('');
+    const base = c('bg.base');
+    expect(contrast(mix(c('text.primary'), base), mix(c('label.bg'), base))).toBeGreaterThanOrEqual(4.5);
   });
 });
 
