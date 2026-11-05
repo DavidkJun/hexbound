@@ -17,7 +17,7 @@ A bad file gives a message with the file, the field and the problem, in the term
 | `blessings/*.json`       | A list of blessings                                | PM / Game designer  |
 | `events/*.json`          | A list of events                                   | PM / Game designer  |
 | `levels/<level-id>.json` | One map: [format](../design/levels/map-format.md)  | UI / Level designer |
-| `levels/levels.json`     | Which levels the game plays, in order              | UI / Level designer |
+| `levels/levels.json`     | Which levels the game plays, in order, each once   | UI / Level designer |
 | `text.json`              | All other text on screen: labels, buttons, markers | Whoever adds it     |
 
 Split a folder into as many files as you like, for example `cards/starter.json` and `cards/blade.json`. Ids must be unique across a folder, in kebab-case.
@@ -91,8 +91,9 @@ Cards, enemy moves, blessings and event outcomes all change the game the same wa
 ```
 
 - `kind`: `normal`, `elite` or `boss`.
+- `moves`: each `id` is used once within the enemy, because `pattern` and `signature` refer to moves by id.
 - `intent` picks the icon the player sees: `attack`, `block`, `buff` or `debuff`.
-- `pattern` picks the next move. `cycle` repeats `order`. `random` uses weights: `{ "type": "random", "weights": { "touch": 2, "numb": 1 } }` makes `touch` twice as likely.
+- `pattern` picks the next move. `cycle` repeats `order`. `random` uses weights: `{ "type": "random", "weights": { "touch": 2, "numb": 1 } }` makes `touch` twice as likely. `weights` needs at least one move.
 - `signature` is required on a boss. Its `text` is shown on the map from the start of the level.
 
 ## Blessing

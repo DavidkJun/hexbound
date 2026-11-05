@@ -12,12 +12,13 @@ The repo copy is what the code is built from. Figma is where it's designed.
 | File | What | Status |
 |---|---|---|
 | [`ui-rules.md`](ui-rules.md) | Fixed rules for all UI code: screen size, tokens, layout, names, hex grid, assets | fixed |
-| [`tokens.json`](tokens.json) | Colours, fonts, font sizes and weights, spacing, radii, sizes, opacities, strokes (exported from Figma variables) | v1 |
+| [`tokens.json`](tokens.json) | Colours, fonts, font sizes and weights, spacing, radii, sizes, opacities, strokes (exported from Figma variables) | v2 (after the stage 0 review) |
 | [`layout.json`](layout.json) | Rectangle of every named element on every screen (exported from Figma) | v0 (MapScreen, FightScreen) |
 | [`visual-direction.md`](visual-direction.md) | Chosen style, palette, lands, card families, icon list | draft, waiting for PM approval |
 | [`screens.md`](screens.md) | Every screen, top bar, states every screen handles | draft, for tester review |
 | [`screens/map.md`](screens/map.md) + [`map.png`](screens/map.png) | Map screen spec and snapshot | draft |
 | [`screens/fight.md`](screens/fight.md) + [`fight.png`](screens/fight.png) | Fight screen spec and snapshot | draft |
+| [`reviews/stage-0-answers.md`](reviews/stage-0-answers.md) | Answers to the tester's stage 0 design review and bugs | done |
 | [`screens/_template.md`](screens/_template.md) | Template for every new screen spec | — |
 | [`levels/`](levels/) | Hex grid sketch, map file format, list of maps | format fixed, maps not started |
 | [`foundations.png`](foundations.png) | Snapshot of the Foundations page (palette, type, components, icons) | v1 |

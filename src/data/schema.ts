@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { GRID_COLS, GRID_ROWS } from '../core/hex';
+import { GRID_COLS, GRID_ROWS, isInGrid } from '../core/hex';
 
 /** The shape of every data file. data/README.md explains the format for content writers. */
 
@@ -59,7 +59,12 @@ const moveSchema = z.strictObject({
 
 const movePatternSchema = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('cycle'), order: z.array(idSchema).min(1) }),
-  z.strictObject({ type: z.literal('random'), weights: z.record(idSchema, amountSchema) }),
+  z.strictObject({
+    type: z.literal('random'),
+    weights: z
+      .record(idSchema, amountSchema)
+      .refine((weights) => Object.keys(weights).length > 0, 'needs at least one move'),
+  }),
 ]);
 
 const enemySchema = z
@@ -73,7 +78,18 @@ const enemySchema = z
     signature: z.strictObject({ move: idSchema, text: textSchema }).optional(),
   })
   .superRefine((enemy, ctx) => {
-    const moveIds = new Set(enemy.moves.map((move) => move.id));
+    const moveIds = new Set<string>();
+    enemy.moves.forEach(({ id }, i) => {
+      if (moveIds.has(id)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['moves', i, 'id'],
+          message: `"${id}" is already used`,
+        });
+      }
+      moveIds.add(id);
+    });
+
     const requireMove = (id: string, path: (string | number)[]) => {
       if (!moveIds.has(id)) ctx.addIssue({ code: 'custom', path, message: `no move "${id}"` });
     };
@@ -135,14 +151,18 @@ const eventSchema = z.strictObject({
 
 // Levels: design/levels/map-format.md. Rules that compare fields live in level-rules.ts.
 
-const coordinateSchema = (size: number) =>
-  z
-    .number()
-    .int()
-    .min(0)
-    .max(size - 1);
+const GRID_RANGE = `col 0–${GRID_COLS - 1}, row 0–${GRID_ROWS - 1}`;
 
-const hexSchema = z.tuple([coordinateSchema(GRID_COLS), coordinateSchema(GRID_ROWS)]);
+/** The problem sits on the number that is off, and its message shows the whole tile. */
+const hexSchema = z.tuple([z.number().int(), z.number().int()]).superRefine(([col, row], ctx) => {
+  if (isInGrid([col, row])) return;
+  const colIsOff = col < 0 || col >= GRID_COLS;
+  ctx.addIssue({
+    code: 'custom',
+    path: [colIsOff ? 0 : 1],
+    message: `tile ${col},${row} is outside the grid (${GRID_RANGE})`,
+  });
+});
 
 const locationTypeSchema = z.enum([
   'monster',

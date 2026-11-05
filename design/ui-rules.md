@@ -31,14 +31,20 @@ Owner: UI / Level designer. These are fixed decisions. Code that draws anything 
 
 | What | Token |
 |---|---|
-| Font weights | `font.weight.heading` (Cinzel) · `font.weight.number` · `font.weight.card-title` · `font.weight.body` |
+| Token names | Specs always write the full path: `color.text.primary` is a colour, `text.small` is a font size |
+| Font weights | `font.weight.heading` (Cinzel) · `font.weight.number` · `font.weight.card-title` · `font.weight.label` (tile labels) · `font.weight.body` |
 | Line height | not a token: font default ("auto") |
-| Disabled / unaffordable | `opacity.disabled` (0–1) |
-| Tiles more than 2 steps from the player | `opacity.far-tile` |
-| Strokes | `stroke.border` with `line.default` · `stroke.hex` with `bg.base` · `stroke.card` with the family colour · `stroke.route` with `accent.primary` · `stroke.orb` with `resource.energy` |
-| Intent colours | `color.intent.attack / block / buff / debuff` |
-| Icon sizes | `size.icon.location` (circle) with a `size.icon.glyph` icon inside · `size.icon.sm` in chips and intents · `size.icon.card-family` on cards · `size.token.player` · `size.badge.step` |
+| Opacity | `opacity.disabled` (disabled or unaffordable) · `opacity.far-tile` (tiles more than 2 steps away) · `opacity.backdrop` (behind dialogs). All 0–1 |
+| Text colours | `color.text.primary` · `color.text.muted` · `color.text.inverse` (on light fills) · `color.text.danger` (warnings, unaffordable prices). `color.accent.danger` is for fills and borders only; as text it's too dark (3.5:1) |
+| Strokes | `stroke.border` with `color.line.default` · `stroke.hex` with `color.bg.base` · `stroke.card` with the family colour · `stroke.route` with `color.accent.primary` · `stroke.orb` with `color.resource.energy` · `stroke.token` (player token ring) · `stroke.focus` (highlight outline) |
+| Intent colours | `color.intent.attack / block / buff / debuff`. Debuff is the Chill colour on purpose: Chill is the only debuff so far, and the icons differ |
+| Location circles | `color.location.<type>` |
+| Tile labels | fill `color.label.bg`, height `size.label.height`, see map.md |
+| Icon sizes | `size.icon.location` (circle) with a `size.icon.glyph` icon inside · `size.icon.sm` in chips and intents · `size.icon.xs` on cards, status pills and extra intent effects · `size.icon.badge` (badge on the token) · `size.token.player` · `size.badge.step` · `size.dot.visited` |
+| Other sizes | `size.route.inset` · `size.dialog.width` |
 | `EndTurnButton` | `size.button.end-turn.*` (160 × 56), deliberately bigger than the normal `size.button.height` |
+
+**Strokes in SVG:** Figma draws strokes inside the shape, SVG centres them on the edge. For the hex tiles a stroke twice as wide gives the same look, because the outer half lands on the same colour (this is what the build does).
 
 ## 4. Names
 
@@ -95,7 +101,9 @@ assets/
 
 ## 8. Readability
 
-- Colour is never the only signal. Card family has a frame colour **and** a family label/icon. Slow terrain has a colour **and** a marker. A disabled button is dimmed to 40% **and** doesn't react to clicks.
+- Colour is never the only signal. Card family has a frame colour **and** a family label/icon. Slow terrain has a colour **and** a marker. A disabled button is dimmed to `opacity.disabled` **and** doesn't react to clicks.
+- Contrast targets: text at least 4.5:1 against what's behind it; graphics (hazard tiles against ground, icons on chips) at least 3:1. The tester checks the token pairs automatically.
+- Text drawn on map tiles always sits on a `color.label.bg` pill, because the land colours vary too much for any one text colour.
 - Numbers (health, food, gold, damage, costs) always use Inter Bold.
 - The enemy's next move (`EnemyIntent`) and the boss's signature move are always visible, never hidden behind hover.
 

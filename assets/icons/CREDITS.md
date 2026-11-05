@@ -22,13 +22,13 @@ The game's credits screen must show this line:
 | `res-health.svg` | hearts | Skoll |
 | `res-food.svg` | meat | Lorc |
 | `res-gold.svg` | two-coins | Delapouite |
-| `res-lives.svg` | ankh | Lorc |
+| `res-lives.svg` | soul | Delapouite |
 | `res-energy.svg` | focused-lightning | Lorc |
 | `res-block.svg` | checked-shield | Lorc |
 | `res-key.svg` | skeleton-key | Lorc |
 | `kw-freeze.svg` | frozen-block | Lorc |
 | `kw-chill.svg` | snowflake-2 | Lorc |
-| `kw-exhaust.svg` | card-burn | Delapouite |
+| `kw-exhaust.svg` | burning-embers | Lorc |
 | `kw-draw.svg` | card-draw | Faithtoken |
 | `family-weapon.svg` | broadsword | Lorc |
 | `family-spell.svg` | magic-swirl | Lorc |

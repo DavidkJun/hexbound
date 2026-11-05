@@ -76,7 +76,19 @@ describe('map rules from design/levels/map-format.md', () => {
       'terrain[0]',
       'tile 0,0: "i"',
     ],
-    ['4: tiles inside the grid', { start: [9, 0] }, 'start[0]', 'Too big'],
+    [
+      '4: a column inside the grid',
+      { start: [9, 0] },
+      'start[0]',
+      'tile 9,0 is outside the grid (col 0–8, row 0–6)',
+    ],
+    [
+      '4: a row inside the grid',
+      { start: [0, 7] },
+      'start[1]',
+      'tile 0,7 is outside the grid (col 0–8, row 0–6)',
+    ],
+    ['4: no negative numbers', { start: [0, -1] }, 'start[1]', 'tile 0,-1 is outside the grid'],
     [
       '5: start on normal terrain',
       { terrain: Array<string>(7).fill('sssssssss') },
@@ -176,6 +188,23 @@ describe('level order', () => {
       { file: 'data/levels/levels.json', field: '', message: 'no level file for "gone"' },
     ]);
   });
+
+  it('reports a level listed twice', () => {
+    expect(problemsOf([level('aaa'), file('data/levels/levels.json', ['aaa', 'aaa'])])).toEqual([
+      { file: 'data/levels/levels.json', field: '', message: '"aaa" is listed twice' },
+    ]);
+  });
+
+  it('reports a level listed twice along with a level with no file', () => {
+    const problems = problemsOf([
+      level('aaa'),
+      file('data/levels/levels.json', ['aaa', 'aaa', 'gone']),
+    ]);
+    expect(problems.map(({ message }) => message)).toEqual([
+      '"aaa" is listed twice',
+      'no level file for "gone"',
+    ]);
+  });
 });
 
 describe('content files', () => {
@@ -256,6 +285,28 @@ describe('content files', () => {
       file('data/enemies/a.json', [{ ...boss, pattern: { type: 'cycle', order: ['nope'] } }]),
     ]);
     expect(problems[0]).toMatchObject({ field: '[0].pattern.order[0]', message: 'no move "nope"' });
+  });
+
+  it('finds a move id used twice in one enemy', () => {
+    const problems = problemsOf([
+      file('data/enemies/a.json', [{ ...boss, moves: [...boss.moves, ...boss.moves] }]),
+    ]);
+    expect(problems).toEqual([
+      { file: 'data/enemies/a.json', field: '[0].moves[1].id', message: '"hit" is already used' },
+    ]);
+  });
+
+  it('requires at least one move in random weights', () => {
+    const problems = problemsOf([
+      file('data/enemies/a.json', [{ ...boss, pattern: { type: 'random', weights: {} } }]),
+    ]);
+    expect(problems).toEqual([
+      {
+        file: 'data/enemies/a.json',
+        field: '[0].pattern.weights',
+        message: 'needs at least one move',
+      },
+    ]);
   });
 
   it('requires a signature on a boss', () => {

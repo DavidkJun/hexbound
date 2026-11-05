@@ -10,7 +10,7 @@ Single-player, turn-based fantasy roguelite for the browser: cross a hand-made 9
 
 ## Run it
 
-You need [Node.js](https://nodejs.org) 22.12 or newer.
+You need [Node.js](https://nodejs.org) 24, the version CI uses: with nvm, run `nvm use`. Node 22.13 or newer on the 22 line also works. On a version the project can't run on, `npm install` stops and says which one it needs.
 
 ```sh
 npm install

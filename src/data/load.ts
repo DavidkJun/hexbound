@@ -108,10 +108,14 @@ function readLevels(
 
   const order = parseFile(orderFile, levelOrderSchema, problems) ?? [];
   const fileNames = new Set(levelFiles.map((file) => fileName(file.path)));
+  const listed = new Set<string>();
   for (const id of order) {
-    if (!fileNames.has(id)) {
+    if (listed.has(id)) {
+      problems.push({ file: orderFile.path, field: '', message: `"${id}" is listed twice` });
+    } else if (!fileNames.has(id)) {
       problems.push({ file: orderFile.path, field: '', message: `no level file for "${id}"` });
     }
+    listed.add(id);
   }
   return order.flatMap((id) => levels.get(id) ?? []);
 }
