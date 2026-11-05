@@ -7,7 +7,10 @@ Single-player, turn-based fantasy roguelite for the browser: cross a hand-made 9
 Update this section whenever a stage ends or a decision changes.
 
 - **Stage 0 (kick-off).** See `plan/HexBound_Team_Plan.md` → Stage 0.
-- **There is no game code yet.** The tech stack, project structure, content data format (cards, enemies, blessings, events, effects) and the game state and actions that screens can use are **the programmer's open stage 0 tasks** (`plan/Stage0_Programmer.txt`). Don't pick them on your own. If your task depends on one, ask the programmer, or say it's undecided.
+- **Programmer stage 0 is done**: TypeScript, Vite and Preact, with the hex map in SVG (`README.md` has the reasons, the structure and how screens work with the game); content data format in `data/README.md`.
+  - The build draws the grid of the example map, because there is no real map yet. `src/main.tsx` switches to `data/levels/levels.json` as soon as that file exists.
+  - Still open, needs the repository owner: branch protection on `main`, and Settings → Pages → Source: GitHub Actions. Until then, deploys fail.
+  - The game state and actions are only what stage 0 needs. Stage 1 adds to them from the tester's rules.
 - **UI / level design stage 0 is done**, in `design/`:
   - fixed UI rules, tokens, layout, map and fight wireframes, the map file format, icons and fonts
   - the visual direction is still **waiting for PM approval**
@@ -32,8 +35,11 @@ The stage 0 briefs were written before these were decided. Where a brief says ot
 | `plan/Stage0_*.txt` | Stage 0 brief for each role | PM / Game designer |
 | `design/` | How the game looks: UI rules, tokens, layout, screen specs, map format. Start at `design/README.md` | UI / Level designer |
 | `data/levels/` | Map files (JSON) | UI / Level designer |
+| `data/cards/`, `enemies/`, `blessings/`, `events/` | Game content (JSON). Format in `data/README.md`, which the programmer owns | PM / Game designer |
 | `assets/` | Icons, art, fonts. Icon credits in `assets/icons/CREDITS.md` | UI / Level designer |
 | `tools/figma-export/` | Figma plugin that exports `design/tokens.json` and `design/layout.json` | UI / Level designer |
+| `src/core/`, `src/data/`, `src/ui/`, `scripts/`, project config | Game logic, data loading, shared UI code, tooling. Unit tests sit next to the code (`*.test.ts`) | Programmer |
+| `src/screens/` | One folder per screen | UI / Level designer, with the programmer |
 | `tests/` | Test cases and results | Tester |
 
 ## Rules for Claude
@@ -47,6 +53,8 @@ The stage 0 briefs were written before these were decided. Where a brief says ot
   5. Before saying a screen is done, run the game, take a screenshot at 1280 × 720, compare it with the PNG, and go through the spec's acceptance checklist.
 - **Maps:** follow `design/levels/map-format.md`. Code loads and validates map files; it never changes them.
 - **Game rules and content** (numbers, cards, enemies, events) come from the PM's design and the tester's rules, not from screens or maps. Screens read the game state and send actions; they never change the state themselves.
+- **Code:** game rules go in `src/core/`, which knows nothing about the screen. Everything random goes through `src/core/rng.ts`. Text the player sees lives in `data/`, never in code.
+- **Before saying code is done,** run `npm run check`.
 - Every change goes through a pull request reviewed by another team member. Screen changes are reviewed by the UI / Level designer.
 
 ## Git naming

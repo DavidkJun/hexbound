@@ -1,0 +1,37 @@
+[
+  {
+    "id": "strike",
+    "name": "Strike",
+    "family": "weapon",
+    "cost": 1,
+    "effects": [{ "type": "dealDamage", "amount": 6 }],
+    "text": "Deal 6 damage."
+  },
+  {
+    "id": "defend",
+    "name": "Defend",
+    "family": "armour",
+    "cost": 1,
+    "effects": [{ "type": "gainBlock", "amount": 5 }],
+    "text": "Gain 5 block."
+  },
+  {
+    "id": "ice-shard",
+    "name": "Ice Shard",
+    "family": "spell",
+    "cost": 1,
+    "effects": [
+      { "type": "dealDamage", "amount": 4 },
+      { "type": "applyChill", "amount": 1 }
+    ],
+    "text": "Deal 4 damage. Apply 1 Chill."
+  },
+  {
+    "id": "ration",
+    "name": "Ration",
+    "family": "item",
+    "cost": 0,
+    "effects": [{ "type": "gainFood", "amount": 2 }, { "type": "exhaust" }],
+    "text": "Gain 2 food. Exhaust."
+  }
+]
