@@ -10,7 +10,7 @@ The full rules are in the design document, [`../HexBound_DD.md`](../HexBound_DD.
 |---|---|
 | Language of in-game text (G-47) | **English.** All in-game text, data files and docs stay in English, so Cinzel stays as the heading font. The course report and the presentation are in Ukrainian. |
 | Visual direction (`design/visual-direction.md`, Figma → Foundations) | **Approved:** option A, flat vector with game-icons.net icons, the palette, the lands, the card families and the type in `tokens.json` v2. |
-| Task board | GitHub Projects, linked from the README. Stage 1 tasks are issues in the **Stage 1** milestone, one owner each. |
+| Task board | GitHub issues grouped by stage milestones, one owner per issue: the [Stage 1 milestone](https://github.com/DavidkJun/hexbound/milestone/1), linked from the README. |
 | Route intent for map 1 | [`../route-intent.md`](../route-intent.md) |
 | BUG-009 (#11) `main` not protected | Fixed in the repository settings: a pull request with 1 approval and a passing `build` check is needed to merge into `main`, for everyone, including the owner. |
 | BUG-010 (#12) the PDF can't be searched | Fixed: `plan/HexBound_DD.md` is now the source, and the PDF is exported from it with real text. |
