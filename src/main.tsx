@@ -7,6 +7,7 @@ import { DataError } from './data/data-error';
 import { isExampleFile, loadCatalogue, loadNumbers } from './data/load';
 import type { LevelMap } from './data/schema';
 import { DataErrorScreen } from './screens/data-error/DataErrorScreen';
+import { BuildInfo } from './ui/BuildInfo';
 import { applyTokens } from './ui/design';
 import { GameCanvas } from './ui/GameCanvas';
 import { GameContext } from './ui/game-context';
@@ -34,10 +35,11 @@ function firstLevel(): LevelMap {
 }
 
 function startGame(): VNode {
+  const seed = readSeed();
   try {
     // TODO(stage-1): the map and combat core take the numbers. Until then they are only checked.
     loadNumbers(bundledFiles);
-    const store = createGameStore(createGame(readSeed()));
+    const store = createGameStore(createGame(seed));
     store.dispatch({ type: 'startLevel', map: firstLevel() });
     return (
       <GameContext.Provider value={store}>
@@ -45,8 +47,13 @@ function startGame(): VNode {
       </GameContext.Provider>
     );
   } catch (error) {
-    if (error instanceof DataError) return <DataErrorScreen problems={error.problems} />;
-    throw error;
+    if (!(error instanceof DataError)) throw error;
+    return (
+      <>
+        <DataErrorScreen problems={error.problems} />
+        <BuildInfo seed={seed} />
+      </>
+    );
   }
 }
 
