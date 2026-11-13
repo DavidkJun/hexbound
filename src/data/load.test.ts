@@ -114,6 +114,12 @@ describe('map rules from design/levels/map-format.md', () => {
       'Too small',
     ],
     [
+      '7: allow lists name each type once',
+      { slots: [{ at: [2, 5], allow: ['monster', 'monster', 'chest'] }] },
+      'slots[0].allow',
+      '"monster" is listed twice',
+    ],
+    [
       '8: routes start at start',
       { intendedRoutes: { ...exampleLevel.intendedRoutes, direct: route.slice(1) } },
       'intendedRoutes.direct',
