@@ -1,5 +1,5 @@
 import numbersJson from '../../data/numbers.json';
-import { cardsFileSchema, enemiesFileSchema, numbersSchema } from '../data/schema';
+import { cardsFileSchema, enemiesFileSchema, levelSchema, numbersSchema } from '../data/schema';
 import type { Content } from './content';
 
 /** A small, fixed set of content for the core's unit tests, independent of the example files. */
@@ -43,13 +43,58 @@ const enemies = enemiesFileSchema.parse([
   },
 ]);
 
+/**
+ * A small level 1 map: start bottom-left, boss top-right, one swamp tile next to the start, and a
+ * location of every kind the stage 1 core resolves.
+ */
+export const testMap = levelSchema.parse({
+  id: 'test-wood',
+  name: 'Test wood',
+  land: 'whisperwood',
+  hazard: 'swamp',
+  startFood: 12,
+  terrain: [
+    '.........',
+    '.........',
+    '.........',
+    '.........',
+    '.........',
+    '.........',
+    '.s.......',
+  ],
+  start: [0, 6],
+  boss: { at: [8, 0], enemy: 'chief' },
+  fixed: [
+    { at: [2, 6], type: 'monster' },
+    { at: [0, 4], type: 'chest' },
+    { at: [4, 6], type: 'locked-chest' },
+    { at: [6, 6], type: 'elite' },
+    { at: [0, 2], type: 'village' },
+  ],
+  slots: [{ at: [4, 3], allow: ['monster', 'chest'] }],
+  intendedRoutes: {
+    direct: [
+      [0, 6],
+      [1, 6],
+    ],
+    safe: [
+      [0, 6],
+      [1, 6],
+    ],
+    rich: [
+      [0, 6],
+      [1, 6],
+    ],
+  },
+});
+
 export const testContent: Content = {
   catalogue: {
     cards: new Map(cards.map((entry) => [entry.id, entry])),
     enemies: new Map(enemies.map((entry) => [entry.id, entry])),
     blessings: new Map(),
     events: new Map(),
-    levels: [],
+    levels: [testMap],
     tutorial: undefined,
   },
   numbers: numbersSchema.parse(numbersJson),

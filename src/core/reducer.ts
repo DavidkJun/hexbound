@@ -1,35 +1,71 @@
-import type { LevelMap } from '../data/schema';
-import { pick } from './rng';
-import type { GameState, Location } from './state';
+import type { Content } from './content';
+import { endTurn, playCard } from './fight';
+import type { Hex } from './hex';
+import {
+  cancelBoss,
+  confirmBoss,
+  go,
+  inFight,
+  pickCard,
+  planRoute,
+  skipReward,
+  startRun,
+  type RunStep,
+} from './run';
+import type { GameState } from './state';
 
-interface StartLevel {
-  readonly type: 'startLevel';
-  readonly map: LevelMap;
+/**
+ * Everything a screen can ask the game to do. An action that doesn't fit the current phase (see
+ * `Phase` in state.ts) changes nothing.
+ */
+export type GameAction =
+  /** A new run on the first level. */
+  | { readonly type: 'startRun' }
+  /** Map: the steps to walk, each a neighbour of the one before, starting next to the player. */
+  | { readonly type: 'planRoute'; readonly route: readonly Hex[] }
+  /** Map: walk the planned route. */
+  | { readonly type: 'go' }
+  /** Boss confirm: fight the boss now, or stay. */
+  | { readonly type: 'confirmBoss' }
+  | { readonly type: 'cancelBoss' }
+  /** Fight: play the card at this place in the hand, or end the turn. */
+  | { readonly type: 'playCard'; readonly handIndex: number }
+  | { readonly type: 'endTurn' }
+  /** Reward: take one of the offered cards, or skip. */
+  | { readonly type: 'pickCard'; readonly index: number }
+  | { readonly type: 'skipReward' };
+
+/** The whole game logic in one call: content + current state + player action = new state. */
+export function reduce(content: Content, state: GameState, action: GameAction): GameState {
+  if (action.type === 'startRun') return startRun(content, state);
+  if (!state.run) return state;
+
+  const step: RunStep = { run: state.run, rng: state.rng };
+  const next = act(content, step, action);
+  return next === step ? state : { ...state, run: next.run, rng: next.rng };
 }
 
-/** Everything a screen can ask the game to do. New actions join this union. */
-export type GameAction = StartLevel;
-
-/** The whole game logic in one call: current state + player action = new state. */
-export function reduce(state: GameState, action: GameAction): GameState {
+function act(
+  content: Content,
+  step: RunStep,
+  action: Exclude<GameAction, { type: 'startRun' }>,
+): RunStep {
   switch (action.type) {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- until a 2nd action
-    case 'startLevel':
-      return startLevel(state, action.map);
+    case 'planRoute':
+      return planRoute(step, action.route);
+    case 'go':
+      return go(content, step);
+    case 'confirmBoss':
+      return confirmBoss(content, step);
+    case 'cancelBoss':
+      return cancelBoss(step);
+    case 'playCard':
+      return inFight(content, step, (battle) => playCard(content, battle, action.handIndex));
+    case 'endTurn':
+      return inFight(content, step, (battle) => endTurn(content, battle));
+    case 'pickCard':
+      return pickCard(step, action.index);
+    case 'skipReward':
+      return skipReward(step);
   }
-}
-
-function startLevel(state: GameState, map: LevelMap): GameState {
-  let { rng } = state;
-  const dealt = map.slots.map(({ at, allow }): Location => {
-    const roll = pick(rng, allow);
-    rng = roll.rng;
-    return { at, type: roll.value };
-  });
-
-  return {
-    ...state,
-    rng,
-    level: { map, playerAt: map.start, locations: [...map.fixed, ...dealt] },
-  };
 }

@@ -7,7 +7,8 @@ export function App() {
   const { state } = useGame();
   return (
     <>
-      {state.level && <MapScreen level={state.level} />}
+      {/* TODO(stage-1): the fight, reward and boss confirm screens (#33, #34) read state.run.phase. */}
+      {state.run && <MapScreen level={state.run.level} />}
       <BuildInfo seed={state.seed} />
     </>
   );
