@@ -4,7 +4,7 @@ import { createGame } from './core/state';
 import { createGameStore } from './core/store';
 import { bundledFiles } from './data/bundled-files';
 import { DataError } from './data/data-error';
-import { isExampleFile, loadCatalogue } from './data/load';
+import { isExampleFile, loadCatalogue, loadNumbers } from './data/load';
 import type { LevelMap } from './data/schema';
 import { DataErrorScreen } from './screens/data-error/DataErrorScreen';
 import { applyTokens } from './ui/design';
@@ -35,6 +35,8 @@ function firstLevel(): LevelMap {
 
 function startGame(): VNode {
   try {
+    // TODO(stage-1): the map and combat core take the numbers. Until then they are only checked.
+    loadNumbers(bundledFiles);
     const store = createGameStore(createGame(readSeed()));
     store.dispatch({ type: 'startLevel', map: firstLevel() });
     return (

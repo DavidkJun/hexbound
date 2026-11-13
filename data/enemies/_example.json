@@ -3,64 +3,112 @@
     "id": "bog-rat",
     "name": "Bog rat",
     "kind": "normal",
+    "land": "whisperwood",
     "health": 20,
     "moves": [
       {
         "id": "bite",
         "name": "Bite",
         "intent": "attack",
-        "effects": [{ "type": "dealDamage", "amount": 8 }]
+        "effects": [
+          {
+            "type": "dealDamage",
+            "amount": 8
+          }
+        ]
       },
       {
         "id": "burrow",
         "name": "Burrow",
         "intent": "block",
-        "effects": [{ "type": "gainBlock", "amount": 5 }]
+        "effects": [
+          {
+            "type": "gainBlock",
+            "amount": 5
+          }
+        ]
       }
     ],
-    "pattern": { "type": "cycle", "order": ["bite", "bite", "burrow"] }
+    "pattern": {
+      "type": "cycle",
+      "order": ["bite", "bite", "burrow"]
+    }
   },
   {
     "id": "frost-wisp",
     "name": "Frost wisp",
     "kind": "elite",
+    "land": "whisperwood",
     "health": 40,
     "moves": [
       {
         "id": "touch",
         "name": "Touch",
         "intent": "attack",
-        "effects": [{ "type": "dealDamage", "amount": 10 }]
+        "effects": [
+          {
+            "type": "dealDamage",
+            "amount": 10
+          }
+        ]
       },
       {
         "id": "numb",
         "name": "Numb",
         "intent": "debuff",
-        "effects": [{ "type": "applyChill", "amount": 1 }]
+        "effects": [
+          {
+            "type": "applyChill",
+            "amount": 1
+          }
+        ]
       }
     ],
-    "pattern": { "type": "random", "weights": { "touch": 2, "numb": 1 } }
+    "pattern": {
+      "type": "random",
+      "weights": {
+        "touch": 2,
+        "numb": 1
+      }
+    }
   },
   {
     "id": "goblin-chief",
     "name": "Goblin chief",
     "kind": "boss",
+    "land": "whisperwood",
     "health": 90,
     "moves": [
       {
         "id": "cleave",
         "name": "Cleave",
         "intent": "attack",
-        "effects": [{ "type": "dealDamage", "amount": 12 }]
+        "effects": [
+          {
+            "type": "dealDamage",
+            "amount": 12
+          }
+        ]
       },
       {
         "id": "rally",
         "name": "Rally",
         "intent": "buff",
-        "effects": [{ "type": "gainBlock", "amount": 15 }]
+        "effects": [
+          {
+            "type": "gainStrength",
+            "amount": 3
+          }
+        ]
       }
     ],
-    "pattern": { "type": "cycle", "order": ["cleave", "cleave", "rally"] },
-    "signature": { "move": "rally", "text": "Rally: gains a wall of block every 3rd turn." }
+    "pattern": {
+      "type": "cycle",
+      "order": ["cleave", "cleave", "rally"]
+    },
+    "signature": {
+      "move": "rally",
+      "text": "Rally: gains 3 strength every 3rd turn."
+    }
   }
 ]
