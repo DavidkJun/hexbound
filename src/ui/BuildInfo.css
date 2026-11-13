@@ -4,4 +4,7 @@
   left: var(--space-sm);
   color: var(--color-text-muted);
   font-size: var(--text-small);
+  /* Drawn above everything, but it never takes clicks. */
+  z-index: 1;
+  pointer-events: none;
 }
