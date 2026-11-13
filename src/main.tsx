@@ -1,11 +1,11 @@
 import { render, type VNode } from 'preact';
 import { App } from './App';
 import { createGame } from './core/state';
-import { createGameStore } from './core/store';
+import type { Content } from './core/content';
+import { createGameStore, type GameStore } from './core/store';
 import { bundledFiles } from './data/bundled-files';
 import { DataError } from './data/data-error';
 import { isExampleFile, loadCatalogue, loadNumbers } from './data/load';
-import type { LevelMap } from './data/schema';
 import { DataErrorScreen } from './screens/data-error/DataErrorScreen';
 import { BuildInfo } from './ui/BuildInfo';
 import { applyTokens } from './ui/design';
@@ -20,27 +20,38 @@ function readSeed(): number {
 }
 
 /**
- * TODO(stage-1): keep the whole catalogue in the game. Until data/levels/levels.json arrives with
- * the first real map there is nothing to play, so the example map is shown instead.
+ * The checked data files. Until data/levels/levels.json arrives with the first real map there is
+ * nothing to play, so the examples are played instead (see #17 for how that will be shown).
  */
-function firstLevel(): LevelMap {
-  const game = bundledFiles.filter((file) => !isExampleFile(file.path));
-  const examples = bundledFiles.filter((file) => isExampleFile(file.path));
-
-  const level = loadCatalogue(game).levels[0] ?? loadCatalogue(examples).levels[0];
-  if (!level) {
+function loadContent(): Content {
+  const numbers = loadNumbers(bundledFiles);
+  const game = loadCatalogue(bundledFiles.filter((file) => !isExampleFile(file.path)));
+  const catalogue =
+    game.levels.length > 0
+      ? game
+      : loadCatalogue(bundledFiles.filter((file) => isExampleFile(file.path)));
+  if (catalogue.levels.length === 0) {
     throw new DataError([{ file: 'data/levels', field: '', message: 'no level to load' }]);
   }
-  return level;
+  return { catalogue, numbers };
+}
+
+/** `?debug` prints the game state as JSON in the console after every action, for bug reports. */
+function logStateForDebugging(store: GameStore): void {
+  if (!new URLSearchParams(window.location.search).has('debug')) return;
+  const log = () => {
+    console.info('[hexbound] state', JSON.stringify(store.getState()));
+  };
+  store.subscribe(log);
+  log();
 }
 
 function startGame(): VNode {
   const seed = readSeed();
   try {
-    // TODO(stage-1): the map and combat core take the numbers. Until then they are only checked.
-    loadNumbers(bundledFiles);
-    const store = createGameStore(createGame(seed));
-    store.dispatch({ type: 'startLevel', map: firstLevel() });
+    const store = createGameStore(loadContent(), createGame(seed));
+    logStateForDebugging(store);
+    store.dispatch({ type: 'startRun' });
     return (
       <GameContext.Provider value={store}>
         <App />

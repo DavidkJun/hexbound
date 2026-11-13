@@ -59,12 +59,51 @@ A screen reads the game state and sends actions. It never changes the state, and
 
 ```tsx
 function GoButton() {
-  const { state, dispatch } = useGame();
-  // Read from state, send with dispatch({ type: 'someAction', ... }).
+  const { state, dispatch, content } = useGame();
+  const run = state.run;
+  if (run?.phase.kind !== 'map') return null;
+  return <button onClick={() => dispatch({ type: 'go' })}>{t('map.go')}</button>;
 }
 ```
 
-New rules go into `core/reducer.ts`: it takes the current state and an action and returns the new state. When a screen needs something the state doesn't expose yet, ask the programmer. Don't compute rules in a screen.
+`content` holds the checked data files (`content.catalogue.cards.get(id)` for a card's name and text). The game rules are in `src/core/`, and none of them are computed in a screen.
+
+### The state
+
+`state.run` is `null` before a run starts. During a run it holds the player's `health`, `maxHealth`, `gold`, `keys`, `lives` and `deck` (card ids), the current `level`, and the `phase`: what the player is doing now. Each screen shows one phase.
+
+| `run.phase.kind` | Screen                       | What it holds                                                                                                                                                             |
+| ---------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `map`            | Map                          | Nothing more; the map is in `run.level`                                                                                                                                   |
+| `bossConfirm`    | Map, with the confirm dialog | "Fight the boss now?"                                                                                                                                                     |
+| `fight`          | Fight                        | `fight`: the enemy, the player's block, strength, Chill and energy, the hand, draw, discard and exhaust piles, the turn, and `tutorial`; `source`: monster, elite or boss |
+| `reward`         | Reward                       | `reward`: the `gold`, `keys`, `health` and `food` already added, the `cards` to pick from, and where the game goes next                                                   |
+| `levelWon`       | Level won                    | Nothing more                                                                                                                                                              |
+| `dead`           | Run over                     | `cause`: a fight with an enemy id, or starved                                                                                                                             |
+
+`run.level` has the `map`, the `food` left, `playerAt`, the planned `route` (the steps still to walk), and the `locations`. A location has its `type` (always shown), its `detail` (which enemy, or what a chest holds; show it only if `seen`), and `resolved` (show it as visited).
+
+### Actions
+
+| Action                                                  | Phase         | Does                                                                                                                                      |
+| ------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `{ type: 'startRun' }`                                  | any           | A new run on the first level                                                                                                              |
+| `{ type: 'planRoute', route }`                          | `map`         | Replaces the planned route: the tiles to step on, each next to the one before, the first next to the player. `[]` clears it               |
+| `{ type: 'go' }`                                        | `map`         | Walks the route. It stops on an unresolved location, which starts a fight or opens a chest; the rest of the route is kept for the next Go |
+| `{ type: 'confirmBoss' }`, `{ type: 'cancelBoss' }`     | `bossConfirm` | Fights the boss, or stays and clears the route                                                                                            |
+| `{ type: 'playCard', handIndex }`                       | `fight`       | Plays that card of the hand, if there is energy for it                                                                                    |
+| `{ type: 'endTurn' }`                                   | `fight`       | The enemy acts, and the next turn starts                                                                                                  |
+| `{ type: 'pickCard', index }`, `{ type: 'skipReward' }` | `reward`      | Takes that card into the deck, or moves on without one                                                                                    |
+
+An action that doesn't fit the phase changes nothing.
+
+### Ready-made answers for screens
+
+- `routeCost(content, level)` from `core/map.ts`: the food and health the planned route costs, step by step, for the preview before Go.
+- `intentOf(content, fight)` and `canPlay(content, fight, handIndex)` from `core/fight.ts`: what the enemy's intent shows (the real damage after strength and Chill), and whether a card can be played now.
+- `locationAt(level, hex)` from `core/map.ts`: the location on a tile.
+
+Add `?debug` to the URL to print the state as JSON in the browser console after every action, for bug reports. When a screen needs something the state doesn't give yet, ask the programmer.
 
 To build a screen, follow [`design/ui-rules.md`](design/ui-rules.md). In code:
 
