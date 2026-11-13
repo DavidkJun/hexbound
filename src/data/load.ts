@@ -53,7 +53,7 @@ export function loadCatalogue(files: readonly RawFile[]): Catalogue {
   const enemies = readEntries(filesIn('enemies'), enemiesFileSchema, problems);
   const blessings = readEntries(filesIn('blessings'), blessingsFileSchema, problems);
   const events = readEntries(filesIn('events'), eventsFileSchema, problems);
-  const levels = readLevels(filesIn('levels'), new Set(enemies.keys()), problems);
+  const levels = readLevels(filesIn('levels'), enemies, problems);
 
   if (problems.length > 0) throw new DataError(problems);
   return { cards, enemies, blessings, events, levels };
@@ -88,7 +88,7 @@ function readEntries<Entry extends { readonly id: string }>(
 /** Levels in the order of levels.json. Without that file (examples): in file name order. */
 function readLevels(
   files: readonly RawFile[],
-  enemyIds: ReadonlySet<string>,
+  enemies: ReadonlyMap<string, Enemy>,
   problems: DataProblem[],
 ): LevelMap[] {
   const orderFile = files.find((file) => fileName(file.path) === LEVEL_ORDER_FILE);
@@ -99,7 +99,7 @@ function readLevels(
     const level = parseFile(file, levelSchema, problems);
     if (!level) continue;
     levels.set(level.id, level);
-    for (const problem of checkLevelRules(level, fileName(file.path), enemyIds)) {
+    for (const problem of checkLevelRules(level, fileName(file.path), enemies)) {
       problems.push({ file: file.path, ...problem });
     }
   }
