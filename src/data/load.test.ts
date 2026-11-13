@@ -240,6 +240,7 @@ describe('content files', () => {
     id: 'chief',
     name: 'Chief',
     kind: 'boss',
+    land: 'whisperwood',
     health: 90,
     moves: [
       { id: 'hit', name: 'Hit', intent: 'attack', effects: [{ type: 'dealDamage', amount: 1 }] },
@@ -409,6 +410,7 @@ describe('enemy moves', () => {
     id: 'rat',
     name: 'Rat',
     kind: 'normal',
+    land: 'whisperwood',
     health: 10,
     moves: [{ id: 'act', name: 'Act', intent: 'buff', effects }],
     pattern: { type: 'cycle', order: ['act'] },
@@ -426,6 +428,36 @@ describe('enemy moves', () => {
         file: 'data/enemies/a.json',
         field: '[0].moves[0].effects',
         message: 'enemies never apply Freeze',
+      },
+    ]);
+  });
+});
+
+describe('enemy pools', () => {
+  const ENEMIES = 'data/enemies/_example.json';
+  const enemies = JSON.parse(exampleFiles.find(({ path }) => path === ENEMIES)?.text ?? '[]') as {
+    land: string;
+  }[];
+  const moveTo = (land: string) =>
+    problemsOf([
+      ...exampleFiles.filter(({ path }) => path !== ENEMIES && !path.includes('/tutorial/')),
+      file(
+        ENEMIES,
+        enemies.map((enemy, i) => (i < 2 ? { ...enemy, land } : enemy)),
+      ),
+    ]);
+
+  it('needs a normal and an elite enemy of the land for monster and elite tiles', () => {
+    expect(moveTo('frostpeak')).toEqual([
+      {
+        file: EXAMPLE_PATH,
+        field: '',
+        message: 'a monster can be dealt here, but no normal enemy has land "whisperwood"',
+      },
+      {
+        file: EXAMPLE_PATH,
+        field: '',
+        message: 'an elite can be dealt here, but no elite enemy has land "whisperwood"',
       },
     ]);
   });

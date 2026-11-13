@@ -15,6 +15,7 @@ import {
   type Enemy,
   type GameEvent,
   type LevelMap,
+  type LocationType,
   type Numbers,
   type Tutorial,
 } from './schema';
@@ -80,6 +81,33 @@ export function loadNumbers(files: readonly RawFile[]): Numbers {
   const numbers = parseFile(file, numbersSchema, problems);
   if (!numbers) throw new DataError(problems);
   return numbers;
+}
+
+/**
+ * Monster and elite tiles deal an enemy of the level's land, so each needs one to deal. Checked once
+ * the set has enemies, like map rule 10.
+ */
+function checkEnemyPool(
+  { land, fixed, slots }: LevelMap,
+  enemies: ReadonlyMap<string, Enemy>,
+): Omit<DataProblem, 'file'>[] {
+  if (enemies.size === 0) return [];
+  const canDeal = (type: LocationType) =>
+    fixed.some((location) => location.type === type) ||
+    slots.some(({ allow }) => allow.includes(type));
+  const hasEnemy = (kind: Enemy['kind']) =>
+    [...enemies.values()].some((enemy) => enemy.kind === kind && enemy.land === land);
+
+  const pools = [
+    { type: 'monster', kind: 'normal', name: 'a monster' },
+    { type: 'elite', kind: 'elite', name: 'an elite' },
+  ] as const;
+  return pools
+    .filter(({ type, kind }) => canDeal(type) && !hasEnemy(kind))
+    .map(({ kind, name }) => ({
+      field: '',
+      message: `${name} can be dealt here, but no ${kind} enemy has land "${land}"`,
+    }));
 }
 
 /** The starter deck is the cards with rarity "starter", so a set with cards needs some. */
@@ -179,6 +207,9 @@ function readLevels(
     if (!level) continue;
     levels.set(level.id, level);
     for (const problem of checkLevelRules(level, fileName(file.path), enemies)) {
+      problems.push({ file: file.path, ...problem });
+    }
+    for (const problem of checkEnemyPool(level, enemies)) {
       problems.push({ file: file.path, ...problem });
     }
   }

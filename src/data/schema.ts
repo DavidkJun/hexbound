@@ -74,6 +74,8 @@ const cardSchema = z
 
 // Enemies
 
+const landSchema = z.enum(['whisperwood', 'frostpeak', 'ashen']);
+
 const moveSchema = z.strictObject({
   id: idSchema,
   name: textSchema,
@@ -98,6 +100,8 @@ const enemySchema = z
     id: idSchema,
     name: textSchema,
     kind: z.enum(['normal', 'elite', 'boss']),
+    /** The level it appears on, by the level's land. Monster and elite slots deal from these. */
+    land: landSchema,
     health: amountSchema,
     moves: z.array(moveSchema).min(1),
     pattern: movePatternSchema,
@@ -214,7 +218,7 @@ const routeSchema = z.array(hexSchema).min(2);
 export const levelSchema = z.strictObject({
   id: z.string().regex(/^_?[a-z0-9]+(-[a-z0-9]+)*$/, 'must be a kebab-case id'),
   name: textSchema,
-  land: z.enum(['whisperwood', 'frostpeak', 'ashen']),
+  land: landSchema,
   hazard: z.enum(['swamp', 'ice', 'lava']),
   startFood: amountSchema,
   terrain: z

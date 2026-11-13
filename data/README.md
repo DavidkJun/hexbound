@@ -101,6 +101,7 @@ Cards, enemy moves, blessings and event outcomes all change the game the same wa
 ```
 
 - `kind`: `normal`, `elite` or `boss`.
+- `land`: `whisperwood`, `frostpeak` or `ashen`, the level the enemy appears on. Monster and elite tiles deal a normal or elite enemy of their level's land, so a level that can deal one needs one.
 - `moves`: each `id` is used once within the enemy, because `pattern` and `signature` refer to moves by id.
 - `intent` picks the icon the player sees: `attack`, `block`, `buff` or `debuff`. A `buff` is `gainStrength` (DD 4.7).
 - `pattern` picks the next move. `cycle` repeats `order`. `random` uses weights: `{ "type": "random", "weights": { "touch": 2, "numb": 1 } }` makes `touch` twice as likely. `weights` needs at least one move.
