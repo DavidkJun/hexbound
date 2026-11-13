@@ -57,10 +57,10 @@
         "id": "rally",
         "name": "Rally",
         "intent": "buff",
-        "effects": [{ "type": "gainBlock", "amount": 15 }]
+        "effects": [{ "type": "gainStrength", "amount": 3 }]
       }
     ],
     "pattern": { "type": "cycle", "order": ["cleave", "cleave", "rally"] },
-    "signature": { "move": "rally", "text": "Rally: gains a wall of block every 3rd turn." }
+    "signature": { "move": "rally", "text": "Rally: gains 3 strength every 3rd turn." }
   }
 ]

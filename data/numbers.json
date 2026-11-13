@@ -1,0 +1,29 @@
+{
+  "run": { "health": 60, "maxHealth": 60, "gold": 20, "lives": 3 },
+  "food": { "healthPerMissingFood": 3 },
+  "fight": { "energyPerTurn": 3, "cardsPerTurn": 5, "handLimit": 10 },
+  "rewards": {
+    "cardChoices": 3,
+    "monsterGold": { "min": 10, "max": 15 },
+    "eliteGold": 25,
+    "eliteKeys": 1,
+    "bossGold": 40,
+    "bossHealPercent": 30
+  },
+  "hazards": { "lavaDamage": 4, "iceChill": 1 },
+  "chest": { "gold": { "min": 10, "max": 20 }, "food": 3, "health": 10 },
+  "village": {
+    "foodAmount": 3,
+    "foodPrice": 10,
+    "restHealth": 15,
+    "restPrice": 20,
+    "restedBlock": 5,
+    "cardChoices": 3,
+    "cardPrice": 25,
+    "removalPrice": 30,
+    "smallestDeck": 8
+  },
+  "bountyGold": 40,
+  "shrine": { "choices": 3, "healWhenEmpty": 10 },
+  "score": { "perLevelCleared": 1000, "perHealth": 10, "perGold": 1, "perLifeLeft": 300 }
+}

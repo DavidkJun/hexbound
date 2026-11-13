@@ -23,7 +23,9 @@ const effectSchema = z.discriminatedUnion('type', [
   amountEffect('gainBlock'),
   amountEffect('gainEnergy'),
   amountEffect('draw'),
-  amountEffect('applyFreeze'),
+  amountEffect('gainStrength'),
+  // Freeze doesn't stack (DD 4.7), so it has no amount.
+  z.strictObject({ type: z.literal('applyFreeze') }),
   amountEffect('applyChill'),
   z.strictObject({ type: z.literal('exhaust') }),
   // Resources of the run.
@@ -37,16 +39,38 @@ const effectSchema = z.discriminatedUnion('type', [
 
 const effectsSchema = z.array(effectSchema);
 
+const hasEffect = (effects: readonly { type: string }[], type: string) =>
+  effects.some((effect) => effect.type === type);
+
 // Cards
 
-const cardSchema = z.strictObject({
-  id: idSchema,
-  name: textSchema,
-  family: z.enum(['weapon', 'spell', 'armour', 'item']),
-  cost: z.number().int().nonnegative(),
-  effects: effectsSchema.min(1),
-  text: textSchema,
-});
+const cardSchema = z
+  .strictObject({
+    id: idSchema,
+    name: textSchema,
+    family: z.enum(['weapon', 'spell', 'armour', 'item']),
+    rarity: z.enum(['starter', 'common', 'rare']),
+    /** How many of this card the starter deck holds. Only on starter cards. */
+    copies: amountSchema.optional(),
+    cost: z.number().int().nonnegative(),
+    effects: effectsSchema.min(1),
+    text: textSchema,
+  })
+  .superRefine((card, ctx) => {
+    if (card.rarity === 'starter' && card.copies === undefined) {
+      ctx.addIssue({ code: 'custom', path: ['copies'], message: 'a starter card needs copies' });
+    }
+    if (card.rarity !== 'starter' && card.copies !== undefined) {
+      ctx.addIssue({ code: 'custom', path: ['copies'], message: 'only starter cards have copies' });
+    }
+    if (hasEffect(card.effects, 'applyFreeze') && !hasEffect(card.effects, 'exhaust')) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['effects'],
+        message: 'a card that applies Freeze also needs exhaust',
+      });
+    }
+  });
 
 // Enemies
 
@@ -54,7 +78,9 @@ const moveSchema = z.strictObject({
   id: idSchema,
   name: textSchema,
   intent: z.enum(['attack', 'block', 'buff', 'debuff']),
-  effects: effectsSchema.min(1),
+  effects: effectsSchema
+    .min(1)
+    .refine((effects) => !hasEffect(effects, 'applyFreeze'), 'enemies never apply Freeze'),
 });
 
 const movePatternSchema = z.discriminatedUnion('type', [
@@ -205,8 +231,72 @@ export const levelSchema = z.strictObject({
   intendedRoutes: z.strictObject({ direct: routeSchema, safe: routeSchema, rich: routeSchema }),
 });
 
+// Tutorial: the first fight of a new run (DD 4.8). Checks against cards and enemies are in load.ts.
+
+const tutorialSchema = z.strictObject({
+  enemy: idSchema,
+  drawOrder: z.array(idSchema).min(1),
+  hints: z.strictObject({
+    intent: textSchema,
+    energy: textSchema,
+    block: textSchema,
+    endTurn: textSchema,
+  }),
+});
+
+// Numbers: every number of DD 4.9, in one file so they can be tuned without code.
+
+const rangeSchema = z
+  .strictObject({ min: amountSchema, max: amountSchema })
+  .refine(({ min, max }) => min <= max, 'min must not be above max');
+
+export const numbersSchema = z.strictObject({
+  run: z.strictObject({
+    health: amountSchema,
+    maxHealth: amountSchema,
+    gold: z.number().int().nonnegative(),
+    lives: amountSchema,
+  }),
+  food: z.strictObject({ healthPerMissingFood: amountSchema }),
+  fight: z.strictObject({
+    energyPerTurn: amountSchema,
+    cardsPerTurn: amountSchema,
+    handLimit: amountSchema,
+  }),
+  rewards: z.strictObject({
+    cardChoices: amountSchema,
+    monsterGold: rangeSchema,
+    eliteGold: amountSchema,
+    eliteKeys: amountSchema,
+    bossGold: amountSchema,
+    bossHealPercent: amountSchema.max(100),
+  }),
+  hazards: z.strictObject({ lavaDamage: amountSchema, iceChill: amountSchema }),
+  chest: z.strictObject({ gold: rangeSchema, food: amountSchema, health: amountSchema }),
+  village: z.strictObject({
+    foodAmount: amountSchema,
+    foodPrice: amountSchema,
+    restHealth: amountSchema,
+    restPrice: amountSchema,
+    restedBlock: amountSchema,
+    cardChoices: amountSchema,
+    cardPrice: amountSchema,
+    removalPrice: amountSchema,
+    smallestDeck: amountSchema,
+  }),
+  bountyGold: amountSchema,
+  shrine: z.strictObject({ choices: amountSchema, healWhenEmpty: amountSchema }),
+  score: z.strictObject({
+    perLevelCleared: amountSchema,
+    perHealth: amountSchema,
+    perGold: amountSchema,
+    perLifeLeft: amountSchema,
+  }),
+});
+
 // What a whole file holds.
 
+export const tutorialFileSchema = tutorialSchema;
 export const cardsFileSchema = z.array(cardSchema).min(1);
 export const enemiesFileSchema = z.array(enemySchema).min(1);
 export const blessingsFileSchema = z.array(blessingSchema).min(1);
@@ -215,8 +305,11 @@ export const levelOrderSchema = z.array(idSchema);
 
 export type Effect = DeepReadonly<z.infer<typeof effectSchema>>;
 export type Card = DeepReadonly<z.infer<typeof cardSchema>>;
+export type Rarity = Card['rarity'];
 export type Enemy = DeepReadonly<z.infer<typeof enemySchema>>;
 export type Blessing = DeepReadonly<z.infer<typeof blessingSchema>>;
 export type GameEvent = DeepReadonly<z.infer<typeof eventSchema>>;
 export type LevelMap = DeepReadonly<z.infer<typeof levelSchema>>;
 export type LocationType = z.infer<typeof locationTypeSchema>;
+export type Tutorial = DeepReadonly<z.infer<typeof tutorialSchema>>;
+export type Numbers = DeepReadonly<z.infer<typeof numbersSchema>>;

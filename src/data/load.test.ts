@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import exampleLevel from '../../data/levels/_example.json';
 import { DataError, type DataProblem } from './data-error';
 import { readDataFiles } from './disk-files';
-import { isExampleFile, loadCatalogue, type RawFile } from './load';
+import { isExampleFile, loadCatalogue, loadNumbers, NUMBERS_FILE, type RawFile } from './load';
 
 const EXAMPLE_PATH = 'data/levels/_example.json';
 
@@ -230,6 +230,8 @@ describe('content files', () => {
     id: 'strike',
     name: 'Strike',
     family: 'weapon',
+    rarity: 'starter',
+    copies: 4,
     cost: 1,
     effects: [{ type: 'dealDamage', amount: 6 }],
     text: 'Deal 6 damage.',
@@ -339,5 +341,184 @@ describe('content files', () => {
     ];
     const problems = problemsOf([file('data/events/a.json', [{ ...event, choices }])]);
     expect(problems[0]).toMatchObject({ field: '[0].choices[0].outcomes' });
+  });
+});
+
+describe('cards and the starter deck', () => {
+  const card = {
+    id: 'flurry',
+    name: 'Flurry',
+    family: 'weapon',
+    rarity: 'common',
+    cost: 1,
+    effects: [{ type: 'dealDamage', amount: 3 }],
+    text: 'Deal 3 damage.',
+  };
+  const starter = { ...card, id: 'strike', rarity: 'starter', copies: 4 };
+  const cardProblems = (...cards: object[]) => problemsOf([file('data/cards/a.json', cards)]);
+
+  it('needs a rarity on every card', () => {
+    expect(cardProblems(starter, { ...card, rarity: 'legendary' })[0]).toMatchObject({
+      field: '[1].rarity',
+    });
+  });
+
+  it('gives copies to starter cards and to no others', () => {
+    expect(cardProblems({ ...starter, copies: undefined })).toEqual([
+      { file: 'data/cards/a.json', field: '[0].copies', message: 'a starter card needs copies' },
+    ]);
+    expect(cardProblems(starter, { ...card, copies: 2 })).toEqual([
+      { file: 'data/cards/a.json', field: '[1].copies', message: 'only starter cards have copies' },
+    ]);
+  });
+
+  it('needs at least one starter card once there are cards', () => {
+    expect(cardProblems(card)).toEqual([
+      {
+        file: 'data/cards',
+        field: '',
+        message: 'no starter cards: the starter deck is the cards with rarity "starter"',
+      },
+    ]);
+    expect(problemsOf([])).toEqual([]);
+  });
+
+  it('needs exhaust on a card that applies Freeze', () => {
+    const freeze = { ...card, effects: [{ type: 'applyFreeze' }] };
+    expect(cardProblems(starter, freeze)).toEqual([
+      {
+        file: 'data/cards/a.json',
+        field: '[1].effects',
+        message: 'a card that applies Freeze also needs exhaust',
+      },
+    ]);
+    const withExhaust = { ...freeze, effects: [{ type: 'applyFreeze' }, { type: 'exhaust' }] };
+    expect(cardProblems(starter, withExhaust)).toEqual([]);
+  });
+
+  it('has no amount on Freeze, because Freeze does not stack', () => {
+    const effects = [{ type: 'applyFreeze', amount: 2 }, { type: 'exhaust' }];
+    expect(cardProblems(starter, { ...card, effects })[0]).toMatchObject({
+      field: '[1].effects[0]',
+    });
+  });
+});
+
+describe('enemy moves', () => {
+  const enemy = (effects: object[]) => ({
+    id: 'rat',
+    name: 'Rat',
+    kind: 'normal',
+    health: 10,
+    moves: [{ id: 'act', name: 'Act', intent: 'buff', effects }],
+    pattern: { type: 'cycle', order: ['act'] },
+  });
+
+  it('can gain strength', () => {
+    expect(
+      problemsOf([file('data/enemies/a.json', [enemy([{ type: 'gainStrength', amount: 2 }])])]),
+    ).toEqual([]);
+  });
+
+  it('never apply Freeze', () => {
+    expect(problemsOf([file('data/enemies/a.json', [enemy([{ type: 'applyFreeze' }])])])).toEqual([
+      {
+        file: 'data/enemies/a.json',
+        field: '[0].moves[0].effects',
+        message: 'enemies never apply Freeze',
+      },
+    ]);
+  });
+});
+
+describe('tutorial', () => {
+  const TUTORIAL = 'data/tutorial/_example.json';
+  const exampleTutorial = exampleFiles.find(({ path }) => path === TUTORIAL);
+  const tutorial = JSON.parse(exampleTutorial?.text ?? '{}') as Record<string, unknown>;
+
+  const tutorialProblems = (changes: object) =>
+    problemsOf([
+      ...exampleFiles.filter(({ path }) => path !== TUTORIAL),
+      file(TUTORIAL, { ...tutorial, ...changes }),
+    ]);
+
+  it('is loaded from the examples', () => {
+    expect(loadCatalogue(exampleFiles).tutorial?.enemy).toBe('bog-rat');
+  });
+
+  it('is optional', () => {
+    expect(loadCatalogue(exampleFiles.filter(({ path }) => path !== TUTORIAL)).tutorial).toBe(
+      undefined,
+    );
+  });
+
+  it('uses a normal enemy', () => {
+    expect(tutorialProblems({ enemy: 'frost-wisp' })).toEqual([
+      {
+        file: TUTORIAL,
+        field: 'enemy',
+        message: '"frost-wisp" has kind "elite", the tutorial enemy must be normal',
+      },
+    ]);
+    expect(tutorialProblems({ enemy: 'nobody' })[0]).toMatchObject({
+      message: 'no enemy with the id "nobody"',
+    });
+  });
+
+  it('draws only starter cards, each at most as often as the deck holds it', () => {
+    expect(tutorialProblems({ drawOrder: ['strike', 'flurry', 'nothing'] })).toEqual([
+      { file: TUTORIAL, field: 'drawOrder[1]', message: '"flurry" isn\'t a starter card' },
+      { file: TUTORIAL, field: 'drawOrder[2]', message: 'no card with the id "nothing"' },
+    ]);
+    expect(tutorialProblems({ drawOrder: ['ration', 'ration', 'ration'] })).toEqual([
+      { file: TUTORIAL, field: 'drawOrder[1]', message: 'the starter deck has only 1 "ration"' },
+      { file: TUTORIAL, field: 'drawOrder[2]', message: 'the starter deck has only 1 "ration"' },
+    ]);
+  });
+
+  it('allows one tutorial file per set', () => {
+    const problems = problemsOf([...exampleFiles, file('data/tutorial/_other.json', tutorial)]);
+    expect(problems).toEqual([
+      {
+        file: 'data/tutorial/_other.json',
+        field: '',
+        message: `${TUTORIAL} is already the tutorial`,
+      },
+    ]);
+  });
+});
+
+describe('numbers', () => {
+  const allFiles = readDataFiles();
+  const numbersFile = allFiles.find(({ path }) => path === NUMBERS_FILE);
+  const numbers = JSON.parse(numbersFile?.text ?? '{}') as Record<string, Record<string, unknown>>;
+
+  it('loads the numbers of DD 4.9', () => {
+    expect(loadNumbers(allFiles).fight).toEqual({
+      energyPerTurn: 3,
+      cardsPerTurn: 5,
+      handLimit: 10,
+    });
+  });
+
+  it('is not a content file, so the content check skips it', () => {
+    expect(problemsOf(numbersFile ? [numbersFile] : [])).toEqual([]);
+  });
+
+  it('reports a missing file and a bad range', () => {
+    const numberProblems = (text: string) => {
+      try {
+        loadNumbers([{ path: NUMBERS_FILE, text }]);
+      } catch (error) {
+        if (error instanceof DataError) return error.problems;
+        throw error;
+      }
+      return [];
+    };
+    expect(() => loadNumbers([])).toThrow(DataError);
+    const rewards = { ...numbers.rewards, monsterGold: { min: 15, max: 10 } };
+    expect(numberProblems(JSON.stringify({ ...numbers, rewards }))).toEqual([
+      { file: NUMBERS_FILE, field: 'rewards.monsterGold', message: 'min must not be above max' },
+    ]);
   });
 });

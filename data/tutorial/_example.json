@@ -1,0 +1,21 @@
+{
+  "enemy": "bog-rat",
+  "drawOrder": [
+    "strike",
+    "strike",
+    "defend",
+    "defend",
+    "strike",
+    "ice-shard",
+    "defend",
+    "strike",
+    "defend",
+    "ration"
+  ],
+  "hints": {
+    "intent": "The icon above the enemy shows what it does next.",
+    "energy": "Each card costs energy. You get new energy every turn.",
+    "block": "Block absorbs damage until your next turn.",
+    "endTurn": "Press End turn when you have played your cards."
+  }
+}
