@@ -1,7 +1,7 @@
 import { areNeighbours, hexKey, sameHex, type Hex } from '../core/hex';
 import { routeFoodCost, TERRAIN_CHARS, terrainAt } from '../core/terrain';
 import type { DataProblem } from './data-error';
-import type { LevelMap } from './schema';
+import type { Enemy, LevelMap } from './schema';
 
 /**
  * The map rules from design/levels/map-format.md that compare fields with each other. The rest
@@ -15,7 +15,7 @@ const HAZARD_OF_LAND = { whisperwood: 'swamp', frostpeak: 'ice', ashen: 'lava' }
 export function checkLevelRules(
   level: LevelMap,
   fileName: string,
-  enemyIds: ReadonlySet<string>,
+  enemies: ReadonlyMap<string, Enemy>,
 ): FieldProblem[] {
   return [
     ...checkIdMatchesFile(level, fileName),
@@ -25,7 +25,7 @@ export function checkLevelRules(
     ...checkNoSharedTiles(level),
     ...checkRoutes(level),
     ...checkStartFood(level),
-    ...checkBossEnemy(level, enemyIds),
+    ...checkBossEnemy(level, enemies),
   ];
 }
 
@@ -136,8 +136,13 @@ function checkStartFood(level: LevelMap): FieldProblem[] {
 }
 
 /** Rule 10: applies once enemy content files exist. */
-function checkBossEnemy({ boss }: LevelMap, enemyIds: ReadonlySet<string>): FieldProblem[] {
-  return enemyIds.size === 0 || enemyIds.has(boss.enemy)
-    ? []
-    : [{ field: 'boss.enemy', message: `no enemy with the id "${boss.enemy}"` }];
+function checkBossEnemy({ boss }: LevelMap, enemies: ReadonlyMap<string, Enemy>): FieldProblem[] {
+  if (enemies.size === 0) return [];
+  const enemy = enemies.get(boss.enemy);
+  if (!enemy) return [{ field: 'boss.enemy', message: `no enemy with the id "${boss.enemy}"` }];
+  if (enemy.kind !== 'boss') {
+    const message = `"${enemy.id}" has kind "${enemy.kind}", the boss must have kind "boss"`;
+    return [{ field: 'boss.enemy', message }];
+  }
+  return [];
 }
