@@ -1,0 +1,9 @@
+examples: ok (4 cards, 3 enemies, 2 blessings, 1 events, 1 levels)
+(node:30747) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30771) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+game data: 1 problem(s)
+  data/levels/whisperwood.json › start[1]: Too big: expected number to be <=6

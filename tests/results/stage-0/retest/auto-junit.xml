@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="316" failures="0" errors="0" time="1.744540853">
+    <testsuite name="tests/auto/data-format.test.ts" timestamp="2026-11-05T20:04:29.948Z" hostname="WIN-C0RTV023VTH" tests="75" failures="0" errors="0" skipped="0" time="0.15771637">
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01a accepts the family weapon" time="0.035885052">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01a accepts the family spell" time="0.002718958">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01a accepts the family armour" time="0.001685675">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01a accepts the family item" time="0.00463033">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01b rejects the family &quot;armor&quot;" time="0.006767296">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01b rejects the family &quot;Weapon&quot;" time="0.001825072">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01b rejects the family &quot;curse&quot;" time="0.001550576">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01c accepts cost 0 (boundary) and rejects -1 and 1.5" time="0.004661228">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01d rejects a card with no effects" time="0.008478571">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01e rejects an empty name and an empty text" time="0.003649144">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01f rejects the id &quot;Strike&quot; (not kebab-case)" time="0.001289181">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01f rejects the id &quot;strike_1&quot; (not kebab-case)" time="0.000899087">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01f rejects the id &quot;ice shard&quot; (not kebab-case)" time="0.000797288">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01f rejects the id &quot;-strike&quot; (not kebab-case)" time="0.000927786">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01g rejects the same id used twice in one file" time="0.00130638">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01h rejects an empty cards file" time="0.002399563">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-01 cards &gt; TC-DATA-01i the same id may be used by a card and a blessing (ids are unique per folder)" time="0.000907686">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts dealDamage with amount 1 (boundary)" time="0.002206766">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts gainBlock with amount 1 (boundary)" time="0.001345679">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts gainEnergy with amount 1 (boundary)" time="0.00128778">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts draw with amount 1 (boundary)" time="0.001013185">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts applyFreeze with amount 1 (boundary)" time="0.001067384">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts applyChill with amount 1 (boundary)" time="0.000761688">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts heal with amount 1 (boundary)" time="0.000754688">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts loseHealth with amount 1 (boundary)" time="0.000744289">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts gainFood with amount 1 (boundary)" time="0.000580991">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts loseFood with amount 1 (boundary)" time="0.000670189">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts gainGold with amount 1 (boundary)" time="0.000564692">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02a accepts loseGold with amount 1 (boundary)" time="0.000592591">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects dealDamage with amount 0" time="0.002457163">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects gainBlock with amount 0" time="0.000954486">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects gainEnergy with amount 0" time="0.00130088">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects draw with amount 0" time="0.001592376">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects applyFreeze with amount 0" time="0.001765174">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects applyChill with amount 0" time="0.002188367">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects heal with amount 0" time="0.000806988">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects loseHealth with amount 0" time="0.001576876">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects gainFood with amount 0" time="0.002009268">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects loseFood with amount 0" time="0.000767788">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects gainGold with amount 0" time="0.000677989">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02b rejects loseGold with amount 0" time="0.000657889">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02c rejects an amount that is missing, negative, a fraction or a string" time="0.002835655">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02d accepts exhaust without an amount and rejects it with one" time="0.001388978">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02e rejects the unknown effect &quot;dealdamage&quot;" time="0.000864986">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02e rejects the unknown effect &quot;damage&quot;" time="0.000720989">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02e rejects the unknown effect &quot;gainShield&quot;" time="0.001172982">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-02 effects (one shared vocabulary) &gt; TC-DATA-02e rejects the unknown effect &quot;applyBurn&quot;" time="0.001086382">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03a accepts kind normal without a signature" time="0.00444353">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03a accepts kind elite without a signature" time="0.000887486">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03b requires a signature on a boss" time="0.001606274">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03c rejects a cycle that names a move the enemy does not have" time="0.001501376">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03d rejects an empty cycle" time="0.000997185">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03e rejects random weights of 0" time="0.000776688">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03f accepts the intent attack" time="0.000799587">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03f accepts the intent block" time="0.000715789">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03f accepts the intent buff" time="0.000877386">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03f accepts the intent debuff" time="0.000760988">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03g rejects health 0" time="0.000866686">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03h rejects random weights with no moves at all (regression BUG-001)" time="0.000876386">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03i-control the same enemy with two distinct move ids is valid" time="0.000766288">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-03 enemies &gt; TC-DATA-03i rejects two moves with the same id in one enemy (regression BUG-003)" time="0.00126578">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-04 blessings &gt; TC-DATA-04a accepts the trigger onPickup" time="0.000891286">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-04 blessings &gt; TC-DATA-04a accepts the trigger levelStart" time="0.000855886">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-04 blessings &gt; TC-DATA-04a accepts the trigger fightStart" time="0.000840387">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-04 blessings &gt; TC-DATA-04a accepts the trigger turnStart" time="0.001231181">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-04 blessings &gt; TC-DATA-04b rejects an unknown trigger" time="0.002322063">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05a rejects an event with one choice (needs at least two)" time="0.002290964">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05b chances [50,49] → valid: false (must add up to 100)" time="0.002211865">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05b chances [50,51] → valid: false (must add up to 100)" time="0.000845287">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05b chances [100] → valid: true (must add up to 100)" time="0.00066589">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05b chances [1,99] → valid: true (must add up to 100)" time="0.000668489">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05b chances [34,33,33] → valid: true (must add up to 100)" time="0.000754988">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05c rejects a chance of 0 and of 101" time="0.001682773">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-05 events &gt; TC-DATA-05d accepts a cost in gold, food and health, and rejects other costs" time="0.001372578">
+        </testcase>
+        <testcase classname="tests/auto/data-format.test.ts" name="TC-DATA-06 the real game data (empty in stage 0) &gt; TC-DATA-06a the game files that exist load without problems" time="0.000199797">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/auto/design-consistency.test.ts" timestamp="2026-11-05T20:04:29.973Z" hostname="WIN-C0RTV023VTH" tests="114" failures="0" errors="0" skipped="0" time="0.096173733">
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-01 layout.json &gt; TC-DES-01a declares the 1280 × 720 screen from ui-rules.md §1" time="0.003971239">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-01 layout.json &gt; TC-DES-01b every rect on every screen is inside the 1280 × 720 canvas" time="0.009990448">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-01 layout.json &gt; TC-DES-01c every element name is PascalCase (ui-rules.md §4)" time="0.001769673">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-01 layout.json &gt; TC-DES-01d the TopBar is identical on every screen that has it" time="0.001163282">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-02 TopBar (screens.md &quot;Always on screen&quot;) &gt; TC-DES-02a is 1280 × 56 at the top and matches the topbar height token" time="0.000907386">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-02 TopBar (screens.md &quot;Always on screen&quot;) &gt; TC-DES-02b padding 16 left and right" time="0.00129378">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-02 TopBar (screens.md &quot;Always on screen&quot;) &gt; TC-DES-02c 12 px gap between items" time="0.005984808">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-02 TopBar (screens.md &quot;Always on screen&quot;) &gt; TC-DES-02d every item is vertically centred in the bar" time="0.00061019">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-02 TopBar (screens.md &quot;Always on screen&quot;) &gt; TC-DES-02e LevelName is centred in the space between BlessingsRow and DeckButton" time="0.000381394">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-02 TopBar (screens.md &quot;Always on screen&quot;) &gt; BUG-016 TC-DES-02g BlessingsRow is wide enough for the 4 slots of 28 px that screens.md asks for" time="0.006765297">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-02 TopBar (screens.md &quot;Always on screen&quot;) &gt; TC-DES-02f the two buttons are 48 high (size.button.height)" time="0.000483393">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03a every element in design/screens/map.md exists in layout.json" time="0.001028084">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03a every element in design/screens/fight.md exists in layout.json" time="0.000814787">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03b every fixed rect &quot;x, y, w, h&quot; in design/screens/map.md equals layout.json" time="0.006417002">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03b every fixed rect &quot;x, y, w, h&quot; in design/screens/fight.md equals layout.json" time="0.004351133">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03c &quot;centred on x 640&quot; elements of the fight screen are centred on 640" time="0.00064289">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03d TurnCounter is right-aligned to x 1256 as fight.md says (regression BUG-005)" time="0.000326295">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03e the map side panel is a 16 px stack of 304-wide children (map.md SidePanel)" time="0.008167776">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03f the map grid and tooltip mockup stay inside MapArea" time="0.000314596">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03g a hand of 5 cards is exactly the Hand rect: 140 × 196 with 12 px gaps (fight.md)" time="0.000534992">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03k EnemyBlock ends at x 512 and is centred on the enemy health bar (fight.md, S-01)" time="0.000275596">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03l BossSignature is one centred line under the enemy status (fight.md, S-02)" time="0.000173797">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03h EndTurnButton uses the end-turn size tokens (160 × 56)" time="0.000117898">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03i static fight elements do not overlap each other" time="0.003826342">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-03 screen specs agree with layout.json &gt; TC-DES-03j a hovered card (24 px up) does not cover EnemyStatus or the health bars" time="0.000477893">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04a design/ui-rules.md" time="0.001613375">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04a design/screens.md" time="0.000416594">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04a design/screens/map.md" time="0.000763589">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04a design/screens/fight.md" time="0.000317996">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04a design/visual-direction.md" time="0.000210097">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04b every colour token is a #RRGGBB value" time="0.004253035">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04c every land has ground, hazard and accent colours (map-format.md land)" time="0.001882971">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-04 every token a spec names exists in tokens.json &gt; TC-DES-04d every padding the specs ask for is a tokens.space value (regression BUG-006)" time="0.000768188">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06a UI text text.primary on bg.base is at least 4.5:1" time="0.000354095">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06a UI text text.primary on bg.panel is at least 4.5:1" time="0.000155598">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06a UI text text.primary on bg.raised is at least 4.5:1" time="0.000082699">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06a UI text text.muted on bg.panel is at least 4.5:1" time="0.000120998">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06a UI text text.muted on bg.raised is at least 4.5:1" time="0.000139397">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06a UI text text.inverse on accent.primary is at least 4.5:1" time="0.000107099">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06b resource.energy icons on chips (bg.raised) are at least 3:1" time="0.000134998">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06b resource.block icons on chips (bg.raised) are at least 3:1" time="0.000070699">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06b resource.food icons on chips (bg.raised) are at least 3:1" time="0.000068699">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06b resource.gold icons on chips (bg.raised) are at least 3:1" time="0.000115098">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06b resource.key icons on chips (bg.raised) are at least 3:1" time="0.000109399">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06c whisperwood hazard tiles stand out from ground by at least 3:1 (regression BUG-011)" time="0.000118898">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06c frostpeak hazard tiles stand out from ground by at least 3:1 (regression BUG-011)" time="0.000124398">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06c ashen hazard tiles stand out from ground by at least 3:1 (regression BUG-011)" time="0.000101698">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06d tile label (marker or detail) on its pill: color.text.primary on color.label.bg is at least 4.5:1 (regression BUG-012)" time="0.000113098">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06d warning text on chips and buttons: color.text.danger on color.bg.raised is at least 4.5:1 (regression BUG-012)" time="0.000091099">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06d warning text on panels: color.text.danger on color.bg.panel is at least 4.5:1 (regression BUG-012)" time="0.000057699">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06e map.md puts tile labels on the label pill, and the specs use text.danger for text" time="0.000490392">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-06 colour contrast (WCAG 2.1: text 4.5:1, large text and graphics 3:1) &gt; TC-DES-06f a label on a far tile (opacity.far-tile over bg.base) is still at least 4.5:1" time="0.000179598">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05a all 28 icons in the list exist, and no others" time="0.001115083">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-start.svg is credited in CREDITS.md with an author" time="0.000316795">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-monster.svg is credited in CREDITS.md with an author" time="0.000179997">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-elite.svg is credited in CREDITS.md with an author" time="0.000102598">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-chest.svg is credited in CREDITS.md with an author" time="0.000067299">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-locked-chest.svg is credited in CREDITS.md with an author" time="0.000051099">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-village.svg is credited in CREDITS.md with an author" time="0.000055599">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-shrine.svg is credited in CREDITS.md with an author" time="0.0000446">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-mystery.svg is credited in CREDITS.md with an author" time="0.000046599">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b loc-boss.svg is credited in CREDITS.md with an author" time="0.000055299">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b res-health.svg is credited in CREDITS.md with an author" time="0.000064899">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b res-food.svg is credited in CREDITS.md with an author" time="0.000053599">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b res-gold.svg is credited in CREDITS.md with an author" time="0.000083099">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b res-lives.svg is credited in CREDITS.md with an author" time="0.000057899">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b res-energy.svg is credited in CREDITS.md with an author" time="0.000056299">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b res-block.svg is credited in CREDITS.md with an author" time="0.000075299">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b res-key.svg is credited in CREDITS.md with an author" time="0.000059299">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b kw-freeze.svg is credited in CREDITS.md with an author" time="0.000069799">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b kw-chill.svg is credited in CREDITS.md with an author" time="0.000076898">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b kw-exhaust.svg is credited in CREDITS.md with an author" time="0.000102799">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b kw-draw.svg is credited in CREDITS.md with an author" time="0.000063899">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b family-weapon.svg is credited in CREDITS.md with an author" time="0.000067398">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b family-spell.svg is credited in CREDITS.md with an author" time="0.000123599">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b family-armour.svg is credited in CREDITS.md with an author" time="0.000072499">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b family-item.svg is credited in CREDITS.md with an author" time="0.000837587">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b intent-attack.svg is credited in CREDITS.md with an author" time="0.000148998">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b intent-block.svg is credited in CREDITS.md with an author" time="0.000321995">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b intent-buff.svg is credited in CREDITS.md with an author" time="0.000077199">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05b intent-debuff.svg is credited in CREDITS.md with an author" time="0.000066699">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-start.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000495992">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-monster.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000278596">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-elite.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000255397">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-chest.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000189198">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-locked-chest.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000123798">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-village.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000107699">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-shrine.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000104699">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-mystery.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000091598">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c loc-boss.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000313096">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c res-health.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000311996">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c res-food.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000150198">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c res-gold.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000188197">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c res-lives.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.001037384">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c res-energy.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000248196">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c res-block.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000313095">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c res-key.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000512892">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c kw-freeze.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000171398">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c kw-chill.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000090899">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c kw-exhaust.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000213597">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c kw-draw.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000156898">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c family-weapon.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000181697">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c family-spell.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000233197">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c family-armour.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000093498">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c family-item.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000062899">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c intent-attack.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000151398">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c intent-block.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000131398">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c intent-buff.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000073298">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05c intent-debuff.svg is one colour, tintable (fill=&quot;currentColor&quot;, no hard-coded colour)" time="0.000058799">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05d every asset file name is kebab-case" time="0.003525747">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05e every file in assets/ and design/ is under 1 MB (no Git LFS)" time="0.002454263">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05f fonts.css declares the families named in tokens.font and its files exist" time="0.00064489">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05g fonts are local: no font CDN in fonts.css or index.html" time="0.000246296">
+        </testcase>
+        <testcase classname="tests/auto/design-consistency.test.ts" name="TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons) &gt; TC-DES-05h Inter covers Cyrillic, Cinzel does not (open language question in CLAUDE.md)" time="0.000323595">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/auto/hex-grid.test.ts" timestamp="2026-11-05T20:04:30.010Z" hostname="WIN-C0RTV023VTH" tests="17" failures="0" errors="0" skipped="0" time="0.274127228">
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-01 grid size &gt; TC-HEX-01a has 9 × 7 = 63 tiles, each once" time="0.005963309">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-01 grid size &gt; TC-HEX-01b hex radius token is 46 px (ui-rules.md §5)" time="0.000826288">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-01 grid size &gt; TC-HEX-01c whole grid is 644 × 597.6 px and equals the HexGrid rect in layout.json" time="0.001594476">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) &gt; TC-HEX-02a tile 0,0 is centred at x 46, y 39.84" time="0.001628375">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) &gt; TC-HEX-02a tile 1,0 is centred at x 115, y 79.67" time="0.000437893">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) &gt; TC-HEX-02a tile 8,6 is centred at x 598, y 517.87" time="0.000209496">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) &gt; TC-HEX-02b every tile matches the formula in ui-rules.md" time="0.004153537">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) &gt; TC-HEX-02c odd columns are pushed down by half a hex (odd-q)" time="0.000359595">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-02 tile centres (map.md acceptance checklist: tiles 0,0 · 1,0 · 8,6) &gt; TC-HEX-02d every tile lies fully inside the HexGrid rect" time="0.015156669">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-03 neighbours &gt; TC-HEX-03a neighbourhood is symmetric: a next to b ⇔ b next to a" time="0.013614293">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-03 neighbours &gt; TC-HEX-03b every inner tile has 6 neighbours, corners 2 or 3" time="0.010314743">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-03 neighbours &gt; TC-HEX-03c neighbours are exactly the tiles whose centres are √3·R apart (geometry oracle)" time="0.003246651">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-03 neighbours &gt; TC-HEX-03d never returns a tile outside the grid" time="0.00461483">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-04 distance &gt; TC-HEX-04a equals the BFS step count for all 63 × 63 pairs" time="0.201916433">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-04 distance &gt; TC-HEX-04b corner to opposite corner is 10 steps (design doc: 9–10)" time="0.000276595">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-04 distance &gt; TC-HEX-04c is 0 to itself, 1 to a neighbour, and symmetric" time="0.003760141">
+        </testcase>
+        <testcase classname="tests/auto/hex-grid.test.ts" name="TC-HEX-04 distance &gt; TC-HEX-04d &quot;within 2 tiles&quot; of the mockup player [1,5] matches map.png" time="0.000458293">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/auto/level-targets.test.ts" timestamp="2026-11-05T20:04:30.017Z" hostname="WIN-C0RTV023VTH" tests="9" failures="0" errors="0" skipped="0" time="0.012343012">
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-01 start and boss are in opposite corners, 9–10 steps apart" time="0.002755858">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-02 startFood covers the direct route plus about 3 spare steps (2–4)" time="0.000396794">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-03 direct is the cheapest of the three routes in food" time="0.000770689">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-04 every intended route is affordable with startFood" time="0.001755274">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-05 direct passes an elite, safe passes a village, rich passes a chest or shrine" time="0.001083284">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-06 the three routes are different" time="0.000246196">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-07 the boss can be reached without stepping on any hazard tile" time="0.001929071">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-08 no route visits a tile twice" time="0.000486592">
+        </testcase>
+        <testcase classname="tests/auto/level-targets.test.ts" name="TC-LVL map _example &gt; TC-LVL-09 the map uses its hazard (at least one hazard tile)" time="0.000335495">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/auto/map-format.test.ts" timestamp="2026-11-05T20:04:30.020Z" hostname="WIN-C0RTV023VTH" tests="85" failures="0" errors="0" skipped="0" time="0.203732842">
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-00 baseline &gt; TC-MAP-00 the example map is valid as written" time="0.033644187">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-01 rule 1: id equals the file name &gt; TC-MAP-01a accepts the id of a renamed file when they match" time="0.009414657">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-01 rule 1: id equals the file name &gt; TC-MAP-01b rejects an id that differs from the file name" time="0.005374918">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-01 rule 1: id equals the file name &gt; TC-MAP-01c rejects an id that is not kebab-case" time="0.01374779">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-02 rule 2: land and hazard go together &gt; TC-MAP-02a accepts whisperwood + swamp" time="0.004553831">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-02 rule 2: land and hazard go together &gt; TC-MAP-02a accepts frostpeak + ice" time="0.002027369">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-02 rule 2: land and hazard go together &gt; TC-MAP-02a accepts ashen + lava" time="0.002986455">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-02 rule 2: land and hazard go together &gt; TC-MAP-02b rejects whisperwood + ice" time="0.001817372">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-02 rule 2: land and hazard go together &gt; TC-MAP-02b rejects frostpeak + lava" time="0.001781773">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-02 rule 2: land and hazard go together &gt; TC-MAP-02b rejects ashen + swamp" time="0.002960955">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-02 rule 2: land and hazard go together &gt; TC-MAP-02c rejects an unknown land" time="0.001283681">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03a accepts an all-normal map" time="0.001064584">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03b rejects 6 rows" time="0.001012484">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03c rejects 8 rows" time="0.001210482">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03d rejects a row of 8 characters and names the row" time="0.00126268">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03e rejects a row of 10 characters" time="0.001063284">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03f rejects another level&apos;s hazard and names the tile" time="0.001211281">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03g rejects an unknown character" time="0.000908986">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-03 rule 3: terrain is 7 × 9 of &quot;.&quot; and the own hazard &gt; TC-MAP-03h rejects terrain that is not a list of strings" time="0.003208551">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04a accepts a slot on the corner 0,0 (boundary)" time="0.001657775">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04a accepts a slot on the corner 8,0 (boundary)" time="0.000270696">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04a accepts a slot on the corner 0,6 (boundary)" time="0.000522392">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04a accepts a slot on the corner 8,6 (boundary)" time="0.001133083">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04b rejects a slot at col -1" time="0.001390179">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04b rejects a slot at col 9" time="0.002156867">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04b rejects a slot at row -1" time="0.000972085">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04b rejects a slot at row 7" time="0.000819288">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04b rejects a slot at a fraction" time="0.002777858">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04b rejects a slot at three numbers" time="0.003001954">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04b rejects a slot at one number" time="0.007812977">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04c rejects a start outside the grid" time="0.00190697">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04d rejects a route step outside the grid" time="0.001470477">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-04 rule 4: every coordinate is inside the grid &gt; TC-MAP-04e the message for a tile outside the grid shows the whole tile (regression BUG-004)" time="0.003050052">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-05 rule 5: start and boss are on normal tiles &gt; TC-MAP-05a rejects a start on swamp" time="0.001755172">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-05 rule 5: start and boss are on normal tiles &gt; TC-MAP-05b rejects a boss on swamp" time="0.001325479">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-05 rule 5: start and boss are on normal tiles &gt; TC-MAP-05c allows a fixed village on a hazard tile" time="0.001021484">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-05 rule 5: start and boss are on normal tiles &gt; TC-MAP-05d allows a slot on a hazard tile" time="0.000840287">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-06 rule 6: no two places share a tile &gt; TC-MAP-06a rejects a slot on the start tile" time="0.000889986">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-06 rule 6: no two places share a tile &gt; TC-MAP-06b rejects a fixed location on the boss tile" time="0.000783988">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-06 rule 6: no two places share a tile &gt; TC-MAP-06c rejects two slots on one tile" time="0.00067559">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-06 rule 6: no two places share a tile &gt; TC-MAP-06d rejects start and boss on the same tile" time="0.001161181">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07a accepts the type monster" time="0.000877586">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07a accepts the type elite" time="0.001948769">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07a accepts the type chest" time="0.001570575">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07a accepts the type locked-chest" time="0.001062683">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07a accepts the type village" time="0.001425277">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07a accepts the type shrine" time="0.002208566">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07a accepts the type mystery" time="0.001116083">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07b rejects the type &quot;start&quot;" time="0.000997784">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07b rejects the type &quot;boss&quot;" time="0.000764288">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07b rejects the type &quot;shop&quot;" time="0.000765288">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07b rejects the type &quot;Village&quot;" time="0.000678689">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07b rejects the type &quot;&quot;" time="0.00065119">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07c rejects an empty allow list" time="0.001150482">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07d rejects an unknown type inside an allow list" time="0.001182382">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07f-control accepts an allow list of distinct types" time="0.000969584">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; BUG-015 TC-MAP-07f rejects an allow list that repeats a type" time="0.012255307">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-07 rule 7: location types and allow lists &gt; TC-MAP-07e accepts a map with no fixed locations and no slots" time="0.001390278">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-08 rule 8: intended routes are walkable &gt; TC-MAP-08a rejects a route that does not start at start" time="0.001357278">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-08 rule 8: intended routes are walkable &gt; TC-MAP-08b rejects a route that does not end at the boss" time="0.001366478">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-08 rule 8: intended routes are walkable &gt; TC-MAP-08c rejects a jump between tiles that are not neighbours and names the step" time="0.001607775">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-08 rule 8: intended routes are walkable &gt; TC-MAP-08d uses odd-q neighbours: [1,5] → [2,5] is a step, [1,5] → [2,4] is not" time="0.001144282">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-08 rule 8: intended routes are walkable &gt; TC-MAP-08e rejects a route of one tile" time="0.002504561">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-08 rule 8: intended routes are walkable &gt; TC-MAP-08f rejects a missing route" time="0.001787072">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-08 rule 8: intended routes are walkable &gt; TC-MAP-08g rejects a fourth, unknown route" time="0.001361578">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09a accepts startFood equal to the direct cost (boundary)" time="0.00188347">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09b rejects startFood one below the direct cost (boundary)" time="0.001038984">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09c counts a swamp step as 2 food" time="0.001867271">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09d rejects startFood 0" time="0.000977684">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09d rejects startFood -3" time="0.000740088">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09d rejects startFood 12.5" time="0.000971685">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09d rejects startFood 13" time="0.001111583">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-09 rule 9: startFood is a positive whole number ≥ the direct route cost &gt; TC-MAP-09d rejects startFood null" time="0.000832987">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-10 rule 10: boss.enemy is an existing enemy &gt; TC-MAP-10a accepts the example boss goblin-chief" time="0.000848787">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-10 rule 10: boss.enemy is an existing enemy &gt; TC-MAP-10b rejects an unknown boss id when enemy files exist" time="0.001080483">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-10 rule 10: boss.enemy is an existing enemy &gt; BUG-013 TC-MAP-10d rejects a normal enemy (bog-rat) as the boss" time="0.002068168">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-10 rule 10: boss.enemy is an existing enemy &gt; BUG-013 TC-MAP-10d rejects an elite (frost-wisp) as the boss" time="0.002618159">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-10 rule 10: boss.enemy is an existing enemy &gt; TC-MAP-10c skips the check while there are no enemy files (stage 0)" time="0.001455477">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-11 file-level checks &gt; TC-MAP-11a reports broken JSON with the file name" time="0.001350678">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-11 file-level checks &gt; TC-MAP-11b rejects an unknown field (typo protection)" time="0.000938285">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-11 file-level checks &gt; TC-MAP-11c reports every problem at once" time="0.003298048">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-12 levels.json &gt; TC-MAP-12a plays the levels in the listed order" time="0.001213881">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-12 levels.json &gt; TC-MAP-12b reports a listed level without a file" time="0.000898286">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-12 levels.json &gt; TC-MAP-12c rejects a level listed twice in levels.json (regression BUG-002)" time="0.000885986">
+        </testcase>
+        <testcase classname="tests/auto/map-format.test.ts" name="TC-MAP-12 levels.json &gt; BUG-014 TC-MAP-12d a real level file without levels.json is a data error" time="0.001861671">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/auto/seed-rng.test.ts" timestamp="2026-11-05T20:04:30.050Z" hostname="WIN-C0RTV023VTH" tests="16" failures="0" errors="0" skipped="0" time="1.000447668">
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-01 replay &gt; TC-SEED-01a the same seed gives the same whole game state, 100 seeds" time="0.020199592">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-01 replay &gt; TC-SEED-01b the seed shown to the player is kept in the state" time="0.000343894">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-01 replay &gt; TC-SEED-01c dealing does not change the state it started from" time="0.000277396">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-01 replay &gt; TC-SEED-01d the generator moves on: the next random number after a deal differs from before" time="0.000437393">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) &gt; TC-SEED-02a every slot gets a type from its own allow list, 500 seeds" time="0.18138797">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) &gt; TC-SEED-02b fixed locations stay where the map puts them" time="0.000484692">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) &gt; TC-SEED-02c every allowed type of a two-way slot shows up across seeds (a level is never a memorised replay)" time="0.001520776">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-02 deal of the slots (map-format.md: one location from `allow` per slot) &gt; TC-SEED-02d at least 10 different deals across 100 seeds" time="0.000794287">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03a pick() over 3 items is roughly uniform (chi-square, 30 000 draws, p ≈ 0.001)" time="0.004827724">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03b nextFloat stays in [0, 1) for 100 000 draws" time="0.782958055">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03c seed 0 is accepted and replayable" time="0.000509592">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03c seed 1 is accepted and replayable" time="0.000228896">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03c seed 4294967295 is accepted and replayable" time="0.000181697">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03c seed -1 is accepted and replayable" time="0.000168898">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03c seed 999999 is accepted and replayable" time="0.000108999">
+        </testcase>
+        <testcase classname="tests/auto/seed-rng.test.ts" name="TC-SEED-03 generator quality &gt; TC-SEED-03d no source file calls Math.random or Date-based randomness in game logic" time="0.003467145">
+        </testcase>
+    </testsuite>
+</testsuites>

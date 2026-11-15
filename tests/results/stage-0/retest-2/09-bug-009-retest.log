@@ -1,0 +1,5 @@
+# BUG-009 retest — 2026-11-15T21:49:25+02:00
+$ GET /branches/main
+{'protected': True}
+$ GET /branches/main/protection
+Not Found

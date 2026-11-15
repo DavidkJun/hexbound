@@ -1,0 +1,18 @@
+# TC-S0-15 negative lint test — clean copy of b9977c9 with 4 planted violations
+$ npx eslint src/ui/text.ts src/core/rng.ts src/core/terrain.ts src/core/hex.ts
+
+src/core/hex.ts
+  70:40  error  Unexpected use of 'window'  no-restricted-globals
+
+src/core/rng.ts
+  33:40  error  'Math.random' is restricted from being used. Use the seeded RNG in src/core/rng.ts, so runs can be replayed  no-restricted-properties
+
+src/core/terrain.ts
+  1:1  error  '../ui/design' import is restricted from being used by a pattern  no-restricted-imports
+
+src/ui/text.ts
+  8:26  error  Take colours from design/tokens.json, never type a hex value  no-restricted-syntax
+
+✖ 4 problems (4 errors, 0 warnings)
+
+exit=1
