@@ -351,7 +351,7 @@ describe('TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons)', () => 
     intent: ['attack', 'block', 'buff', 'debuff'],
   };
   const expected = Object.entries(groups).flatMap(([g, names]) => names.map((n) => `${g}-${n}.svg`));
-  const onDisk = globSync('assets/icons/*.svg').map((p) => p.split('/').at(-1) ?? '');
+  const onDisk = globSync('assets/icons/*.svg').map((p) => p.replaceAll('\\', '/').split('/').at(-1) ?? '');
   const credits = readText('assets/icons/CREDITS.md');
 
   it('TC-DES-05a all 28 icons in the list exist, and no others', () => {
@@ -370,7 +370,7 @@ describe('TC-DES-05 assets (ui-rules.md §7, visual-direction.md Icons)', () => 
   });
   it('TC-DES-05d every asset file name is kebab-case', () => {
     for (const path of globSync('assets/**/*.*')) {
-      const name = path.split('/').at(-1) ?? '';
+      const name = path.replaceAll('\\', '/').split('/').at(-1) ?? '';
       if (/^(LICENSE|CREDITS)/.test(name)) continue;
       expect(name, path).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*\.[a-z0-9]+$/);
     }

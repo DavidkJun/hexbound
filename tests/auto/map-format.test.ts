@@ -46,9 +46,14 @@ describe('TC-MAP-02 rule 2: land and hazard go together', () => {
     ['ashen', 'lava', 'l'],
   ] as const;
 
+  // Only the fields of rule 2 are compared: other rules (e.g. enemies of the level's land, #29) may
+  // rightly complain about the example map moved to another land, and are tested elsewhere.
+  const rule2Fields = (changes: Record<string, unknown>) =>
+    fieldsOf(changes).filter((f) => f === 'land' || f === 'hazard' || f.startsWith('terrain'));
+
   it.each(pairs)('TC-MAP-02a accepts %s + %s', (land, hazard, char) => {
     const terrain = ['.........', '.........', `...${char}${char}....`, '.........', '.........', '.........', '.........'];
-    expect(problemsWith({ land, hazard, terrain })).toEqual([]);
+    expect(rule2Fields({ land, hazard, terrain })).toEqual([]);
   });
 
   it.each([
@@ -57,7 +62,7 @@ describe('TC-MAP-02 rule 2: land and hazard go together', () => {
     ['ashen', 'swamp'],
   ])('TC-MAP-02b rejects %s + %s', (land, hazard) => {
     const terrain = Array(7).fill('.........');
-    expect(fieldsOf({ land, hazard, terrain })).toEqual(['hazard']);
+    expect(rule2Fields({ land, hazard, terrain })).toEqual(['hazard']);
   });
 
   it('TC-MAP-02c rejects an unknown land', () => {
@@ -107,23 +112,15 @@ describe('TC-MAP-03 rule 3: terrain is 7 × 9 of "." and the own hazard', () => 
 });
 
 describe('TC-MAP-04 rule 4: every coordinate is inside the grid', () => {
-  const corners = [
+  // [0,6] and [8,0] hold the start and the boss in the example map; the baseline (TC-MAP-00)
+  // already proves those two corners are valid, so only the two free corners take a slot here.
+  it.each([
     [0, 0],
-    [8, 0],
-    [0, 6],
     [8, 6],
-  ];
-
-  it.each(corners)('TC-MAP-04a accepts a slot on the corner %i,%i (boundary)', (col, row) => {
+  ])('TC-MAP-04a accepts a slot on the free corner %i,%i (boundary)', (col, row) => {
     const level = levelWith({});
-    const slots = (level.slots as { at: number[] }[]).filter(
-      (s) => !(s.at[0] === col && s.at[1] === row),
-    );
-    const taken = [level.start, (level.boss as { at: number[] }).at].some(
-      (at) => (at as number[])[0] === col && (at as number[])[1] === row,
-    );
-    if (taken) return; // start and boss sit on two of the corners
-    expect(problemsOf(withLevel({ ...level, slots: [...slots, { at: [col, row], allow: ['chest'] }] }))).toEqual([]);
+    const slots = [...(level.slots as object[]), { at: [col, row], allow: ['chest'] }];
+    expect(problemsOf(withLevel({ ...level, slots }))).toEqual([]);
   });
 
   it.each([

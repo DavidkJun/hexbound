@@ -17,8 +17,12 @@ const blessings = readJson<Json[]>(BLESSINGS);
 const events = readJson<Json[]>(EVENTS);
 
 /** Problems after replacing the first entry of `path` with `entry`. */
+/** Problems in the file under test only, so a rule about other files can't change the result. */
+function inFile(path: string, content: unknown) {
+  return problemsOf(withFile(path, content)).filter((p) => p.file === path);
+}
 function firstEntry(path: string, list: Json[], entry: Json) {
-  return problemsOf(withFile(path, [entry, ...list.slice(1)]));
+  return inFile(path, [entry, ...list.slice(1)]);
 }
 const fields = (problems: readonly { field: string }[]) => problems.map((p) => p.field);
 const card = (changes: Json) => ({ ...structuredClone(cards[0]), ...changes });
@@ -48,15 +52,15 @@ describe('TC-DATA-01 cards', () => {
   });
   it('TC-DATA-01g rejects the same id used twice in one file', () => {
     const copy = { ...structuredClone(cards[1]), id: cards[0]?.id };
-    const problems = problemsOf(withFile(CARDS, [cards[0], copy, ...cards.slice(2)]));
+    const problems = inFile(CARDS, [cards[0], copy, ...cards.slice(2)]);
     expect(fields(problems)).toEqual(['[1].id']);
   });
   it('TC-DATA-01h rejects an empty cards file', () => {
-    expect(problemsOf(withFile(CARDS, []))).not.toEqual([]);
+    expect(inFile(CARDS, [])).not.toEqual([]);
   });
   it('TC-DATA-01i the same id may be used by a card and a blessing (ids are unique per folder)', () => {
     const blessing = { ...structuredClone(blessings[0]), id: cards[0]?.id };
-    expect(problemsOf(withFile(BLESSINGS, [blessing, ...blessings.slice(1)]))).toEqual([]);
+    expect(inFile(BLESSINGS, [blessing, ...blessings.slice(1)])).toEqual([]);
   });
 });
 
@@ -135,10 +139,10 @@ describe('TC-DATA-03 enemies', () => {
 
 describe('TC-DATA-04 blessings', () => {
   it.each(['onPickup', 'levelStart', 'fightStart', 'turnStart'])('TC-DATA-04a accepts the trigger %s', (trigger) => {
-    expect(problemsOf(withFile(BLESSINGS, [{ ...blessings[0], trigger }, ...blessings.slice(1)]))).toEqual([]);
+    expect(inFile(BLESSINGS, [{ ...blessings[0], trigger }, ...blessings.slice(1)])).toEqual([]);
   });
   it('TC-DATA-04b rejects an unknown trigger', () => {
-    const problems = problemsOf(withFile(BLESSINGS, [{ ...blessings[0], trigger: 'onDeath' }, ...blessings.slice(1)]));
+    const problems = inFile(BLESSINGS, [{ ...blessings[0], trigger: 'onDeath' }, ...blessings.slice(1)]);
     expect(fields(problems)).toEqual(['[0].trigger']);
   });
 });
@@ -149,7 +153,7 @@ describe('TC-DATA-05 events', () => {
   it('TC-DATA-05a rejects an event with one choice (needs at least two)', () => {
     const e = event();
     e.choices = e.choices.slice(0, 1);
-    expect(fields(problemsOf(withFile(EVENTS, [e])))).toEqual(['[0].choices']);
+    expect(fields(inFile(EVENTS, [e]))).toEqual(['[0].choices']);
   });
   it.each([
     [[50, 49], false],
@@ -163,22 +167,22 @@ describe('TC-DATA-05 events', () => {
       ...e.choices[0],
       outcomes: chances.map((chance) => ({ chance, text: 'x', effects: [] })),
     };
-    const problems = problemsOf(withFile(EVENTS, [e]));
+    const problems = inFile(EVENTS, [e]);
     expect(problems.length === 0).toBe(valid);
   });
   it('TC-DATA-05c rejects a chance of 0 and of 101', () => {
     for (const chance of [0, 101]) {
       const e = event();
       e.choices[0] = { ...e.choices[0], outcomes: [{ chance, text: 'x', effects: [] }] };
-      expect(problemsOf(withFile(EVENTS, [e]))).not.toEqual([]);
+      expect(inFile(EVENTS, [e])).not.toEqual([]);
     }
   });
   it('TC-DATA-05d accepts a cost in gold, food and health, and rejects other costs', () => {
     const e = event();
     e.choices[0] = { ...e.choices[0], cost: { gold: 1, food: 1, health: 1 } };
-    expect(problemsOf(withFile(EVENTS, [e]))).toEqual([]);
+    expect(inFile(EVENTS, [e])).toEqual([]);
     e.choices[0] = { ...e.choices[0], cost: { lives: 1 } };
-    expect(problemsOf(withFile(EVENTS, [e]))).not.toEqual([]);
+    expect(inFile(EVENTS, [e])).not.toEqual([]);
   });
 });
 

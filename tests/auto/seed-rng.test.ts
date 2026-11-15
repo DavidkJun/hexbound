@@ -60,7 +60,7 @@ describe('TC-SEED-02 deal of the slots (map-format.md: one location from `allow`
       expect(seen).toEqual(new Set(slot.allow));
     }
   });
-  it('TC-SEED-02d at least 10 different deals across 100 seeds', () => {
+  it('TC-SEED-02d 100 seeds produce all 4 possible deals of the example map', () => {
     const deals = new Set<string>();
     for (let seed = 0; seed < 100; seed++) deals.add(JSON.stringify(deal(seed).level?.locations));
     // The example map has 2 two-way slots, so at most 4 different deals exist.
@@ -93,7 +93,9 @@ describe('TC-SEED-03 generator quality', () => {
     expect(deal(seed)).toEqual(deal(seed));
   });
   it('TC-SEED-03d no source file calls Math.random or Date-based randomness in game logic', () => {
-    const files = globSync('src/**/*.{ts,tsx}').filter((f) => !f.endsWith('.test.ts'));
+    const files = globSync('src/**/*.{ts,tsx}')
+      .map((f) => f.replaceAll('\\', '/'))
+      .filter((f) => !f.endsWith('.test.ts'));
     expect(files.length).toBeGreaterThan(0);
     for (const file of files) {
       const code = readFileSync(file, 'utf8');
