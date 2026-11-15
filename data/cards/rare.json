@@ -1,0 +1,35 @@
+[
+  {
+    "id": "executioners-axe",
+    "name": "Executioner's Axe",
+    "family": "weapon",
+    "rarity": "rare",
+    "cost": 2,
+    "effects": [{ "type": "dealDamage", "amount": 20 }],
+    "text": "Deal 20 damage."
+  },
+  {
+    "id": "blizzard",
+    "name": "Blizzard",
+    "family": "spell",
+    "rarity": "rare",
+    "cost": 2,
+    "effects": [
+      { "type": "dealDamage", "amount": 8 },
+      { "type": "applyChill", "amount": 3 }
+    ],
+    "text": "Deal 8 damage. Apply 3 Chill."
+  },
+  {
+    "id": "iron-fortress",
+    "name": "Iron Fortress",
+    "family": "armour",
+    "rarity": "rare",
+    "cost": 2,
+    "effects": [
+      { "type": "gainBlock", "amount": 16 },
+      { "type": "draw", "amount": 1 }
+    ],
+    "text": "Gain 16 block. Draw 1."
+  }
+]

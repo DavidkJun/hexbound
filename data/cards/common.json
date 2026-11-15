@@ -1,0 +1,113 @@
+[
+  {
+    "id": "quick-slash",
+    "name": "Quick Slash",
+    "family": "weapon",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [
+      { "type": "dealDamage", "amount": 4 },
+      { "type": "draw", "amount": 1 }
+    ],
+    "text": "Deal 4 damage. Draw 1."
+  },
+  {
+    "id": "heavy-swing",
+    "name": "Heavy Swing",
+    "family": "weapon",
+    "rarity": "common",
+    "cost": 2,
+    "effects": [{ "type": "dealDamage", "amount": 14 }],
+    "text": "Deal 14 damage."
+  },
+  {
+    "id": "whetstone",
+    "name": "Whetstone",
+    "family": "weapon",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [{ "type": "gainStrength", "amount": 2 }, { "type": "exhaust" }],
+    "text": "Gain 2 strength. Exhaust."
+  },
+  {
+    "id": "frost-bolt",
+    "name": "Frost Bolt",
+    "family": "spell",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [
+      { "type": "dealDamage", "amount": 5 },
+      { "type": "applyChill", "amount": 2 }
+    ],
+    "text": "Deal 5 damage. Apply 2 Chill."
+  },
+  {
+    "id": "flash-freeze",
+    "name": "Flash Freeze",
+    "family": "spell",
+    "rarity": "common",
+    "cost": 2,
+    "effects": [{ "type": "applyFreeze" }, { "type": "draw", "amount": 1 }, { "type": "exhaust" }],
+    "text": "Freeze. Draw 1. Exhaust."
+  },
+  {
+    "id": "glimpse",
+    "name": "Glimpse",
+    "family": "spell",
+    "rarity": "common",
+    "cost": 0,
+    "effects": [{ "type": "draw", "amount": 2 }, { "type": "exhaust" }],
+    "text": "Draw 2. Exhaust."
+  },
+  {
+    "id": "brace",
+    "name": "Brace",
+    "family": "armour",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [
+      { "type": "gainBlock", "amount": 6 },
+      { "type": "draw", "amount": 1 }
+    ],
+    "text": "Gain 6 block. Draw 1."
+  },
+  {
+    "id": "shield-wall",
+    "name": "Shield Wall",
+    "family": "armour",
+    "rarity": "common",
+    "cost": 2,
+    "effects": [{ "type": "gainBlock", "amount": 13 }],
+    "text": "Gain 13 block."
+  },
+  {
+    "id": "spiked-guard",
+    "name": "Spiked Guard",
+    "family": "armour",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [
+      { "type": "gainBlock", "amount": 4 },
+      { "type": "dealDamage", "amount": 4 }
+    ],
+    "text": "Gain 4 block. Deal 4 damage."
+  },
+  {
+    "id": "healing-herbs",
+    "name": "Healing Herbs",
+    "family": "item",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [{ "type": "heal", "amount": 5 }, { "type": "exhaust" }],
+    "text": "Heal 5. Exhaust."
+  },
+  {
+    "id": "trail-bread",
+    "name": "Trail Bread",
+    "family": "item",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [{ "type": "gainFood", "amount": 2 }, { "type": "exhaust" }],
+    "text": "Gain 2 food. Exhaust."
+  }
+]
