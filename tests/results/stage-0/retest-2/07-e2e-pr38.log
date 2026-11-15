@@ -1,0 +1,50 @@
+# e2e on PR #38 (feat/stage-1-system-screens 3a2db69), E2E_AFTER_38=1 — 2026-11-15T21:48:16+02:00
+[WebServer] (node:10199) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10238) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10251) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 25 tests using 1 worker
+
+(node:10290) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10290) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10319) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/e2e/data-error.spec.ts:94:1 › TC-E2E-06a a broken real level shows DataErrorScreen as screens.md specifies (250ms)
+  ✓   2 [chromium] › tests/e2e/data-error.spec.ts:121:1 › TC-E2E-06b the same problem is reported by `npm run check:data` in the terminal (511ms)
+  ✓   3 [chromium] › tests/e2e/smoke.spec.ts:53:3 › TC-E2E-01 the build opens › TC-E2E-01a page loads with no errors and no requests to other sites (no font CDN) (198ms)
+  ✓   4 [chromium] › tests/e2e/smoke.spec.ts:67:3 › TC-E2E-01 the build opens › TC-E2E-01b Inter and Cinzel are served from assets/fonts (172ms)
+  ✓   5 [chromium] › tests/e2e/smoke.spec.ts:89:3 › TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02a GameCanvas is exactly 1280 × 720 at a 1280 × 720 window (158ms)
+  ✓   6 [chromium] › tests/e2e/smoke.spec.ts:100:3 › TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02b HexGrid sits at x 150, y 89, 644 × 597.56 (layout.json) (165ms)
+  ✓   7 [chromium] › tests/e2e/smoke.spec.ts:110:3 › TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02c draws 63 tiles, flat-top, odd columns pushed down (232ms)
+  ✓   8 [chromium] › tests/e2e/smoke.spec.ts:127:3 › TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03a every tile centre has the land colour of its terrain (pixel check on a screenshot) (198ms)
+  ✓   9 [chromium] › tests/e2e/smoke.spec.ts:148:3 › TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03b slow tiles carry a word marker too (colour is never the only signal, ui-rules.md §8) (171ms)
+  ✓  10 [chromium] › tests/e2e/smoke.spec.ts:157:3 › TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03c space outside the grid is bg.base (224ms)
+  ✓  11 [chromium] › tests/e2e/smoke.spec.ts:166:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04a BuildInfo shows the commit of this build and the seed from the URL (266ms)
+  ✓  12 [chromium] › tests/e2e/smoke.spec.ts:182:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04b without ?seed a new seed 0–999999 is chosen and shown (157ms)
+  ✓  13 [chromium] › tests/e2e/smoke.spec.ts:192:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04c a seed that is not a number falls back to a new seed instead of breaking (156ms)
+  ✓  14 [chromium] › tests/e2e/smoke.spec.ts:201:3 › TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04d the same seed renders the same screen twice (211ms)
+  ✓  15 [chromium] › tests/e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 960 × 540 (smallest supported window) scales by 0.750, keeps 16:9 and centres the canvas (233ms)
+  ✓  16 [chromium] › tests/e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1920 × 1080 (full HD) scales by 1.500, keeps 16:9 and centres the canvas (342ms)
+  ✓  17 [chromium] › tests/e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1280 × 1000 (tall window: bars top and bottom) scales by 1.000, keeps 16:9 and centres the canvas (289ms)
+  ✓  18 [chromium] › tests/e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1600 × 720 (wide window: bars left and right) scales by 1.000, keeps 16:9 and centres the canvas (273ms)
+  ✓  19 [chromium] › tests/e2e/smoke.spec.ts:239:5 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1366 × 768 (common laptop, not exactly 16:9) scales by 1.067, keeps 16:9 and centres the canvas (261ms)
+  ✓  20 [chromium] › tests/e2e/smoke.spec.ts:260:3 › TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05f resizing the window after load rescales the canvas (149ms)
+  ✓  21 [chromium] › tests/e2e/smoke.spec.ts:283:5 › TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07a 959 × 540 shows the message instead of the canvas (137ms)
+  ✓  22 [chromium] › tests/e2e/smoke.spec.ts:283:5 › TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07a 960 × 539 shows the message instead of the canvas (128ms)
+  ✓  23 [chromium] › tests/e2e/smoke.spec.ts:283:5 › TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07a 800 × 600 shows the message instead of the canvas (128ms)
+  ✓  24 [chromium] › tests/e2e/smoke.spec.ts:299:3 › TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07b exactly 960 × 540 (boundary) still shows the game (148ms)
+  ✓  25 [chromium] › tests/e2e/smoke.spec.ts:310:3 › TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07c growing the window back brings the same game back (252ms)
+
+  25 passed (8.2s)
+
+To open last HTML report run:
+
+  npx playwright show-report tests/results/pr38/e2e-report
+
