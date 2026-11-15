@@ -8,11 +8,16 @@ import {
   eventsFileSchema,
   levelOrderSchema,
   levelSchema,
+  numbersSchema,
+  tutorialFileSchema,
   type Blessing,
   type Card,
   type Enemy,
   type GameEvent,
   type LevelMap,
+  type LocationType,
+  type Numbers,
+  type Tutorial,
 } from './schema';
 
 /** A data file before parsing. `path` is relative to the repository: `data/cards/starter.json`. */
@@ -28,9 +33,14 @@ export interface Catalogue {
   readonly blessings: ReadonlyMap<string, Blessing>;
   readonly events: ReadonlyMap<string, GameEvent>;
   readonly levels: readonly LevelMap[];
+  /** The scripted first fight of a new run. Optional until the PM writes it. */
+  readonly tutorial: Tutorial | undefined;
 }
 
-const CONTENT_FOLDERS = ['cards', 'enemies', 'blessings', 'events', 'levels'];
+/** The numbers of DD 4.9. One file, shared by the game and the examples: see loadNumbers. */
+export const NUMBERS_FILE = 'data/numbers.json';
+
+const CONTENT_FOLDERS = ['cards', 'enemies', 'blessings', 'events', 'levels', 'tutorial'];
 const LEVEL_ORDER_FILE = 'levels';
 
 /** Files starting with `_` are examples or drafts: checked, but never part of the game. */
@@ -44,6 +54,7 @@ export function isExampleFile(path: string): boolean {
  */
 export function loadCatalogue(files: readonly RawFile[]): Catalogue {
   const problems: DataProblem[] = files
+    .filter((file) => file.path !== NUMBERS_FILE)
     .filter((file) => !CONTENT_FOLDERS.includes(folderName(file.path)))
     .map((file) => ({ file: file.path, field: '', message: 'unknown data folder' }));
 
@@ -54,9 +65,105 @@ export function loadCatalogue(files: readonly RawFile[]): Catalogue {
   const blessings = readEntries(filesIn('blessings'), blessingsFileSchema, problems);
   const events = readEntries(filesIn('events'), eventsFileSchema, problems);
   const levels = readLevels(filesIn('levels'), enemies, problems);
+  const tutorial = readTutorial(filesIn('tutorial'), cards, enemies, problems);
+  checkStarterDeck(cards, problems);
 
   if (problems.length > 0) throw new DataError(problems);
-  return { cards, enemies, blessings, events, levels };
+  return { cards, enemies, blessings, events, levels, tutorial };
+}
+
+/** Reads data/numbers.json. Throws a DataError listing every problem found. */
+export function loadNumbers(files: readonly RawFile[]): Numbers {
+  const file = files.find(({ path }) => path === NUMBERS_FILE);
+  if (!file) throw new DataError([{ file: NUMBERS_FILE, field: '', message: 'file is missing' }]);
+
+  const problems: DataProblem[] = [];
+  const numbers = parseFile(file, numbersSchema, problems);
+  if (!numbers) throw new DataError(problems);
+  return numbers;
+}
+
+/**
+ * Monster and elite tiles deal an enemy of the level's land, so each needs one to deal. Checked once
+ * the set has enemies, like map rule 10.
+ */
+function checkEnemyPool(
+  { land, fixed, slots }: LevelMap,
+  enemies: ReadonlyMap<string, Enemy>,
+): Omit<DataProblem, 'file'>[] {
+  if (enemies.size === 0) return [];
+  const canDeal = (type: LocationType) =>
+    fixed.some((location) => location.type === type) ||
+    slots.some(({ allow }) => allow.includes(type));
+  const hasEnemy = (kind: Enemy['kind']) =>
+    [...enemies.values()].some((enemy) => enemy.kind === kind && enemy.land === land);
+
+  const pools = [
+    { type: 'monster', kind: 'normal', name: 'a monster' },
+    { type: 'elite', kind: 'elite', name: 'an elite' },
+  ] as const;
+  return pools
+    .filter(({ type, kind }) => canDeal(type) && !hasEnemy(kind))
+    .map(({ kind, name }) => ({
+      field: '',
+      message: `${name} can be dealt here, but no ${kind} enemy has land "${land}"`,
+    }));
+}
+
+/** The starter deck is the cards with rarity "starter", so a set with cards needs some. */
+function checkStarterDeck(cards: ReadonlyMap<string, Card>, problems: DataProblem[]): void {
+  if (cards.size === 0 || [...cards.values()].some(({ rarity }) => rarity === 'starter')) return;
+  problems.push({
+    file: 'data/cards',
+    field: '',
+    message: 'no starter cards: the starter deck is the cards with rarity "starter"',
+  });
+}
+
+/**
+ * At most one tutorial file per set. Its references are checked once the set has cards or
+ * enemies, like map rule 10, so a set that leaves them out can still be checked on its own.
+ */
+function readTutorial(
+  files: readonly RawFile[],
+  cards: ReadonlyMap<string, Card>,
+  enemies: ReadonlyMap<string, Enemy>,
+  problems: DataProblem[],
+): Tutorial | undefined {
+  const [file, ...others] = files;
+  if (!file) return undefined;
+  for (const other of others) {
+    problems.push({ file: other.path, field: '', message: `${file.path} is already the tutorial` });
+  }
+
+  const tutorial = parseFile(file, tutorialFileSchema, problems);
+  if (!tutorial) return undefined;
+  const report = (field: string, message: string): void => {
+    problems.push({ file: file.path, field, message });
+  };
+
+  const enemy = enemies.get(tutorial.enemy);
+  if (enemies.size > 0 && !enemy) report('enemy', `no enemy with the id "${tutorial.enemy}"`);
+  if (enemy && enemy.kind !== 'normal') {
+    report('enemy', `"${enemy.id}" has kind "${enemy.kind}", the tutorial enemy must be normal`);
+  }
+
+  if (cards.size === 0) return tutorial;
+  const copiesLeft = new Map<string, number>();
+  for (const [i, id] of tutorial.drawOrder.entries()) {
+    const field = `drawOrder[${i}]`;
+    const card = cards.get(id);
+    if (!card) {
+      report(field, `no card with the id "${id}"`);
+    } else if (card.rarity !== 'starter') {
+      report(field, `"${id}" isn't a starter card`);
+    } else {
+      const left = copiesLeft.get(id) ?? card.copies ?? 0;
+      if (left <= 0) report(field, `the starter deck has only ${card.copies ?? 0} "${id}"`);
+      copiesLeft.set(id, left - 1);
+    }
+  }
+  return tutorial;
 }
 
 /** Reads files that each hold a list of entries with ids. Ids are unique across all the files. */
@@ -100,6 +207,9 @@ function readLevels(
     if (!level) continue;
     levels.set(level.id, level);
     for (const problem of checkLevelRules(level, fileName(file.path), enemies)) {
+      problems.push({ file: file.path, ...problem });
+    }
+    for (const problem of checkEnemyPool(level, enemies)) {
       problems.push({ file: file.path, ...problem });
     }
   }
