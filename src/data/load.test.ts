@@ -114,6 +114,12 @@ describe('map rules from design/levels/map-format.md', () => {
       'Too small',
     ],
     [
+      '7: allow lists name each type once',
+      { slots: [{ at: [2, 5], allow: ['monster', 'monster', 'chest'] }] },
+      'slots[0].allow',
+      '"monster" is listed twice',
+    ],
+    [
       '8: routes start at start',
       { intendedRoutes: { ...exampleLevel.intendedRoutes, direct: route.slice(1) } },
       'intendedRoutes.direct',
@@ -143,6 +149,18 @@ describe('map rules from design/levels/map-format.md', () => {
       { boss: { ...exampleLevel.boss, enemy: 'nobody' } },
       'boss.enemy',
       'no enemy with the id "nobody"',
+    ],
+    [
+      '10: the boss is a boss, not a normal enemy',
+      { boss: { ...exampleLevel.boss, enemy: 'bog-rat' } },
+      'boss.enemy',
+      '"bog-rat" has kind "normal", the boss must have kind "boss"',
+    ],
+    [
+      '10: the boss is a boss, not an elite',
+      { boss: { ...exampleLevel.boss, enemy: 'frost-wisp' } },
+      'boss.enemy',
+      '"frost-wisp" has kind "elite"',
     ],
   ])('rule %s', (_rule, changes, field, message) => {
     expect(levelProblems(changes)).toContainEqual({
