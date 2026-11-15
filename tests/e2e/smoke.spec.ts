@@ -202,3 +202,45 @@ test.describe('TC-E2E-05 scaling to the window (ui-rules.md §1)', () => {
     await expect.poll(async () => (await page.locator('#GameCanvas').boundingBox())?.width).toBeCloseTo(960, 0);
   });
 });
+
+/**
+ * WindowTooSmall (design/screens.md → System screens, since #15; built by PR #38). Expected failure on
+ * main until #38 is merged; E2E_AFTER_38=1 checks a build that has it.
+ */
+test.describe('TC-E2E-07 WindowTooSmall below 960 × 540', () => {
+  const pending38 = process.env.E2E_AFTER_38 !== '1';
+  const message = 'Hexbound needs a desktop browser window of at least 960 × 540.';
+
+  for (const [w, h] of [
+    [959, 540],
+    [960, 539],
+    [800, 600],
+  ] as const) {
+    test(`TC-E2E-07a ${w} × ${h} shows the message instead of the canvas`, async ({ page }) => {
+      test.fail(pending38, 'waits for #38 (system screens)');
+      await page.setViewportSize({ width: w, height: h });
+      await page.goto('?seed=1');
+      await expect(page.locator('#WindowTooSmall')).toHaveText(message);
+      await expect(page.locator('#GameCanvas')).toBeHidden();
+      if (w === 959) await page.screenshot({ path: `${SHOTS}/e2e-07-window-too-small.png` });
+    });
+  }
+
+  test('TC-E2E-07b exactly 960 × 540 (boundary) still shows the game', async ({ page }) => {
+    await page.setViewportSize({ width: 960, height: 540 });
+    await open(page);
+    await expect(page.locator('#WindowTooSmall')).toHaveCount(0);
+    await expect(page.locator('#GameCanvas')).toBeVisible();
+  });
+
+  test('TC-E2E-07c growing the window back brings the same game back', async ({ page }) => {
+    test.fail(pending38, 'waits for #38 (system screens)');
+    await page.setViewportSize({ width: 800, height: 450 });
+    await page.goto('?seed=5');
+    await expect(page.locator('#WindowTooSmall')).toBeVisible();
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await expect(page.locator('#WindowTooSmall')).toHaveCount(0);
+    await expect(page.locator('#HexGrid')).toBeVisible();
+    await expect(page.locator('#BuildInfo')).toHaveText(/seed 5$/);
+  });
+});
