@@ -9,12 +9,16 @@ Update this section whenever a stage ends or a decision changes.
 - **Stage 0 (kick-off).** See `plan/HexBound_Team_Plan.md` → Stage 0.
 - **Programmer stage 0 is done**: TypeScript, Vite and Preact, with the hex map in SVG (`README.md` has the reasons, the structure and how screens work with the game); content data format in `data/README.md`.
   - The build draws the grid of the example map, because there is no real map yet. `src/main.tsx` switches to `data/levels/levels.json` as soon as that file exists.
-  - Still open, needs the repository owner: branch protection on `main`, and Settings → Pages → Source: GitHub Actions. Until then, deploys fail.
+  - GitHub Pages deploys every merge to `main`. `main` is protected: a pull request with 1 approval and a passing `build` check, for everyone.
   - The game state and actions are only what stage 0 needs. Stage 1 adds to them from the tester's rules.
 - **UI / level design stage 0 is done**, in `design/`:
   - fixed UI rules, tokens, layout, map and fight wireframes, the map file format, icons and fonts
-  - the visual direction is still **waiting for PM approval**
-- **Open question for the PM:** the language of in-game text. The heading font, Cinzel, has no Cyrillic letters, so Ukrainian text would need another heading font.
+  - the visual direction is **approved by the PM**
+- **PM stage 0 is done**, in `plan/`:
+  - the game rules: `plan/HexBound_DD.md` → 4. Rules, with every number in 4.9. `plan/reviews/stage-0-answers.md` maps each question of the tester's design review to its rule
+  - in-game text is **English**, so Cinzel stays the heading font
+  - the route intent for map 1: `plan/route-intent.md`
+  - the task board: the [Stage 1 milestone](https://github.com/DavidkJun/hexbound/milestone/1), one issue per task with one owner
 
 ## Decisions that override the stage briefs
 
@@ -30,7 +34,8 @@ The stage 0 briefs were written before these were decided. Where a brief says ot
 
 | Path | What | Owner |
 |---|---|---|
-| `plan/HexBound_DD.pdf` | Design document: what the game is | PM / Game designer |
+| `plan/HexBound_DD.md` | Design document: what the game is, and its rules. `HexBound_DD.pdf` is exported from it | PM / Game designer |
+| `plan/reviews/`, `plan/route-intent.md` | PM answers to reviews; what each map's routes must offer | PM / Game designer |
 | `plan/HexBound_Team_Plan.md` | Stages, roles, handoffs | PM / Game designer |
 | `plan/Stage0_*.txt` | Stage 0 brief for each role | PM / Game designer |
 | `design/` | How the game looks: UI rules, tokens, layout, screen specs, map format. Start at `design/README.md` | UI / Level designer |

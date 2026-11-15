@@ -5,7 +5,7 @@ Single-player, turn-based fantasy roguelite for the browser: cross a hand-made 9
 - **Play the latest build:** https://davidkjun.github.io/hexbound/ (every merge to `main` deploys here)
 - **Design:** [`plan/HexBound_DD.pdf`](plan/HexBound_DD.pdf) (what the game is), [`design/`](design/README.md) (how it looks), [Figma](https://www.figma.com/design/1meb36Hx2PgO7MkSCFxt55)
 - **Plan:** [`plan/HexBound_Team_Plan.md`](plan/HexBound_Team_Plan.md)
-- **Task board:** not decided yet, the PM will link it here
+- **Task board:** [Stage 1 milestone](https://github.com/DavidkJun/hexbound/milestone/1), one issue per task with one owner
 - **Bugs:** [open an issue](https://github.com/DavidkJun/hexbound/issues/new?template=bug_report.yml)
 
 ## Run it
