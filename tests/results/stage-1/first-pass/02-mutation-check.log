@@ -1,0 +1,13 @@
+# Mutation check of the stage 1 acceptance tests on PR #40 (add1641) — 2026-11-15T22:03:43+02:00
+# Each line: one rule broken on purpose in the programmer's code, and which tests caught it.
+M1 first-turn block reset too → 1 failed | caught by: FIGHT-03 FIGHT-0x FIGHT-10 FIGHT-1x 
+M2 hunger costs 1 health, not 3 → 1 failed | caught by: MAP-13 MAP-14 MAP-15 MAP-1x 
+M3 enemy Chill doesn't lower damage → 1 failed | caught by: FIGHT-30 FIGHT-3x FIGHT-41 FIGHT-4x FIGHT-53 FIGHT-60 FIGHT-61 FIGHT-6x 
+M4 Freeze doesn't move the pattern on → 1 failed | caught by: FIGHT-4x FIGHT-50 
+M5 sight radius 3 instead of 2 → 0 failed | caught by: 
+M6 the walk doesn't stop on a location → 1 failed | caught by: FIGHT-72 FIGHT-73 FIGHT-80 FIGHT-83 MAP-16 MAP-1x MAP-25 MAP-2x MAP-30 MAP-33 MAP-34 MAP-35 MAP-3x MAP-50 MAP-5x MAP-64 MAP-6x 
+M7 a full hand loses the card instead of discarding it → 1 failed | caught by: FIGHT-20 FIGHT-2x 
+M8 boss heal not capped at max health → 1 failed | caught by: MAP-62 MAP-6x 
+M9 tutorial also on an elite → 1 failed | caught by: FIGHT-72 FIGHT-80 
+M10 player Chill lowers the player's damage too → 1 failed | caught by: FIGHT-31 FIGHT-3x 
+M5 rerun with the boundary test → caught by: MAP-41 boundary (a location exactly 3 steps away stays hidden)

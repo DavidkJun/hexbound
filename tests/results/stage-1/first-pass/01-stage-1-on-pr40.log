@@ -1,0 +1,90 @@
+# Stage 1 acceptance tests (tests/stage-1) on PR #40, feat/stage-1-map add1641 (contains #36–#39) — 2026-11-15T22:04:24+02:00 — node v24.22.2
+
+ RUN  v4.1.12 <scratch>/wt40
+
+ ✓ tests/stage-1/combat.test.ts > FIGHT-0x fight start > FIGHT-02 the whole deck goes into the draw pile, shuffled by the seed; 5 are drawn 3ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-0x fight start > FIGHT-03 Chilled → turn 1 has 2/3 energy; Rested → turn 1 starts with 5 block; both together 1ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-0x fight start > FIGHT-04 the starter deck is 4 Strike, 4 Defend, 1 Ice Shard, 1 Ration 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-10 block from the fight start is kept on turn 1, and reset at the start of turn 2 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-11 energy is 3 minus Chill, never below 0, and Chill is then removed 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-12 every player turn draws 5 1ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-13 a cycle pattern loops: bite, bite, burrow, bite 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-14 a card needs its cost in energy; a 0-cost card plays at 0 energy 1ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-15 / FIGHT-52 a played card goes to the discard pile; an Exhaust card to the exhaust pile 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-16 End turn discards the whole hand; unused energy does not carry over 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-1x player turn > FIGHT-17 gainEnergy goes above 3 for that turn only 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-2x draw, hand and reshuffle > FIGHT-20 a card drawn into a full hand (10) goes to the discard pile 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-2x draw, hand and reshuffle > FIGHT-21 drawing from an empty draw pile shuffles the discard pile in first 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-2x draw, hand and reshuffle > FIGHT-22 draw and discard both empty: nothing is drawn 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-2x draw, hand and reshuffle > FIGHT-23 a turn-start draw that runs out midway reshuffles midway 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-2x draw, hand and reshuffle > FIGHT-24 exhausted cards are never reshuffled 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-3x damage and block > FIGHT-30 enemy damage = amount + strength − Chill, never below 0 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-3x damage and block > FIGHT-31 the player’s Chill never lowers the player’s damage 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-3x damage and block > FIGHT-32 block absorbs damage first 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-3x damage and block > FIGHT-33 loseHealth ignores block 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-3x damage and block > FIGHT-34 gainBlock adds up 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-3x damage and block > FIGHT-35 block the enemy gains on its turn protects it during the player’s next turn 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-3x damage and block > FIGHT-36 healing never goes above max health 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-41 enemy turn: its Chill goes down by 1 after the move 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-42 the enemy does exactly the move it showed 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-50 Freeze: the enemy skips its move, its pattern moves on, Freeze does not stack 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-53 Chill on the enemy adds up and lowers each attack, then goes down by 1 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-54 Chill on the player lowers the next turn’s energy, then is removed 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-55 Draw N draws now, with the hand limit and reshuffle (see FIGHT-20, 21) 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-56 strength adds up and adds to each attack of that side 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-4x / 5x enemy turn, keywords and statuses > FIGHT-56 (Q-C2) strength applies to each dealDamage effect of a card 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-6x intent > FIGHT-60 an attack intent shows the damage it will really deal 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-6x intent > FIGHT-61 (Q-C1) the intent updates at once when the player applies Chill 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-6x intent > FIGHT-62 a frozen enemy’s intent says so 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-7x fight end > FIGHT-70 the fight ends the moment the enemy reaches 0, even mid-card 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-7x fight end > FIGHT-70 the player losing on the enemy turn ends the fight as lost 0ms
+ ✓ tests/stage-1/combat.test.ts > FIGHT-7x fight end > FIGHT-71 overkill and exact kills both win with health shown as 0 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-0x run and level start > MAP-01 a new run: 60 of 60 health, 20 gold, 3 lives, 0 keys, the 10-card starter deck 3ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-0x run and level start > MAP-02 / MAP-04 the level starts with startFood (12) on the start tile 1ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-0x run and level start > MAP-05 every slot gets a type from its allow list, each equally likely (1000 seeds) 44ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-0x run and level start > MAP-06 the same seed deals the same types and details 1ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-0x run and level start > MAP-07 a monster tile deals a normal enemy, an elite tile an elite, of the level’s land 8ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-1x steps and food > MAP-10 a route must be a chain of neighbours from the player; anything else is ignored 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-1x steps and food > MAP-11 a step costs 1 food, 2 onto swamp; the start tile costs nothing 1ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-1x steps and food > MAP-12 stepping back onto a visited tile costs the same 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-1x steps and food > MAP-13 out of food: never blocked, 3 health per missing food, food stays at 0 1ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-1x steps and food > MAP-14 the route preview shows the food and the health cost of every step past the food 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-1x steps and food > MAP-15 hunger that brings health to 0 is a death: "Starved" 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-1x steps and food > MAP-16 food above startFood is allowed (Ration in a fight) 1ms
+ □ tests/stage-1/run-map.test.ts > MAP-2x hazards and fight modifiers > MAP-20 / 21 lava: 1 food and 4 damage, no block, can kill: "Burned by lava" (stage 2, PR #40 TODO)
+ □ tests/stage-1/run-map.test.ts > MAP-2x hazards and fight modifiers > MAP-22 / 23 ice gives Chilled, which does not stack and becomes Chill 1 in the next fight (stage 2)
+ □ tests/stage-1/run-map.test.ts > MAP-2x hazards and fight modifiers > MAP-24 a village rest gives Rested: 5 block in the next fight, not stacking (stage 2)
+ ✓ tests/stage-1/run-map.test.ts > MAP-2x hazards and fight modifiers > MAP-25 swamp has no effect besides being slow: the next fight starts without modifiers 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-3x walking and resolving locations > MAP-30 / 31 the walk stops on a location, which resolves; the rest of the route is kept 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-3x walking and resolving locations > MAP-33 a resolved tile is empty: walking over it doesn’t stop 1ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-3x walking and resolving locations > MAP-34 (Q-M2) a locked chest without a key: the walk stops, nothing happens, it stays locked 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-3x walking and resolving locations > MAP-35 a locked chest with a key opens: −1 key, a card reward of 3 different rares, then empty 0ms
+ □ tests/stage-1/run-map.test.ts > MAP-3x walking and resolving locations > MAP-35 a locked chest also gives a random blessing the player doesn’t own (stage 2, PR #40 TODO)
+ □ tests/stage-1/run-map.test.ts > MAP-3x walking and resolving locations > MAP-36 village services once per village per level; food without limit (stage 2)
+ ✓ tests/stage-1/run-map.test.ts > MAP-3x walking and resolving locations > MAP-37 the step onto the boss asks first; "Not yet" stays, "Fight" starts the boss fight 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-4x visibility > MAP-40 / 41 types are known; details are seen within 2 steps of the player 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-4x visibility > MAP-41 boundary: a location exactly 3 steps away stays hidden 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-4x visibility > MAP-42 once seen, details stay seen after the player walks away 0ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-5x death, retry, lives and score > MAP-50 / FIGHT-73 losing a fight is a death with the enemy as the cause 0ms
+ □ tests/stage-1/run-map.test.ts > MAP-5x death, retry, lives and score > MAP-51 / 52 dying with lives left retries the level from its start; with 0 lives, Run over (stage 2: lives)
+ □ tests/stage-1/run-map.test.ts > MAP-5x death, retry, lives and score > MAP-53 Restart level costs a life and asks first (stage 2)
+ □ tests/stage-1/run-map.test.ts > MAP-5x death, retry, lives and score > MAP-54 score: 1000 per level + 10 per health + 1 per gold + 300 per life (stage 2)
+ ✓ tests/stage-1/run-map.test.ts > MAP-6x rewards > MAP-60 a monster pays 10–15 gold, every value possible, and offers commons 9ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-6x rewards > MAP-61 an elite pays 25 gold and 1 key, and offers exactly 1 rare among 3 7ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-6x rewards > MAP-62 a boss pays 40 gold and heals 30% of max health rounded down, never above max 1ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-6x rewards > MAP-63 a card offer has 3 different cards and never a starter card 5ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-6x rewards > MAP-64 a chest: 10–20 gold plus cards, 3 food or 10 health, each about a third (3000 seeds) 47ms
+ ✓ tests/stage-1/run-map.test.ts > MAP-6x rewards > MAP-64 a chest’s health never goes above max health 0ms
+ □ tests/stage-1/run-map.test.ts > MAP-6x rewards > MAP-65 – 70 village prices, shrine, mystery events, bounty (stage 2)
+ ✓ tests/stage-1/run-map.test.ts > FIGHT-72 / 8x fights inside the run > FIGHT-72 cards exhausted in a fight are back in the deck after it 0ms
+ ✓ tests/stage-1/run-map.test.ts > FIGHT-72 / 8x fights inside the run > FIGHT-80 / 81 the first monster fight of a new run is the tutorial: its enemy, the scripted first two hands 0ms
+ ✓ tests/stage-1/run-map.test.ts > FIGHT-72 / 8x fights inside the run > FIGHT-80 (Q-C4) an elite fought first is not the tutorial 0ms
+ ✓ tests/stage-1/run-map.test.ts > FIGHT-72 / 8x fights inside the run > FIGHT-83 after the tutorial, the next monster fight is a normal one 1ms
+
+ Test Files  2 passed (2)
+      Tests  69 passed | 9 todo (78)
+   Start at  22:04:24
+   Duration  409ms (transform 179ms, setup 0ms, import 349ms, tests 151ms, environment 0ms)
+
+JUNIT report written to <scratch>/wt40/tests/results/sp/stage-1-junit.xml
+exit=0
