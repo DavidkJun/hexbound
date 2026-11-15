@@ -174,6 +174,15 @@ const locationTypeSchema = z.enum([
   'mystery',
 ]);
 
+/** Each type in a slot is equally likely, so a type can't be listed twice to weight it. */
+const allowSchema = z
+  .array(locationTypeSchema)
+  .min(1)
+  .superRefine((types, ctx) => {
+    const repeated = types.find((type, i) => types.indexOf(type) !== i);
+    if (repeated) ctx.addIssue({ code: 'custom', message: `"${repeated}" is listed twice` });
+  });
+
 const routeSchema = z.array(hexSchema).min(2);
 
 export const levelSchema = z.strictObject({
@@ -192,7 +201,7 @@ export const levelSchema = z.strictObject({
   start: hexSchema,
   boss: z.strictObject({ at: hexSchema, enemy: idSchema }),
   fixed: z.array(z.strictObject({ at: hexSchema, type: locationTypeSchema })),
-  slots: z.array(z.strictObject({ at: hexSchema, allow: z.array(locationTypeSchema).min(1) })),
+  slots: z.array(z.strictObject({ at: hexSchema, allow: allowSchema })),
   intendedRoutes: z.strictObject({ direct: routeSchema, safe: routeSchema, rich: routeSchema }),
 });
 
