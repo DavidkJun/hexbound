@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="78" failures="0" errors="0" time="0.150971336">
+    <testsuite name="tests/stage-1/combat.test.ts" timestamp="2026-11-15T20:04:24.967Z" hostname="WIN-C0RTV023VTH" tests="37" failures="0" errors="0" skipped="0" time="0.015591089">
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-0x fight start &gt; FIGHT-02 the whole deck goes into the draw pile, shuffled by the seed; 5 are drawn" time="0.003348061">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-0x fight start &gt; FIGHT-03 Chilled → turn 1 has 2/3 energy; Rested → turn 1 starts with 5 block; both together" time="0.000671252">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-0x fight start &gt; FIGHT-04 the starter deck is 4 Strike, 4 Defend, 1 Ice Shard, 1 Ration" time="0.000406771">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-10 block from the fight start is kept on turn 1, and reset at the start of turn 2" time="0.000438668">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-11 energy is 3 minus Chill, never below 0, and Chill is then removed" time="0.000385073">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-12 every player turn draws 5" time="0.00056366">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-13 a cycle pattern loops: bite, bite, burrow, bite" time="0.000390372">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-14 a card needs its cost in energy; a 0-cost card plays at 0 energy" time="0.000592058">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-15 / FIGHT-52 a played card goes to the discard pile; an Exhaust card to the exhaust pile" time="0.000387772">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-16 End turn discards the whole hand; unused energy does not carry over" time="0.000323377">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-1x player turn &gt; FIGHT-17 gainEnergy goes above 3 for that turn only" time="0.000259381">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-2x draw, hand and reshuffle &gt; FIGHT-20 a card drawn into a full hand (10) goes to the discard pile" time="0.00041227">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-2x draw, hand and reshuffle &gt; FIGHT-21 drawing from an empty draw pile shuffles the discard pile in first" time="0.000272981">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-2x draw, hand and reshuffle &gt; FIGHT-22 draw and discard both empty: nothing is drawn" time="0.00014319">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-2x draw, hand and reshuffle &gt; FIGHT-23 a turn-start draw that runs out midway reshuffles midway" time="0.000321477">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-2x draw, hand and reshuffle &gt; FIGHT-24 exhausted cards are never reshuffled" time="0.000448568">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-3x damage and block &gt; FIGHT-30 enemy damage = amount + strength − Chill, never below 0" time="0.000314878">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-3x damage and block &gt; FIGHT-31 the player’s Chill never lowers the player’s damage" time="0.000182187">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-3x damage and block &gt; FIGHT-32 block absorbs damage first" time="0.000258081">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-3x damage and block &gt; FIGHT-33 loseHealth ignores block" time="0.000211285">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-3x damage and block &gt; FIGHT-34 gainBlock adds up" time="0.000149889">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-3x damage and block &gt; FIGHT-35 block the enemy gains on its turn protects it during the player’s next turn" time="0.000150289">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-3x damage and block &gt; FIGHT-36 healing never goes above max health" time="0.000238183">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-41 enemy turn: its Chill goes down by 1 after the move" time="0.000172387">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-42 the enemy does exactly the move it showed" time="0.000171888">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-50 Freeze: the enemy skips its move, its pattern moves on, Freeze does not stack" time="0.000304278">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-53 Chill on the enemy adds up and lowers each attack, then goes down by 1" time="0.000225284">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-54 Chill on the player lowers the next turn’s energy, then is removed" time="0.000153289">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-55 Draw N draws now, with the hand limit and reshuffle (see FIGHT-20, 21)" time="0.000124091">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-56 strength adds up and adds to each attack of that side" time="0.000252482">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-4x / 5x enemy turn, keywords and statuses &gt; FIGHT-56 (Q-C2) strength applies to each dealDamage effect of a card" time="0.000134591">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-6x intent &gt; FIGHT-60 an attack intent shows the damage it will really deal" time="0.000217384">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-6x intent &gt; FIGHT-61 (Q-C1) the intent updates at once when the player applies Chill" time="0.000163088">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-6x intent &gt; FIGHT-62 a frozen enemy’s intent says so" time="0.000129291">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-7x fight end &gt; FIGHT-70 the fight ends the moment the enemy reaches 0, even mid-card" time="0.000223084">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-7x fight end &gt; FIGHT-70 the player losing on the enemy turn ends the fight as lost" time="0.000171488">
+        </testcase>
+        <testcase classname="tests/stage-1/combat.test.ts" name="FIGHT-7x fight end &gt; FIGHT-71 overkill and exact kills both win with health shown as 0" time="0.000201986">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/stage-1/run-map.test.ts" timestamp="2026-11-15T20:04:24.975Z" hostname="WIN-C0RTV023VTH" tests="41" failures="0" errors="0" skipped="9" time="0.135380247">
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-0x run and level start &gt; MAP-01 a new run: 60 of 60 health, 20 gold, 3 lives, 0 keys, the 10-card starter deck" time="0.002585515">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-0x run and level start &gt; MAP-02 / MAP-04 the level starts with startFood (12) on the start tile" time="0.000569759">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-0x run and level start &gt; MAP-05 every slot gets a type from its allow list, each equally likely (1000 seeds)" time="0.044446231">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-0x run and level start &gt; MAP-06 the same seed deals the same types and details" time="0.000607357">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-0x run and level start &gt; MAP-07 a monster tile deals a normal enemy, an elite tile an elite, of the level’s land" time="0.007770046">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-1x steps and food &gt; MAP-10 a route must be a chain of neighbours from the player; anything else is ignored" time="0.000456668">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-1x steps and food &gt; MAP-11 a step costs 1 food, 2 onto swamp; the start tile costs nothing" time="0.000553261">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-1x steps and food &gt; MAP-12 stepping back onto a visited tile costs the same" time="0.000233183">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-1x steps and food &gt; MAP-13 out of food: never blocked, 3 health per missing food, food stays at 0" time="0.000724549">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-1x steps and food &gt; MAP-14 the route preview shows the food and the health cost of every step past the food" time="0.000323877">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-1x steps and food &gt; MAP-15 hunger that brings health to 0 is a death: &quot;Starved&quot;" time="0.000186486">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-1x steps and food &gt; MAP-16 food above startFood is allowed (Ration in a fight)" time="0.000819541">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-2x hazards and fight modifiers &gt; MAP-20 / 21 lava: 1 food and 4 damage, no block, can kill: &quot;Burned by lava&quot; (stage 2, PR #40 TODO)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-2x hazards and fight modifiers &gt; MAP-22 / 23 ice gives Chilled, which does not stack and becomes Chill 1 in the next fight (stage 2)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-2x hazards and fight modifiers &gt; MAP-24 a village rest gives Rested: 5 block in the next fight, not stacking (stage 2)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-2x hazards and fight modifiers &gt; MAP-25 swamp has no effect besides being slow: the next fight starts without modifiers" time="0.000173788">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-3x walking and resolving locations &gt; MAP-30 / 31 the walk stops on a location, which resolves; the rest of the route is kept" time="0.000255982">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-3x walking and resolving locations &gt; MAP-33 a resolved tile is empty: walking over it doesn’t stop" time="0.000627655">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-3x walking and resolving locations &gt; MAP-34 (Q-M2) a locked chest without a key: the walk stops, nothing happens, it stays locked" time="0.000366274">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-3x walking and resolving locations &gt; MAP-35 a locked chest with a key opens: −1 key, a card reward of 3 different rares, then empty" time="0.000441969">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-3x walking and resolving locations &gt; MAP-35 a locked chest also gives a random blessing the player doesn’t own (stage 2, PR #40 TODO)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-3x walking and resolving locations &gt; MAP-36 village services once per village per level; food without limit (stage 2)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-3x walking and resolving locations &gt; MAP-37 the step onto the boss asks first; &quot;Not yet&quot; stays, &quot;Fight&quot; starts the boss fight" time="0.000437168">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-4x visibility &gt; MAP-40 / 41 types are known; details are seen within 2 steps of the player" time="0.000185787">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-4x visibility &gt; MAP-41 boundary: a location exactly 3 steps away stays hidden" time="0.000120292">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-4x visibility &gt; MAP-42 once seen, details stay seen after the player walks away" time="0.000118592">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-5x death, retry, lives and score &gt; MAP-50 / FIGHT-73 losing a fight is a death with the enemy as the cause" time="0.000437669">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-5x death, retry, lives and score &gt; MAP-51 / 52 dying with lives left retries the level from its start; with 0 lives, Run over (stage 2: lives)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-5x death, retry, lives and score &gt; MAP-53 Restart level costs a life and asks first (stage 2)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-5x death, retry, lives and score &gt; MAP-54 score: 1000 per level + 10 per health + 1 per gold + 300 per life (stage 2)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-6x rewards &gt; MAP-60 a monster pays 10–15 gold, every value possible, and offers commons" time="0.008942162">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-6x rewards &gt; MAP-61 an elite pays 25 gold and 1 key, and offers exactly 1 rare among 3" time="0.006615928">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-6x rewards &gt; MAP-62 a boss pays 40 gold and heals 30% of max health rounded down, never above max" time="0.000503364">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-6x rewards &gt; MAP-63 a card offer has 3 different cards and never a starter card" time="0.005407815">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-6x rewards &gt; MAP-64 a chest: 10–20 gold plus cards, 3 food or 10 health, each about a third (3000 seeds)" time="0.046719269">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-6x rewards &gt; MAP-64 a chest’s health never goes above max health" time="0.000464466">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="MAP-6x rewards &gt; MAP-65 – 70 village prices, shrine, mystery events, bounty (stage 2)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="FIGHT-72 / 8x fights inside the run &gt; FIGHT-72 cards exhausted in a fight are back in the deck after it" time="0.000495465">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="FIGHT-72 / 8x fights inside the run &gt; FIGHT-80 / 81 the first monster fight of a new run is the tutorial: its enemy, the scripted first two hands" time="0.000369374">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="FIGHT-72 / 8x fights inside the run &gt; FIGHT-80 (Q-C4) an elite fought first is not the tutorial" time="0.000318277">
+        </testcase>
+        <testcase classname="tests/stage-1/run-map.test.ts" name="FIGHT-72 / 8x fights inside the run &gt; FIGHT-83 after the tutorial, the next monster fight is a normal one" time="0.000576059">
+        </testcase>
+    </testsuite>
+</testsuites>

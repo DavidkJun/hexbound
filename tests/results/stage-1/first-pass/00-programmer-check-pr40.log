@@ -1,0 +1,7 @@
+# npm run check on PR #40 add1641
+ Test Files  10 passed (10)
+      Tests  143 passed (143)
+numbers: ok (data/numbers.json)
+game data: ok (0 cards, 0 enemies, 0 blessings, 0 events, 0 levels, no tutorial)
+examples: ok (6 cards, 3 enemies, 2 blessings, 1 events, 1 levels, a tutorial)
+exit=0
