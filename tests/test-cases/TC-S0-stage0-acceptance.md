@@ -51,3 +51,12 @@ Same environment as the first run. Evidence: [`../results/stage-0/retest/`](../r
 | others | PASS | PASS (unchanged) | — |
 
 **Not a regression, for stage 1:** the map tiles in the build still draw the terrain marker as bare text. `map.md` now puts every tile label on a dark pill. The map screen is stage 1 work, covered by TC-MAPSCR-21.
+
+## Retest 2026-11-15
+
+| ID | Before | Now | Evidence |
+|---|---|---|---|
+| TC-S0-08 | FAIL (BUG-009) | **PASS**: `main` is protected since 2026-11-10 (PR with 1 approval and the `build` check, admins included) | `retest-2/09-bug-009-retest.log` |
+| TC-S0-14 | PASS | PASS on main. The new `DataErrorScreen` spec ("Data error", "file · field: message", `BuildInfo` visible) passes on the PR #38 build | `retest-2/07-e2e-pr38.log`, `retest-2/pr38/screenshots/e2e-06-data-error.png` |
+
+**Stage 0 acceptance: 18 of 18 pass.**

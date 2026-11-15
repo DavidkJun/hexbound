@@ -11,9 +11,9 @@ Owner: Tester. Everything here is the tester's work. It reads the other roles' f
 | Playtest checklist (pillars + DD targets) and playtest table | Everyone | [playtest/](playtest/README.md) |
 | Bug reporting, build and seed, test levels | Programmer, everyone | [test-plan.md](test-plan.md) |
 | Test cases + traceability | Everyone | [test-cases/](test-cases/README.md) |
-| Bug reports (16: 10 fixed and verified, 6 open), also GitHub issues | Owners | [bugs/](bugs/README.md) |
-| Automated tests (316 acceptance + 20 e2e, also run on the deployed build) | — | [auto/](auto/), [e2e/](e2e/) |
-| Evidence: logs, JUnit, HTML report, screenshots, run report; first run and retest | Everyone | [results/stage-0/](results/stage-0/README.md), [results/stage-0/retest/](results/stage-0/retest/README.md) |
+| Bug reports (16: 11 fixed in `main`, 3 fixed on PR branches, 2 open), also GitHub issues | Owners | [bugs/](bugs/README.md) |
+| Automated tests (314 acceptance + 25 e2e, also run on the deployed build and on PR branches) | — | [auto/](auto/), [e2e/](e2e/) |
+| Evidence: logs, JUnit, HTML report, screenshots, run report; first run and retest | Everyone | [results/stage-0/](results/stage-0/README.md), [results/stage-0/retest/](results/stage-0/retest/README.md), [retest-2/](results/stage-0/retest-2/README.md) |
 
 ## Run the automated tests
 
@@ -36,6 +36,7 @@ node tests/tools/junit-to-md.mjs latest    # results/latest/test-run-report.md
 | `E2E_OUT` | `e2e` | Folder for the reports and screenshots (default `tests/results/latest`, not committed) |
 | `E2E_BASE_URL` | `e2e` | Test an already deployed build instead of a local one, e.g. `https://davidkjun.github.io/hexbound/` |
 | `E2E_COMMIT` | `e2e` | The commit the deployed build should show in its corner (default: local `HEAD`) |
+| `E2E_AFTER_38` | `e2e` | `1` checks the system screens of PR #38 (`DataErrorScreen` spec, `WindowTooSmall`) instead of expecting them to fail; goes away once #38 is merged |
 
 The full retest commands are in [results/stage-0/retest/README.md](results/stage-0/retest/README.md).
 

@@ -53,12 +53,12 @@ The tester tests against **written rules**, never against "what the code does":
 - **Which build:** the `build <commit> · seed <n>` line in the bottom-left corner (TC-S0-12).
 - **Replaying a run:** open the game with `?seed=<n>`. The same seed gives the same game state (TC-SEED-01, TC-E2E-04d). The seed goes in every bug report.
 
-## 5. Proposals to the programmer (not decided yet)
+## 5. Proposals to the programmer: answered in the review of PR #20 (2026-11-13)
 
-1. Run the tester's suites in CI. Add one step to `.github/workflows/ci.yml`: `npm --prefix tests ci && npm --prefix tests run auto` (Vitest only; e2e needs a browser download, about 100 MB).
-2. ~~Add `.npmrc` with `engine-strict=true` (BUG-007).~~ Done in main 5e9931f.
-3. Show the build and seed on the Data error screen too. Today it replaces the whole game, BuildInfo included.
-4. From stage 1, a debug query flag (e.g. `?debug`) that prints the game state as JSON. Tester bug reports could then attach it.
+1. **Tester's suites in CI:** yes, Vitest only (`npm --prefix tests run auto`), added by the programmer after PR #20 is merged. **Rule:** the PR that fixes a bug also flips its `BUG-0xx` test into a regression test.
+2. **`.npmrc` with `engine-strict=true` (BUG-007):** done in main 5e9931f.
+3. **Build and seed on the Data error screen:** in PR #38, from the designer's spec; checked by TC-E2E-06a on the PR build.
+4. **A debug flag:** yes, with the stage 1 core. `?debug` prints the game state as JSON in the console after every action, read-only. Bug reports attach it.
 
 ## 6. Environment used in stage 0
 
