@@ -1,6 +1,6 @@
 # Visual direction
 
-Status: **draft, waiting for PM approval**. Source: Figma → Foundations page → `VisualDirection`, `Palette`, `Type`.
+Status: **approved by the PM** (`plan/reviews/stage-0-answers.md`). Source: Figma → Foundations page → `VisualDirection`, `Palette`, `Type`.
 
 ## Options considered
 
