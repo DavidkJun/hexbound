@@ -11,7 +11,7 @@ Each level is one JSON file in `data/levels/<level-id>.json`, written by hand. A
   ["whisperwood", "frostpeak", "ashen-citadel"]
   ```
   The game loads exactly these files, in this order. It's created together with the first real map.
-- **A missing `levels.json` is a data error.** `npm run check:data` and the built game both show "levels.json is missing", and the game never falls back to loading level files by name. One exception, until the first real map exists: in local development (`npm run dev`) the build may show `_example.json`, with a visible "Example map" warning on screen.
+- **A missing `levels.json` is a data error once the game set has a level file.** A level file is a file in `data/levels/` whose name doesn't start with `_`. Then `npm run check:data` and the built game both show "levels.json is missing", and the game never falls back to loading level files by name. Until the first real map exists, every build shows `_example.json` with an "Example map" warning on screen. *(Wording confirmed by the PM in #17.)*
 - Files starting with `_` are examples or drafts. They are never loaded by the game, but the map check still validates them.
 
 Coordinates are always `[col, row]` on the flat-top, odd-q grid from [`../ui-rules.md`](../ui-rules.md#5-hex-grid): `col` 0–8, `row` 0–6.

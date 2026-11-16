@@ -13,7 +13,7 @@ Rectangles are `x, y, w, h` on the 1280 × 720 canvas.
 | Name | Rect | Shows (reads) | Does (sends) |
 |---|---|---|---|
 | `TopBar` | 0, 0, 1280, 56 | Same as on the map | `DeckButton`, `MenuButton` |
-| `FightModifiers` | 24, 72, auto, 34 | Effects on this fight from the map (terrain crossed, places visited). One pill per effect, in a row going right. The effect texts come from the game rules; the mockup's pill is a placeholder. Example: ice gives "Chilled: −1 energy on turn 1" | Hover → full text |
+| `FightModifiers` | 24, 72, auto, 34 | Effects on this fight from the map (terrain crossed, places visited). One pill per effect, in a row going right. There are two (G-19), each at most once: **Chilled** from ice, "Chilled: −1 energy on turn 1" in `color.keyword.chill`, and **Rested** from a village rest, "Rested: +5 block on turn 1" in `color.resource.block`. The mockup's pill is a placeholder | Hover → full text |
 | `TurnCounter` | 1136, 76, 120, 27 | "Turn N", Cinzel `text.h3`, text right-aligned in the box, so the right edge is always x 1256 | — |
 | `EnemyIntent` | 580, 104, 120, 40 | Enemy's next move: intent icon (`intent-*`, `size.icon.sm`, in `color.intent.*`) and value, inside a pill with a border in the same colour. Always visible | — |
 | `EnemySprite` | 540, 152, 200, 200 | Enemy art (`art/enemy-<id>.png`) | — |
@@ -25,7 +25,7 @@ Rectangles are `x, y, w, h` on the 1280 × 720 canvas.
 | `PlayerSprite` | 160, 200, 160, 160 | Wayfarer art | — |
 | `PlayerHealthBar` | 140, 372, 200, 20 | Health; `PlayerHealthText` centred on it | — |
 | `PlayerBlock` | 140, 402, auto, 36 | Current block; hidden when block is 0 | — |
-| `PlayerStatus` | 140, 446, auto, 26 | The player's status pills (Chill, Freeze…), same look as `EnemyStatus`, in a row going right. Hidden when the player has no status | Hover → keyword text |
+| `PlayerStatus` | 140, 446, auto, 26 | The player's status pills, same look as `EnemyStatus`, in a row going right. Chilled shows here as "Chill 1" (G-21). Never Freeze: enemies can't freeze the player (G-39). Hidden when the player has no status | Hover → keyword text |
 | `EnergyOrb` | 40, 520, 96, 96 | Energy "current/max" in `color.resource.energy` | — |
 | `Hand` | 266, 504, 748, 196 | Cards in hand (`HandCard1`…`HandCard5`) | Click a card → play it |
 | `DrawPile` | 24, 632, 96, 72 | Cards left to draw | Click → list of the pile |
@@ -38,7 +38,7 @@ Rectangles are `x, y, w, h` on the 1280 × 720 canvas.
 - **Hand**: cards are `size.card.*` (140 × 196) with a `space.md` (12) gap, the row centred on x 640, top at y 504.
   - With 5 cards the row is exactly the `Hand` rect.
   - With more than 5 (Draw effects), the gap shrinks, down to cards overlapping, so the row stays inside x 266–1014.
-  - **The hand holds at most 10 cards.** A card drawn into a full hand goes straight to the discard pile, with a short "Hand full" message above `Hand` (`text.small`, `color.text.muted`, 1.5 s). The 10-card limit is the tester's suggestion for G-37 (PM).
+  - **The hand holds at most 10 cards.** A card drawn into a full hand goes straight to the discard pile, with a short "Hand full" message above `Hand` (`text.small`, `color.text.muted`, 1.5 s). (G-37.)
 - **Hovered card**: moves up 24 px and is drawn above its neighbours.
 - **Card that costs more than the current energy**: `opacity.disabled`, not clickable.
 - **Card look**: the `Card` component in Figma → Foundations.
@@ -51,10 +51,10 @@ Rectangles are `x, y, w, h` on the 1280 × 720 canvas.
   - the pill grows to fit and stays centred on x 640
 - **Intent values:**
   - attack and block show their number
-  - a buff or debuff shows its stack count, e.g. "2"
+  - a buff (`gainStrength`, G-42) shows "+N"; a debuff shows its stack count, e.g. "2"
   - an effect with no number shows the icon only
 
-  Which buffs exist depends on G-42 (PM).
+- **Frozen enemy** (G-39): it skips its next move. `EnemyIntent` uses the `IntentBadge` variant `Intent=frozen`: the `kw-freeze` icon and "Skips", with a `color.keyword.freeze` border. `EnemyStatus` shows a "Freeze" pill until the skipped move has passed.
 
 ## States
 

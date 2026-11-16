@@ -59,11 +59,11 @@ Tile positions follow the hex formula in [ui-rules.md](../ui-rules.md#5-hex-grid
 2. Click the last step again to remove it. Clicks on tiles that are not next to the last step are ignored.
 3. `ClearRouteButton` removes the whole route.
 4. `GoButton` walks the route one step at a time. At each step the location is resolved (fight, chest…), and walking stops there.
-5. **After walking stops**, the rest of the route is kept and renumbered from 1. The food check runs again: if the rest now costs more food than the player has, it switches to the "not enough food" state.
+5. **After walking stops**, the rest of the route is kept and renumbered from 1. The food check runs again: if the rest now costs more food than the player has, it switches to the "food runs out" state (States below).
 6. **The boss tile**: when the next step is the boss tile, `GoButton` opens a confirm dialog before stepping on it. The dialog says "Fight the Goblin chief now?", with a "Fight" button (primary) and a "Not yet" button (secondary).
 7. The food cost comes from the game logic (1 per step, 2 on slow terrain). The screen doesn't compute rules itself.
 
-Points 5 and 6 and the visited and resolved tile looks follow the tester's suggested answers to G-13, G-15 and G-18 in `tests/design-review/design-doc-gaps.md`. If the PM decides otherwise, this spec changes with it.
+Points 5 and 6 and the visited and resolved tile looks follow the PM's answers to G-13, G-15 and G-18 (`plan/reviews/stage-0-answers.md`).
 
 ## Feedback on the map
 
@@ -73,14 +73,14 @@ Points 5 and 6 and the visited and resolved tile looks follow the tester's sugge
 | Stepping on ice (chilled) | The Chilled badge appears on `PlayerToken`. The first time, a "Chilled: −1 energy in the next fight" line appears in `TileDetails` |
 | Death on the map (lava, an event, 0 food) | Death and retry screen, with the cause (see [screens.md](../screens.md)) |
 
-Lava damage and the ice rule depend on G-20 and G-21 (PM).
+Lava deals 4 damage (G-20). Ice makes the player Chilled until the next fight, where it becomes Chill 1 on the player (G-21).
 
 ## States
 
 | State | Look |
 |---|---|
 | No route planned | `RouteSummary` shows "Click a tile next to you to plan a route"; Go and Clear disabled |
-| Route costs more food than the player has | Route outlines and step numbers switch to `color.accent.danger` from the step where food runs out. "Not enough food" appears in `RouteSummary` in `color.text.danger`. Go disabled |
+| Route costs more food than the player has | Moving is never blocked: each missing food costs 3 health (G-09). Route outlines and step numbers switch to `color.accent.danger` from the step where food runs out. `RouteSummary` shows the cost in `color.text.danger`, e.g. "Food runs out at step 4: −6 health". Go stays enabled |
 | Route crosses hazard terrain | `RouteSummary` lists it, e.g. "crosses swamp: +1 food per tile" |
 | Food is 0 | The food chip's number in `TopBar` turns `color.text.danger` |
 | Walking | Hex clicks ignored; Go shows "Walking…" and is disabled |
