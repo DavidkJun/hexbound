@@ -201,6 +201,21 @@ describe('level order', () => {
     expect(levels.map(({ id }) => id)).toEqual(['bbb']);
   });
 
+  it('is needed once a level file is not an example (#17)', () => {
+    expect(problemsOf([...exampleFiles, level('whisperwood')])).toEqual([
+      {
+        file: 'data/levels',
+        field: '',
+        message:
+          'levels.json is missing (it lists the levels to play, in order, e.g. ["whisperwood"])',
+      },
+    ]);
+  });
+
+  it('is not needed while every level file is an example', () => {
+    expect(problemsOf([level('_aaa'), level('_bbb')])).toEqual([]);
+  });
+
   it('reports a listed level with no file', () => {
     expect(problemsOf([file('data/levels/levels.json', ['gone'])])).toEqual([
       { file: 'data/levels/levels.json', field: '', message: 'no level file for "gone"' },

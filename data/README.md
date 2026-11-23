@@ -10,17 +10,17 @@ A bad file gives a message with the file, the field and the problem, in the term
 
 ## Files
 
-| Path                     | Holds                                              | Owner               |
-| ------------------------ | -------------------------------------------------- | ------------------- |
-| `cards/*.json`           | A list of cards                                    | PM / Game designer  |
-| `enemies/*.json`         | A list of enemies                                  | PM / Game designer  |
-| `blessings/*.json`       | A list of blessings                                | PM / Game designer  |
-| `events/*.json`          | A list of events                                   | PM / Game designer  |
-| `levels/<level-id>.json` | One map: [format](../design/levels/map-format.md)  | UI / Level designer |
-| `levels/levels.json`     | Which levels the game plays, in order, each once   | UI / Level designer |
-| `tutorial/tutorial.json` | The first fight of a new run                       | PM / Game designer  |
-| `numbers.json`           | Every number of the rules (DD 4.9)                 | PM / Game designer  |
-| `text.json`              | All other text on screen: labels, buttons, markers | Whoever adds it     |
+| Path                     | Holds                                                                                 | Owner               |
+| ------------------------ | ------------------------------------------------------------------------------------- | ------------------- |
+| `cards/*.json`           | A list of cards                                                                       | PM / Game designer  |
+| `enemies/*.json`         | A list of enemies                                                                     | PM / Game designer  |
+| `blessings/*.json`       | A list of blessings                                                                   | PM / Game designer  |
+| `events/*.json`          | A list of events                                                                      | PM / Game designer  |
+| `levels/<level-id>.json` | One map: [format](../design/levels/map-format.md)                                     | UI / Level designer |
+| `levels/levels.json`     | Which levels the game plays, in order, each once. Needed once a level file has no `_` | UI / Level designer |
+| `tutorial/tutorial.json` | The first fight of a new run                                                          | PM / Game designer  |
+| `numbers.json`           | Every number of the rules (DD 4.9)                                                    | PM / Game designer  |
+| `text.json`              | All other text on screen: labels, buttons, markers                                    | Whoever adds it     |
 
 Split a folder into as many files as you like, for example `cards/starter.json` and `cards/blade.json`. Ids must be unique across a folder, in kebab-case.
 
