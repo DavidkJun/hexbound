@@ -405,6 +405,102 @@ describe('cards and the starter deck', () => {
   });
 });
 
+describe('reward effects (#29)', () => {
+  const rewards = [
+    { type: 'gainKey', amount: 1 },
+    { type: 'gainMaxHealth', amount: 5 },
+    { type: 'cardReward', rarity: 'rare' },
+    { type: 'gainBlessing' },
+  ];
+  const blessing = (trigger: string, effects: object[]) => ({
+    id: 'gift',
+    name: 'Gift',
+    text: 'A gift.',
+    trigger,
+    effects,
+  });
+  const event = (effects: object[]) => ({
+    id: 'shrine-of-bones',
+    name: 'Shrine of bones',
+    text: 'Bones.',
+    choices: [
+      { label: 'Take', outcomes: [{ chance: 100, text: 'Yours.', effects }] },
+      { label: 'Leave', outcomes: [{ chance: 100, text: 'Nothing.', effects: [] }] },
+    ],
+  });
+  const card = (effects: object[]) => ({
+    id: 'lockpick',
+    name: 'Lockpick',
+    family: 'item',
+    rarity: 'starter',
+    copies: 1,
+    cost: 1,
+    effects,
+    text: 'A lockpick.',
+  });
+
+  it('are given by event outcomes and onPickup or levelStart blessings', () => {
+    expect(problemsOf([file('data/events/a.json', [event(rewards)])])).toEqual([]);
+    for (const trigger of ['onPickup', 'levelStart']) {
+      expect(problemsOf([file('data/blessings/a.json', [blessing(trigger, rewards)])])).toEqual([]);
+    }
+  });
+
+  it('never come from a card or an enemy move', () => {
+    for (const reward of rewards) {
+      expect(problemsOf([file('data/cards/a.json', [card([reward])])])).toEqual([
+        {
+          file: 'data/cards/a.json',
+          field: '[0].effects[0].type',
+          message: `"${reward.type}" works only in blessings and event outcomes`,
+        },
+      ]);
+    }
+  });
+
+  it('open no reward screen in the middle of a fight', () => {
+    const problems = problemsOf([
+      file('data/blessings/a.json', [blessing('fightStart', rewards)]),
+      file('data/blessings/b.json', [
+        { ...blessing('turnStart', [{ type: 'gainBlessing' }]), id: 'other' },
+      ]),
+    ]);
+    expect(problems).toEqual([
+      {
+        file: 'data/blessings/a.json',
+        field: '[0].effects[2].type',
+        message: '"cardReward" opens a reward screen, so it can\'t run at fightStart',
+      },
+      {
+        file: 'data/blessings/a.json',
+        field: '[0].effects[3].type',
+        message: '"gainBlessing" opens a reward screen, so it can\'t run at fightStart',
+      },
+      {
+        file: 'data/blessings/b.json',
+        field: '[0].effects[0].type',
+        message: '"gainBlessing" opens a reward screen, so it can\'t run at turnStart',
+      },
+    ]);
+  });
+
+  it('offer common or rare cards, never starter ones', () => {
+    const offer = (effect: object) => problemsOf([file('data/events/a.json', [event([effect])])]);
+    expect(offer({ type: 'cardReward', rarity: 'common' })).toEqual([]);
+    expect(offer({ type: 'cardReward', rarity: 'starter' })[0]).toMatchObject({
+      field: '[0].choices[0].outcomes[0].effects[0].rarity',
+    });
+    expect(offer({ type: 'cardReward' })).not.toEqual([]);
+  });
+
+  it('take an amount only where it counts', () => {
+    const outcome = (effect: object) => problemsOf([file('data/events/a.json', [event([effect])])]);
+    expect(outcome({ type: 'gainKey', amount: 0 })).not.toEqual([]);
+    expect(outcome({ type: 'gainMaxHealth' })).not.toEqual([]);
+    expect(outcome({ type: 'gainBlessing', amount: 1 })).not.toEqual([]);
+  });
+});
+
 describe('enemy moves', () => {
   const enemy = (effects: object[]) => ({
     id: 'rat',
