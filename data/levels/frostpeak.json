@@ -1,0 +1,40 @@
+{
+  "id": "frostpeak",
+  "name": "Frostpeak Pass",
+  "land": "frostpeak",
+  "hazard": "ice",
+  "startFood": 15,
+  "terrain": [
+    ".........",
+    "...i.....",
+    "....i....",
+    ".........",
+    "...i.....",
+    ".........",
+    "........."
+  ],
+  "start": [0, 0],
+  "boss": {"at": [8, 6], "enemy": "frost-giant"},
+  "fixed": [
+    {"at": [1, 4], "type": "village"}
+  ],
+  "slots": [
+    {"at": [2, 1], "allow": ["monster"]},
+    {"at": [7, 3], "allow": ["monster"]},
+    {"at": [0, 2], "allow": ["monster"]},
+    {"at": [3, 6], "allow": ["monster"]},
+    {"at": [5, 2], "allow": ["elite"]},
+    {"at": [1, 2], "allow": ["chest"]},
+    {"at": [6, 5], "allow": ["chest"]},
+    {"at": [3, 3], "allow": ["shrine"]},
+    {"at": [4, 5], "allow": ["mystery"]},
+    {"at": [4, 4], "allow": ["locked-chest"]},
+    {"at": [5, 0], "allow": ["mystery", "chest"]},
+    {"at": [8, 2], "allow": ["monster", "chest"]}
+  ],
+  "intendedRoutes": {
+    "direct": [[0, 0], [1, 0], [2, 1], [3, 1], [4, 2], [5, 2], [6, 3], [7, 3], [8, 4], [8, 5], [8, 6]],
+    "safe": [[0, 0], [0, 1], [0, 2], [0, 3], [1, 3], [1, 4], [2, 5], [2, 6], [3, 6], [4, 6], [5, 6], [6, 6], [7, 6], [8, 6]],
+    "rich": [[0, 0], [0, 1], [0, 2], [1, 2], [2, 3], [3, 3], [3, 4], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5], [8, 6]]
+  }
+}

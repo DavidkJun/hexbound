@@ -58,7 +58,7 @@ These are drawn by the shared UI code, not by a game screen. They use the same t
 
 | Name | Where and how it looks |
 |---|---|
-| `BuildInfo` | On every screen, bottom-left: `space.sm` from the left and bottom edges of the canvas. `text.small`, `color.text.muted`: "build <commit> · seed <seed>". Drawn above everything, but it never takes clicks. *(This is what the build already does.)* |
+| `BuildInfo` | On every screen, bottom-left: `space.sm` from the left and bottom edges of the canvas. `text.small`, `color.text.muted`: "build <commit> · seed <seed>". Drawn above everything, but it never takes clicks. While the game plays the example files (no real level yet, `map-format.md`), the line ends with " · Example map", and that part is in `color.text.danger`. |
 | `DataErrorScreen` | Replaces the whole canvas when a data file is broken. Background `color.bg.base`, padding `space.2xl`. Title "Data error" in Cinzel `text.h2`, `color.text.danger`, with a `space.lg` gap under it. Under it, one line per problem in `text.body`, `color.text.primary`, with `space.sm` between lines: "file · field: message" ("file: message" when there is no field). `BuildInfo` stays visible. |
 | `WindowTooSmall` | When the browser window is smaller than 960 × 540, shown instead of the canvas. It fills the whole window, background `color.bg.base`. A centred line in `text.body`, `color.text.primary`: "Hexbound needs a desktop browser window of at least 960 × 540." The game behind it stays paused. |
 
