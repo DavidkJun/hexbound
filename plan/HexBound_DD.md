@@ -105,7 +105,7 @@ The exact rules, decided after the stage 0 design review (`tests/design-review/d
 
 ### 4.2 Health, gold and food
 
-- **Health** starts at 60 of 60 and carries over between fights and levels. It is restored only by village rest, chests, events, blessings and the heal after a boss, and never above max health. Max health changes only through blessings.
+- **Health** starts at 60 of 60 and carries over between fights and levels. It is restored only by village rest, chests, events, blessings and the heal after a boss, and never above max health. Max health changes only through blessings and event outcomes. When max health goes up, health goes up by the same amount: 40 of 60 with +5 max health becomes 45 of 65.
 - **Gold** starts at 20 and carries over. It never goes below 0: a cost the player can't pay is unavailable.
 - **Food** is reset to the map's `startFood` at the start of every level. Food left at the end of a level is lost.
 - Each step costs 1 food, or 2 onto a slow tile (swamp, ice).
@@ -153,6 +153,7 @@ The exact rules, decided after the stage 0 design review (`tests/design-review/d
     - Take a bounty: free.
 - **Bounty:** the village marks one unresolved monster or elite tile on this level, chosen at random. Winning that fight before the boss fight pays 40 gold. Only one bounty can be active; it fails when the boss fight starts. "Take a bounty" is unavailable when no unresolved monster or elite tile is left on the level.
 - **Shrine:** pick 1 of 3 different blessings the player doesn't own yet. There is no skip, since every blessing helps. If fewer than 3 are left, it offers the rest; if none are left, it heals 10.
+- **Random blessing** (a locked chest, an event outcome): a blessing the player doesn't own yet, chosen at random. If the player already owns every blessing, it heals 10 instead, like an empty shrine.
 - **Mystery:** a random event that hasn't come up this run yet. An event has come up once the player has opened it; an event only dealt to a tile has not. Each choice shows its cost and its outcomes with their chances on the button, e.g. "50%: +30 gold". A choice is unavailable if the player can't pay its cost, or if its health cost would bring health to 0. The game has **8 events** (at least 6 are a must-have), shared by all three levels.
 
 ### 4.6 Combat
@@ -213,7 +214,7 @@ A range such as 10–15 means a whole number from 10 to 15, both ends included, 
 | Village | food 3 for 10 gold, rest +15 health for 20 gold, card 25 gold, removal 30 gold |
 | Smallest deck | 8 cards |
 | Bounty | 40 gold |
-| Shrine with no blessing left | heals 10 |
+| Shrine or random blessing with no blessing left | heals 10 |
 | Lava | 4 damage per tile |
 | Ice | Chill 1 in the next fight |
 | Rested | 5 block in the next fight |
