@@ -3,9 +3,7 @@ import './BuildInfo.css';
 
 /**
  * Which build and seed this is, so a bug report can name them and the tester can replay the run
- * with `?seed=<seed>`.
- *
- * TODO(design): not in any screen spec yet; the place and the style are a stand-in.
+ * with `?seed=<seed>`. On every screen: design/screens.md → System screens.
  */
 export function BuildInfo({ seed }: { seed: number }) {
   return (

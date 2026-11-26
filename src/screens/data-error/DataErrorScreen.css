@@ -3,11 +3,13 @@
   height: 100%;
   padding: var(--space-2xl);
   overflow-y: auto;
+  background: var(--color-bg-base);
 }
 
+/* TODO(design): the spec gives no gap under the title or between lines; space.lg and space.sm. */
 .data-error-title {
   margin: 0 0 var(--space-lg);
-  color: var(--color-accent-danger);
+  color: var(--color-text-danger);
   font-family: var(--font-heading);
   font-size: var(--text-h2);
   font-weight: var(--font-weight-heading);
@@ -18,5 +20,8 @@
   flex-direction: column;
   gap: var(--space-sm);
   margin: 0;
-  padding-left: var(--space-lg);
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-primary);
+  font-size: var(--text-body);
 }

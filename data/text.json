@@ -4,5 +4,6 @@
   "terrain.lava": "burn",
   "build.commit": "build",
   "build.seed": "seed",
-  "dataError.title": "Bad data file"
+  "dataError.title": "Data error",
+  "windowTooSmall.message": "Hexbound needs a desktop browser window of at least 960 × 540."
 }
