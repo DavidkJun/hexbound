@@ -233,7 +233,7 @@ describe('TC-MAP-07 rule 7: location types and allow lists', () => {
   it('TC-MAP-07f-control accepts an allow list of distinct types', () => {
     expect(problemsWith({ slots: [{ at: [2, 5], allow: ['monster', 'chest'] }] })).toEqual([]);
   });
-  it.fails('BUG-015 TC-MAP-07f rejects an allow list that repeats a type', () => {
+  it('TC-MAP-07f rejects an allow list that repeats a type (regression BUG-015)', () => {
     expect(fieldsOf({ slots: [{ at: [2, 5], allow: ['monster', 'monster', 'chest'] }] })).toEqual([
       'slots[0].allow',
     ]);
@@ -315,10 +315,10 @@ describe('TC-MAP-10 rule 10: boss.enemy is an existing enemy', () => {
     expect(fieldsOf({ boss: { at: [8, 0], enemy: 'ember-dragon' } })).toEqual(['boss.enemy']);
   });
   // map-format.md rule 10 (since main abced2c, answer N-05): the boss must have "kind": "boss".
-  it.fails.each([
+  it.each([
     ['a normal enemy', 'bog-rat'],
     ['an elite', 'frost-wisp'],
-  ])('BUG-013 TC-MAP-10d rejects %s (%s) as the boss', (_, enemy) => {
+  ])('TC-MAP-10d rejects %s (%s) as the boss (regression BUG-013)', (_, enemy) => {
     expect(fieldsOf({ boss: { at: [8, 0], enemy } })).toEqual(['boss.enemy']);
   });
   it('TC-MAP-10c skips the check while there are no enemy files (stage 0)', () => {

@@ -15,6 +15,14 @@ Owner: Tester. Everything here is the tester's work. It reads the other roles' f
 | Automated tests (314 acceptance + 25 e2e, also run on the deployed build and on PR branches) | — | [auto/](auto/), [e2e/](e2e/) |
 | Evidence: logs, JUnit, HTML report, screenshots, run report; first run and retest | Everyone | [results/stage-0/](results/stage-0/README.md), [results/stage-0/retest/](results/stage-0/retest/README.md), [retest-2/](results/stage-0/retest-2/README.md) |
 
+## Stage 1 deliverables
+
+| What | For | File |
+|---|---|---|
+| Testable rules for the map, movement and food (#25), and for combat and keywords (#26), with 12 open questions for the PM | Programmer, PM | [rules/](rules/README.md) |
+| Acceptance tests of the stage 1 core (#27, #28), run on the programmer's PR branch until it is merged | — | [stage-1/](stage-1/) |
+| First test pass on PR #40: 69 pass, 9 for stage 2, mutation check 10/10 | Everyone | [results/stage-1/first-pass/](results/stage-1/first-pass/README.md) |
+
 ## Run the automated tests
 
 You need Node 24 (`nvm use`) and the project installed (`npm ci` in the repository root).

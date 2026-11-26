@@ -7,7 +7,7 @@ Owner: Tester. A test case ID is `TC-<SUITE>-<NN><letter>`. The same ID appears 
 | Suite | What it checks | Type | Cases (executions) | Where | Stage 0 (2026-11-04) | Retest (2026-11-05, 11-15) |
 |---|---|---|---|---|---|---|
 | TC-S0 | Stage 0 "done when" for every role: run, build, check, deploy, templates, seed, data errors | manual + linked auto | 18 | [TC-S0-stage0-acceptance.md](TC-S0-stage0-acceptance.md) | 14 pass · 3 fail · 1 blocked | 17 pass · 1 fail (BUG-009); **18 / 18 on 11-15** |
-| TC-MAP | Map file format, rules 1–10 + `levels.json` (`map-format.md`) | auto, Vitest | 13 groups (85) | `tests/auto/map-format.test.ts` | all pass; 2 confirm bugs | all pass (85); 2 regressions + 4 new bug tests (BUG-013, 014, 015) |
+| TC-MAP | Map file format, rules 1–10 + `levels.json` (`map-format.md`) | auto, Vitest | 13 groups (85) | `tests/auto/map-format.test.ts` | all pass; 2 confirm bugs | all pass (85); 2 regressions + 4 new bug tests (BUG-013, 014, 015); **11-15: BUG-013, 015 are regressions** |
 | TC-LVL | Design targets of every map: corners, food + 3, routes, avoidable hazards | auto, Vitest | 9 per map | `tests/auto/level-targets.test.ts` | pass on `_example`; runs on each new map | pass |
 | TC-HEX | Hex grid: size, centres, neighbours, distance (`ui-rules.md` §5) | auto, Vitest | 4 groups (17) | `tests/auto/hex-grid.test.ts` | all pass | all pass |
 | TC-SEED | Seeded replay and slot dealing (Prog §3, Tester §4) | auto, Vitest | 3 groups (16) | `tests/auto/seed-rng.test.ts` | all pass | all pass |
