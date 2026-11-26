@@ -24,10 +24,15 @@ export function terrainAt(map: Pick<LevelMap, 'terrain' | 'hazard'>, [col, row]:
   return map.terrain[row]?.[col] === TERRAIN_CHARS.normal ? 'normal' : map.hazard;
 }
 
+/** Food a step onto this tile costs: 1, or 2 onto a slow tile. */
+export function foodToEnter(map: Pick<LevelMap, 'terrain' | 'hazard'>, hex: Hex): number {
+  return FOOD_PER_STEP[terrainAt(map, hex)];
+}
+
 /** Food spent walking a route; the first tile is where the walk starts, so it costs nothing. */
 export function routeFoodCost(
   map: Pick<LevelMap, 'terrain' | 'hazard'>,
   route: readonly Hex[],
 ): number {
-  return route.slice(1).reduce((food, hex) => food + FOOD_PER_STEP[terrainAt(map, hex)], 0);
+  return route.slice(1).reduce((food, hex) => food + foodToEnter(map, hex), 0);
 }
