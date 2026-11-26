@@ -1,0 +1,137 @@
+[
+  {
+    "id": "bog-rat",
+    "name": "Bog rat",
+    "kind": "normal",
+    "land": "whisperwood",
+    "health": 24,
+    "moves": [
+      {
+        "id": "bite",
+        "name": "Bite",
+        "intent": "attack",
+        "effects": [{ "type": "dealDamage", "amount": 5 }]
+      },
+      {
+        "id": "burrow",
+        "name": "Burrow",
+        "intent": "block",
+        "effects": [{ "type": "gainBlock", "amount": 5 }]
+      }
+    ],
+    "pattern": { "type": "cycle", "order": ["bite", "bite", "burrow"] }
+  },
+  {
+    "id": "mire-leech",
+    "name": "Mire leech",
+    "kind": "normal",
+    "land": "whisperwood",
+    "health": 30,
+    "moves": [
+      {
+        "id": "latch",
+        "name": "Latch",
+        "intent": "attack",
+        "effects": [{ "type": "dealDamage", "amount": 6 }]
+      },
+      {
+        "id": "numbing-bite",
+        "name": "Numbing bite",
+        "intent": "debuff",
+        "effects": [
+          { "type": "applyChill", "amount": 1 },
+          { "type": "dealDamage", "amount": 3 }
+        ]
+      }
+    ],
+    "pattern": { "type": "random", "weights": { "latch": 2, "numbing-bite": 1 } }
+  },
+  {
+    "id": "goblin-scout",
+    "name": "Goblin scout",
+    "kind": "normal",
+    "land": "whisperwood",
+    "health": 34,
+    "moves": [
+      {
+        "id": "stab",
+        "name": "Stab",
+        "intent": "attack",
+        "effects": [{ "type": "dealDamage", "amount": 7 }]
+      },
+      {
+        "id": "sharpen",
+        "name": "Sharpen",
+        "intent": "buff",
+        "effects": [{ "type": "gainStrength", "amount": 2 }]
+      }
+    ],
+    "pattern": { "type": "cycle", "order": ["stab", "sharpen", "stab"] }
+  },
+  {
+    "id": "bog-troll",
+    "name": "Bog troll",
+    "kind": "elite",
+    "land": "whisperwood",
+    "health": 50,
+    "moves": [
+      {
+        "id": "club",
+        "name": "Club",
+        "intent": "attack",
+        "effects": [{ "type": "dealDamage", "amount": 12 }]
+      },
+      {
+        "id": "mud-wall",
+        "name": "Mud wall",
+        "intent": "block",
+        "effects": [{ "type": "gainBlock", "amount": 10 }]
+      },
+      {
+        "id": "roar",
+        "name": "Roar",
+        "intent": "buff",
+        "effects": [{ "type": "gainStrength", "amount": 3 }]
+      }
+    ],
+    "pattern": { "type": "cycle", "order": ["club", "mud-wall", "roar"] }
+  },
+  {
+    "id": "goblin-chief",
+    "name": "Goblin chief",
+    "kind": "boss",
+    "land": "whisperwood",
+    "health": 90,
+    "moves": [
+      {
+        "id": "cleave",
+        "name": "Cleave",
+        "intent": "attack",
+        "effects": [{ "type": "dealDamage", "amount": 11 }]
+      },
+      {
+        "id": "twin-slash",
+        "name": "Twin slash",
+        "intent": "attack",
+        "effects": [
+          { "type": "dealDamage", "amount": 5 },
+          { "type": "dealDamage", "amount": 5 }
+        ]
+      },
+      {
+        "id": "war-cry",
+        "name": "War cry",
+        "intent": "buff",
+        "effects": [
+          { "type": "gainStrength", "amount": 2 },
+          { "type": "gainBlock", "amount": 10 }
+        ]
+      }
+    ],
+    "pattern": { "type": "cycle", "order": ["cleave", "twin-slash", "war-cry"] },
+    "signature": {
+      "move": "war-cry",
+      "text": "War cry: every 3rd turn gains 2 strength and 10 block. Its attacks grow the longer the fight lasts."
+    }
+  }
+]
