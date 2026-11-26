@@ -92,14 +92,14 @@ Deck, gold and blessings carry over between levels. On death the player spends a
 
 ## 4. Rules
 
-The exact rules, decided after the stage 0 design review (`tests/design-review/design-doc-gaps.md`; the answer to each question is in [`reviews/stage-0-answers.md`](reviews/stage-0-answers.md)). All numbers are starting values, collected in [4.9](#49-numbers), and are tuned in stage 3. In the game they live in data files, never in code.
+The exact rules, decided after the stage 0 design review (`tests/design-review/design-doc-gaps.md`; the answer to each question is in [`reviews/stage-0-answers.md`](reviews/stage-0-answers.md)), and after the stage 1 rule questions (Q-M1–M7 in #25, Q-C1–C5 in #26). All numbers are starting values, collected in [4.9](#49-numbers), and are tuned in stage 3. In the game they live in data files, never in code.
 
 ### 4.1 Run, lives and score
 
 - A run is the three levels in order. The run is **won** when the level 3 boss, the Ember dragon, dies.
 - The player starts the run with **3 lives**. A life is a retry: dying with at least 1 life left spends 1 life and restarts the level. Dying with 0 lives left ends the run (**Run over**).
-- Health reaching 0 is a death wherever it happens: in a fight, on lava, from an event or from hunger. The death screen names the cause: "Fight: &lt;enemy&gt;", "Burned by lava", "Event: &lt;name&gt;" or "Starved".
-- **A retry restores the state from the moment the level started:** deck, gold, health, max health, food, keys and blessings. The slots are dealt again. The deal uses the run's random generator, which keeps going, so the same seed replays the same retries.
+- Health reaching 0 is a death wherever it happens: in a fight, on lava, from an event or from hunger. The death screen names the cause: "Fight: &lt;enemy&gt;", "Burned by lava", "Event: &lt;name&gt;" or "Starved". If hunger and lava both hit on one step, hunger is applied first, and the cause is whichever brings health to 0.
+- **A retry restores the state from the moment the level started:** deck, gold, health, max health, food, keys, blessings and the list of events seen this run. Fight modifiers (Chilled, Rested) gained in the lost attempt are gone. The slots are dealt again. The deal uses the run's random generator, which keeps going, so the same seed replays the same retries.
 - **Restart level** in the Pause menu works like a death: it costs 1 life and asks to confirm first. With 0 lives left it is unavailable.
 - **Score**, shown at the end of every run, won or lost: 1000 per level cleared + 10 per health left + 1 per gold left + 300 per life left. Time doesn't count: the game is turn-based, and the player should never feel rushed.
 
@@ -117,11 +117,12 @@ The exact rules, decided after the stage 0 design review (`tests/design-review/d
 - **Entering a location tile always resolves it,** and the walk stops there. A fight can't be fled, and an unresolved location can't be walked through.
 - After the location is resolved, the rest of the planned route is kept and its food is checked again.
 - A resolved monster, elite, chest, shrine or mystery tile becomes empty: it shows as visited and does nothing.
-- A **locked chest** entered without a key does nothing and stays locked; the player can come back with a key. Opening it uses the key, and the tile becomes empty.
+- A **locked chest** entered without a key does nothing and stays locked, and the walk stops there like on any location; the player can come back with a key. Opening it uses the key, and the tile becomes empty.
 - A **village** stays a village. Rest, buy a card and remove a card can each be used once per village per level; buying food has no limit. Leaving and coming back doesn't reset them.
 - Stepping onto the **boss** tile asks "Fight the boss now?" first. Winning the boss fight ends the level.
 - **Visibility:** location types are visible from the start. Details (which enemy, the chest contents, which event) are shown for every tile within 2 steps of the player's current tile, and stay shown for the rest of the level once seen. The boss and its signature move are shown from the start.
 - **Dealing:** at the start of each level attempt, each slot gets one type from its `allow` list, all equally likely, through the run's random generator. The details of each location are chosen at the same time. A map guarantees what matters through its own `allow` lists: a slot `["elite"]` is always an elite.
+- **Which enemy:** each monster tile picks evenly from the level's normal enemies not yet dealt in this attempt; once all of them have been dealt, from all of them. Elite tiles work the same way with the level's elites.
 
 ### 4.4 Terrain hazards and fight modifiers
 
@@ -150,9 +151,9 @@ The exact rules, decided after the stage 0 design review (`tests/design-review/d
     - Buy a card: 1 of 3 commons for 25 gold.
     - Remove a card: 30 gold. Unavailable when the deck has 8 cards.
     - Take a bounty: free.
-- **Bounty:** the village marks one unresolved monster or elite tile on this level, chosen at random. Winning that fight before the boss fight pays 40 gold. Only one bounty can be active; it fails when the boss fight starts.
+- **Bounty:** the village marks one unresolved monster or elite tile on this level, chosen at random. Winning that fight before the boss fight pays 40 gold. Only one bounty can be active; it fails when the boss fight starts. "Take a bounty" is unavailable when no unresolved monster or elite tile is left on the level.
 - **Shrine:** pick 1 of 3 different blessings the player doesn't own yet. There is no skip, since every blessing helps. If fewer than 3 are left, it offers the rest; if none are left, it heals 10.
-- **Mystery:** a random event that hasn't come up this run yet. Each choice shows its cost and its outcomes with their chances on the button, e.g. "50%: +30 gold". A choice is unavailable if the player can't pay its cost, or if its health cost would bring health to 0. The game has **8 events** (at least 6 are a must-have), shared by all three levels.
+- **Mystery:** a random event that hasn't come up this run yet. An event has come up once the player has opened it; an event only dealt to a tile has not. Each choice shows its cost and its outcomes with their chances on the button, e.g. "50%: +30 gold". A choice is unavailable if the player can't pay its cost, or if its health cost would bring health to 0. The game has **8 events** (at least 6 are a must-have), shared by all three levels.
 
 ### 4.6 Combat
 
@@ -169,8 +170,8 @@ The exact rules, decided after the stage 0 design review (`tests/design-review/d
 - **Energy** can go above 3 for one turn through `gainEnergy` (shown as 4/3).
 - **Hand:** at most 10 cards. A card drawn into a full hand goes to the discard pile.
 - **Reshuffle:** drawing from an empty draw pile first shuffles the discard pile into it. If both are empty, nothing is drawn. Exhausted cards stay out until the fight ends.
-- **Damage:** the effect's amount + the attacker's strength − the attacker's Chill (enemies only), never below 0. Block absorbs it first, the rest comes off health. `loseHealth` ignores block.
-- The fight ends the moment either side reaches 0 health, even in the middle of a turn.
+- **Damage:** the effect's amount + the attacker's strength − the attacker's Chill (enemies only), never below 0. Block absorbs it first, the rest comes off health. `loseHealth` ignores block. Each `dealDamage` effect is one attack, so strength and Chill count on each of them: a move with two `dealDamage` effects gets the strength twice.
+- The fight ends the moment either side reaches 0 health, even in the middle of a turn. A card's effects happen in order, and the fight ends at the first one that brings a side to 0; the rest are skipped.
 - **After a fight:** block, statuses, strength and energy are cleared, and exhausted cards return to the deck.
 - **Fight length targets** (2–4 turns for a normal fight, 6–10 for a boss) are measured with the starter deck plus the cards picked on the way on level 1, and with the player's own deck on levels 2 and 3.
 
@@ -186,16 +187,18 @@ The exact rules, decided after the stage 0 design review (`tests/design-review/d
 
 **Strength** is a new effect, `gainStrength N`: +N damage on each of that side's attacks for the rest of the fight. It adds up. It is what an enemy's **buff** intent does, and cards can use it too.
 
-**Intent:** the enemy shows the icon of its move's `intent`, with the damage it will really deal (after strength and Chill) for an attack, the block for a block, and the amount for a buff or debuff. Each extra effect of the move is a small icon after the value.
+**Intent:** the enemy shows the icon of its move's `intent`, with the damage it will really deal (after strength and Chill) for an attack, the block for a block, and the amount for a buff or debuff. Each extra effect of the move is a small icon after the value. The value updates at once when strength or Chill changes during the player's turn.
 
 ### 4.8 Cards, starter deck and tutorial
 
 - A **build** is a card family: Blade = weapons, Arcane = spells, Bulwark = armour. Items fit every build.
 - Every card has a **rarity**: starter, common or rare. Monsters, chests and villages offer commons; an elite's card reward has one rare; bosses and locked chests offer rares.
 - **Starter deck**, 10 cards: 4 Strike (weapon), 4 Defend (armour), 1 Ice Shard (spell) and 1 Ration (item). It shows every family once, and Ration ties the fight back to the map through food.
-- **Tutorial:** the first fight of a new run is the tutorial. Whichever monster tile the player enters first on level 1, its enemy is the tutorial enemy, the first two hands are fixed by a scripted draw order, and short hints explain the intent, energy, block and End turn. A retry doesn't repeat the tutorial.
+- **Tutorial:** the first monster fight of a new run is the tutorial; an elite fought before it is a normal elite fight. Whichever monster tile the player enters first on level 1, its enemy is the tutorial enemy, the first two hands are fixed by a scripted draw order, and short hints explain the intent, energy, block and End turn. Only those first 10 draws are scripted; after them the fight draws as usual. A retry doesn't repeat the tutorial.
 
 ### 4.9 Numbers
+
+A range such as 10–15 means a whole number from 10 to 15, both ends included, all equally likely.
 
 | What | Value |
 |---|---|
