@@ -29,3 +29,44 @@ export function pick<T>(rng: RngState, items: readonly T[]): Rolled<T> {
   if (item === undefined) throw new RangeError('pick() needs a non-empty list');
   return { value: item, rng: next };
 }
+
+/** A whole number from `min` to `max`, both included. */
+export function rollInt(rng: RngState, min: number, max: number): Rolled<number> {
+  const { value, rng: next } = nextFloat(rng);
+  return { value: min + Math.floor(value * (max - min + 1)), rng: next };
+}
+
+/** The items in a random order. */
+export function shuffle<T>(rng: RngState, items: readonly T[]): Rolled<T[]> {
+  let state = rng;
+  const keyed = items.map((item) => {
+    const roll = nextFloat(state);
+    state = roll.rng;
+    return { item, key: roll.value };
+  });
+  keyed.sort((a, b) => a.key - b.key);
+  return { value: keyed.map(({ item }) => item), rng: state };
+}
+
+/** Up to `count` different items of the list, in a random order. */
+export function sample<T>(rng: RngState, items: readonly T[], count: number): Rolled<T[]> {
+  const { value, rng: next } = shuffle(rng, items);
+  return { value: value.slice(0, count), rng: next };
+}
+
+/** One item, each as likely as its weight. The weights are positive. */
+export function pickWeighted<T>(
+  rng: RngState,
+  entries: readonly (readonly [T, number])[],
+): Rolled<T> {
+  const total = entries.reduce((sum, [, weight]) => sum + weight, 0);
+  const { value, rng: next } = nextFloat(rng);
+  let left = value * total;
+  for (const [item, weight] of entries) {
+    left -= weight;
+    if (left < 0) return { value: item, rng: next };
+  }
+  const last = entries.at(-1);
+  if (!last) throw new RangeError('pickWeighted() needs a non-empty list');
+  return { value: last[0], rng: next };
+}
