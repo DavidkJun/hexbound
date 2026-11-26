@@ -1,0 +1,30 @@
+HEXBOUND - STAGE 4 - PM / GAME DESIGNER
+
+Goal of this stage: the game feels finished, and nothing new goes in after it. Dates are in the team plan, section "Timeline".
+
+
+1. First: pick the nice-to-haves
+
+From the design document: extra chest types, card upgrades, sound and music, a consistent art set, saving a run between sessions.
+- With the time left, pick at most one or two, and only ones the owner says fit in the stage. A consistent art set is the UI / level designer's main stage 4 task anyway.
+- Tell the team on the first day, so nobody starts something that gets cut.
+- Everything else stays on the nice-to-have list.
+
+
+2. Final text pass
+
+Read every text the player sees: cards, enemies, signatures, blessings, events, level texts, hints, buttons (data/ and data/text.json). Check that card text matches what the card does, the spelling, and that the same thing is called the same everywhere.
+
+
+3. Feature freeze
+
+At the end of the stage, announce the feature freeze. From then on only bug fixes are merged.
+
+
+Hand off at the end of stage 4
+
+- To everyone: the chosen nice-to-haves (first day), and the feature freeze (last day).
+- To the tester: the final texts, for the regression pass.
+
+
+Stage 4 is done at the feature freeze.

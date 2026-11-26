@@ -1,0 +1,46 @@
+HEXBOUND - STAGE 2 - TESTER
+
+Goal of this stage: every new system is tested as it lands, nothing that worked breaks, and the rules have no exploits. Dates are in the team plan, section "Timeline".
+
+
+1. Testable rules for stage 2
+
+Turn the design document, section 4 (4.1, 4.4, 4.5), into testable rules, the same way as stage 1: chests and keys, villages, bounty, shrine and blessings, events, ice and lava, levels 2 and 3, lives and retry, score. Send questions to the PM with your suggested answer, so they only have to write "ok".
+
+
+2. Check the maps before code depends on them
+
+When the UI / level designer sends maps 2 and 3, check for each:
+- startFood covers the direct route plus about 3 spare steps.
+- The three routes exist and differ.
+- Every ice and lava tile can be avoided by a longer route.
+
+
+3. Regression after every merge
+
+After each system is merged, run all your tests on main, not only the new ones. A bug in an old system found now is cheap; found during playtests, it costs a playtest.
+
+
+4. Look for exploits
+
+Try to break the economy and the rules. Some places to start:
+- Restart level or retry to reroll the slots or event outcomes.
+- Village actions used twice, or leaving and coming back.
+- A bounty on a tile that can't be reached, or completed after the boss.
+- Cards or blessings that give food, gold or health in a loop.
+Each exploit goes to the PM as a rule question, not as a bug for the programmer.
+
+
+5. Run the exit check
+
+Play a full run from the main menu to the score screen on the deployed build. Note every blocking bug.
+
+
+Hand off at the end of stage 2
+
+- To each owner: bug reports.
+- To the PM: exploits and rule questions.
+- To everyone: whether the exit check passed.
+
+
+Stage 2 is done for you when a full run is possible with no blocking bugs and your tests run green on main.

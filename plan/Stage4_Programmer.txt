@@ -1,0 +1,29 @@
+HEXBOUND - STAGE 4 - PROGRAMMER
+
+Goal of this stage: the chosen extras are in, and the game runs well in every supported browser. Dates are in the team plan, section "Timeline".
+
+
+1. The chosen extras
+
+Build only what the PM picked on the first day of the stage. If one turns out bigger than you thought, say so the same day, so it can be dropped instead of delaying the freeze.
+
+
+2. Browsers and performance
+
+The design document supports the latest two versions of Chrome, Firefox and Edge on desktop, and Safari on a best-effort basis.
+- Play a level in each. Check that the canvas scales, the fonts load, and nothing in the console shows errors.
+- Check the window-too-small screen below 960 x 540.
+- Check the load time of the deployed build. Shrink large images if needed.
+
+
+3. Help with feedback
+
+The UI / level designer adds hit feedback (damage numbers, flashes, short animations). Make sure the game state gives them what they need, for example which card dealt how much damage.
+
+
+Hand off at the end of stage 4
+
+- To the tester: the build with the extras, and the list of browsers you checked.
+
+
+Stage 4 is done for you when the extras are merged, the browser check is done, and npm run check passes on main.

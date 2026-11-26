@@ -1,0 +1,32 @@
+HEXBOUND - STAGE 4 - UI / LEVEL DESIGNER
+
+Goal of this stage: the game looks like one game, and every action gives visible feedback. Dates are in the team plan, section "Timeline".
+
+
+1. A consistent art set
+
+Go through every screen and every icon. Anything that still looks like a placeholder or comes from a different style gets replaced or restyled to the approved visual direction. Update the icon credits if you add icons.
+
+
+2. Hit feedback
+
+The player should feel every action. For example:
+- damage and block numbers that pop up where they happen
+- a short flash or shake when someone is hit
+- the card visibly moving when played
+- a clear "Victory" and "Defeat"
+Keep it short: feedback must not slow down a fight.
+
+
+3. Final UI pass
+
+Every screen at 1280 x 720 and at the smallest size, 960 x 540: compare with the specs, check alignment, text overflow and the states every screen must handle.
+
+
+Hand off at the end of stage 4
+
+- To the programmer: what the feedback needs from the game state.
+- To the tester: the final screens, for the regression pass.
+
+
+Stage 4 is done for you when the art set is consistent, hit feedback is in, and the UI pass is merged before the feature freeze.

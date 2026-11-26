@@ -1,0 +1,36 @@
+HEXBOUND - STAGE 3 - PM / GAME DESIGNER
+
+Goal of this stage: the game plays the way the design says it should, measured against the targets. Dates are in the team plan, section "Timeline".
+
+
+1. Know the targets
+
+From the design document:
+- A full run takes 35-45 minutes.
+- A normal fight lasts 2-4 turns, a boss fight 6-10.
+- Food on each level covers the direct route plus about 3 spare steps.
+- Gold on a level pays for about two village purchases.
+- No single route always wins.
+
+
+2. Tune from the results
+
+The tester brings playtest results and the programmer's fight simulator gives fight lengths. For each target that is missed:
+- Change numbers first: data/numbers.json, enemy health and damage, card values. No code change is needed.
+- Change maps only if numbers can't fix it, and ask the UI / level designer for the change.
+- Change one thing at a time where you can, so the next playtest shows what it did.
+
+
+3. Write down what changed
+
+Keep a short list: what was changed, why, and what result it should give. It goes into the course report later.
+
+
+Hand off at the end of stage 3
+
+- To the tester: each round of changes, for the next playtest.
+- To the UI / level designer: map changes.
+- To everyone: the list of balance changes.
+
+
+Stage 3 is done when a full run takes 35-45 minutes and no single route always wins.

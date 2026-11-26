@@ -1,0 +1,43 @@
+HEXBOUND - STAGE 1 - PM / GAME DESIGNER
+
+Goal of this stage: level 1 can be played from the start tile to the boss by a teammate who did not build it. Dates are in the team plan, section "Timeline".
+
+Most stage 1 work is already written but sits in open pull requests. Your main job now is to get it reviewed and merged in the right order, so nobody waits.
+
+
+1. Unblock the merges
+
+The programmer's pull requests are stacked: each one builds on the one before. Nothing above #37 can land until #37 is merged.
+- Review #37 (data format) first. It is the format your content uses, so you are the right reviewer.
+- After #37: #42 (your level 1 content) can go in. Then #38, #39, #40, #44, in that order.
+- #43 (map 1 and the design updates) and #20 (the tester's stage 0 work) are approved: merge them.
+- At the weekly sync, go through the open pull request list and make sure each one has a reviewer.
+
+
+2. Close your stage 1 tasks
+
+- #22, #23, #24: the content is in #42. Close them by hand once #42 is merged, because a pull request into another branch does not close issues.
+- Add the answers given in #25 and #26 to the design document, section 4 (Q-M3, Q-M7 and the Chill part of Q-C2 are new rules), and export the PDF again.
+
+
+3. Prepare stage 2 now
+
+Stage 2 is the biggest stage and it starts with your content. Start it while the others finish stage 1:
+- Route intent for maps 2 and 3, like plan/route-intent.md, so the UI / level designer can start the maps.
+- Tell the programmer which effects you will need that the format does not have yet (data/README.md, "Not in the format yet": keys, card rewards, random blessings, max health).
+- Rules for the stage 2 systems for the tester (see the stage 2 brief).
+
+
+4. Run the exit check
+
+When the build plays level 1 end to end, give it to a teammate who did not build that part (the tester is a good choice) and watch them play without help. Write down where they got stuck.
+
+
+Hand off at the end of stage 1
+
+- To everyone: the merged build link and "stage 1 is done", or the list of what blocks it.
+- To the tester: the updated rules in the design document.
+- To the UI / level designer: route intent for maps 2 and 3.
+
+
+Stage 1 is done when a teammate who did not build it finishes level 1 on the deployed build.

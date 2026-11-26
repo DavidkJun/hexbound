@@ -1,0 +1,32 @@
+HEXBOUND - STAGE 3 - UI / LEVEL DESIGNER
+
+Goal of this stage: fix what playtests show players can't read or find, and change maps when the PM asks. Dates are in the team plan, section "Timeline".
+
+
+1. Watch at least one playtest
+
+Sit next to a player, or watch a recording. Note where they look for something and don't find it, misread a number, or click the wrong thing. That is your task list for this stage.
+
+
+2. Fix readability and layout
+
+Typical problems to look for:
+- The planned route or its food cost is missed.
+- The enemy intent is misread.
+- The player does not see why something is unavailable (gold, energy, key).
+- Map tiles of one type look too much alike.
+Fix them through the tokens and the specs, as before.
+
+
+3. Map changes
+
+When the PM asks for a map change (a slot moved, a route made longer), make it and tell the tester, so the food check is repeated.
+
+
+Hand off at the end of stage 3
+
+- To the tester: each fix, for the next playtest.
+- To the PM: problems that are about rules, not looks.
+
+
+Stage 3 is done for you when the readability problems from the playtests are fixed and merged.

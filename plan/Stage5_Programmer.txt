@@ -1,0 +1,29 @@
+HEXBOUND - STAGE 5 - PROGRAMMER
+
+Goal of this stage: a release build is online and stays working through the defence. Dates are in the team plan, section "Timeline".
+
+
+1. Release build
+
+- Fix the "must fix before release" bugs from the tester. Nothing else changes.
+- Tag the release commit (for example v1.0) and make sure the deployed build shows it in BuildInfo.
+- Check the deployed link from a clean browser (private window) on another computer.
+
+
+2. README for players
+
+The top of README.md says what the game is, the link to play it, and how to run it locally. Developer details stay below.
+
+
+3. Last fixes
+
+Only blocking bugs. Every fix still goes through a pull request and the tester checks the deployed build again after it.
+
+
+Hand off at the end of stage 5
+
+- To everyone: the release link and the tag.
+- To the tester: the release build, for the acceptance test.
+
+
+Stage 5 is done for you when the release build is deployed and tagged, and the tester's acceptance test passed on it.

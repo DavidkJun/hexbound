@@ -1,0 +1,28 @@
+HEXBOUND - STAGE 5 - UI / LEVEL DESIGNER
+
+Goal of this stage: the visuals for the report and the presentation are ready. Dates are in the team plan, section "Timeline".
+
+
+1. Screenshots
+
+From the release build, at 1280 x 720: each of the three maps, a normal fight, a boss fight, the village, a shrine, an event, a card reward and the score screen. Name them so the PM can find them.
+
+
+2. Visuals for the presentation
+
+- The visual direction and how it became the final screens (for example a wireframe next to the final screen).
+- The three maps with their three routes drawn on them.
+- If there is time: a short recording or GIF of a fight.
+
+
+3. Help with the slides
+
+The presentation should look like the game: offer the PM the game's colours and fonts for the slides.
+
+
+Hand off at the end of stage 5
+
+- To the PM: the screenshots and visuals, early enough to build the presentation.
+
+
+Stage 5 is done for you when the PM has all the screenshots and visuals.

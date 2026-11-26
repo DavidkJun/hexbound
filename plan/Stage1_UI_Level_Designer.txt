@@ -1,0 +1,39 @@
+HEXBOUND - STAGE 1 - UI / LEVEL DESIGNER
+
+Goal of this stage: the map and fight screens work on the real game, map 1 is in the game, and the small screens level 1 needs exist. Dates are in the team plan, section "Timeline".
+
+
+1. Merge what is ready
+
+- #43 (map 1 Whisperwood and the design updates, #32 and #35) is approved. Merge it.
+- BUG-014 (#17): update design/levels/map-format.md to the wording the PM confirmed in the issue, so the programmer can merge #44.
+- BUG-016 (#19): widen BlessingsRow to 4 slots and export layout.json again.
+
+
+2. Build the two main screens
+
+- Map screen (#33), from design/screens/map.md.
+- Fight screen (#34), from design/screens/fight.md.
+Both run on the game state the programmer exposes (#40). Agree with them which state and actions each screen gets before you start, so neither of you guesses.
+
+
+3. The small level 1 screens
+
+Level 1 also needs these (design/screens.md, stage 1): main menu, credits, level intro, card reward, tutorial hints, deck view, confirm dialog, death and retry, level complete.
+There is not much time, so keep them simple. A short spec line in design/screens.md and the existing tokens and Button component are enough; a full spec page and Figma frame are not needed for each one.
+
+
+4. Check map 1 against the content
+
+- Ration (a starter card) gives 1 food once per fight. Check that map 1's startFood still leaves "direct route plus about 3 spare steps" with that in mind.
+- Play map 1 yourself and check that the three routes from plan/route-intent.md are really different choices.
+
+
+Hand off at the end of stage 1
+
+- To the programmer: anything the screens need that the game state does not give.
+- To the tester: the screens, for the first route check on map 1 (#27).
+- To the PM: map 1 problems that need a content or rule change.
+
+
+Stage 1 is done for you when map 1, the map screen, the fight screen and the small screens are merged, and level 1 can be played on the deployed build.

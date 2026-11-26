@@ -1,0 +1,34 @@
+HEXBOUND - STAGE 2 - UI / LEVEL DESIGNER
+
+Goal of this stage: maps 2 and 3 are in the game, and every screen of a full run exists. Dates are in the team plan, section "Timeline".
+
+
+1. Maps 2 and 3
+
+Build data/levels/frostpeak.json and data/levels/ashen.json from the PM's route intent, and add them to levels.json.
+- Frostpeak: ice is slow and chills the next fight. Make the ice-free route clearly longer.
+- Ashen Citadel: lava deals damage and can kill. Every lava tile must be avoidable by a longer route.
+- Before code depends on them, send both maps to the tester to check the food math against startFood.
+
+
+2. The stage 2 screens
+
+From design/screens.md, stage 2: chest, locked chest, village, shrine, mystery event, event result, run over and score, pause menu.
+- The village is the most complex one: five actions, prices, gold left, the bounty and the deck view in removal mode. Do it first.
+- Keep the others simple: a short spec line in design/screens.md, the tokens and the existing components.
+- Every screen must handle the states in design/screens.md, "States every screen must handle" (can't afford, would kill you, no key and so on).
+
+
+3. Hazard and modifier visuals
+
+The map must show ice and lava clearly, and the fight must show Chilled and Rested in its modifier row. The player should see where a modifier came from.
+
+
+Hand off at the end of stage 2
+
+- To the programmer: anything the screens need that the game state does not give.
+- To the tester: maps 2 and 3 for the food check, then the screens.
+- To the PM: map problems that need a content or rule change.
+
+
+Stage 2 is done for you when maps 2 and 3 and all stage 2 screens are merged, and a full run can be played on the deployed build.

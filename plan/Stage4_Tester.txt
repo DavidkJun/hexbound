@@ -1,0 +1,27 @@
+HEXBOUND - STAGE 4 - TESTER
+
+Goal of this stage: one full regression pass and a second playtest, so the feature freeze happens on a build that works. Dates are in the team plan, section "Timeline".
+
+
+1. Full regression pass
+
+Run every test case and every automated test on main, not only the ones for new work. Play a full run in each supported browser, or split the browsers with a teammate.
+
+
+2. Second playtest
+
+At least 2 people outside the team who did not play in stage 3. Same table as before. Check that the stage 3 balance changes hold, and that the polish didn't break anything they touch.
+
+
+3. Check the texts
+
+Go through the PM's final texts in the game: card text matches what the card does, no text is cut off or overflows.
+
+
+Hand off at the end of stage 4
+
+- To each owner: bug reports, marked "must fix before release" or "can wait".
+- To the PM: the second playtest results, and whether the build is ready for the freeze.
+
+
+Stage 4 is done for you when the regression pass and the second playtest are written up and every "must fix" bug has an owner.
