@@ -1,0 +1,41 @@
+HEXBOUND - STAGE 2 - PM / GAME DESIGNER
+
+Goal of this stage: all the content of the game exists, so a full run from level 1 to the Ember dragon can be played. Dates are in the team plan, section "Timeline".
+
+Everyone else's stage 2 work depends on your content and rules, so do them in the order below and hand each piece off as soon as it is ready, not all at the end.
+
+
+1. Day 1: unblock the others
+
+- Route intent for maps 2 (Frostpeak) and 3 (Ashen Citadel), like plan/route-intent.md, to the UI / level designer.
+- The effects you need that the data format lacks (keys, card rewards with a rarity, random blessings, max health), to the programmer.
+- The open question in data/README.md: how event chances are shown. DD 4.5 already says "50%: +30 gold" on the button; confirm that and close it.
+
+
+2. Write the content
+
+All as data files, in the format from data/README.md. Copy an _example.json to start. All numbers are first values; stage 3 tunes them.
+- Cards: bring the total to 20-24. Level 1 has 18; add the missing ones so each build (Blade, Arcane, Bulwark) has a clear direction and at least one rare.
+- Enemies: 3 normal and 1 elite for Frostpeak and for Ashen; the Frost giant and the Ember dragon, each with a signature move.
+- Blessings: 10-12, with a trigger each (onPickup, levelStart, fightStart, turnStart).
+- Events: 8 (at least 6 are a must-have), each with at least two real choices.
+- Level texts: short intro text for each level.
+
+
+3. Keep the rules up to date
+
+Every answer you give the tester in stage 2 goes into the design document, section 4, the same day. Export the PDF again at the end of the stage.
+
+
+4. Run the exit check
+
+Play a full run yourself, or with the tester, from the main menu to the score screen.
+
+
+Hand off at the end of stage 2
+
+- To the tester: the full content, for regression testing and the exploit search.
+- To everyone: the updated design document.
+
+
+Stage 2 is done when a full run from level 1 to the final boss is possible on the deployed build with no blocking bugs.

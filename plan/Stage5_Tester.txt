@@ -1,0 +1,27 @@
+HEXBOUND - STAGE 5 - TESTER
+
+Goal of this stage: confirm that the release build delivers everything the team committed to. Dates are in the team plan, section "Timeline".
+
+
+1. Acceptance test
+
+Go through the must-have list in the design document, section 5, item by item, on the deployed release build. For each item write: passed or failed, and the evidence (a test, a screenshot, a playtest note).
+
+
+2. Final numbers for the report
+
+Collect for the PM: number of test cases and automated tests, bugs found and fixed, playtest results against the targets (from stages 3 and 4).
+
+
+3. Check last fixes
+
+Every fix merged in this stage gets checked again on the deployed build.
+
+
+Hand off at the end of stage 5
+
+- To the PM: the acceptance table and the final numbers, for the report and the presentation.
+- To the programmer: any must-have item that failed.
+
+
+Stage 5 is done for you when the acceptance table is complete and every must-have item has passed, or the PM has decided what to do about it.

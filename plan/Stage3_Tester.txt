@@ -1,0 +1,36 @@
+HEXBOUND - STAGE 3 - TESTER
+
+Goal of this stage: playtests with people outside the team, and a clear comparison of the results with the design targets. Dates are in the team plan, section "Timeline".
+
+
+1. Run playtests
+
+- At least 3 people outside the team, each playing a full run on the deployed build.
+- Don't help them. Only answer when they are fully stuck, and write down that you did.
+- Use the playtest checklist and the playtest table from stage 0: route taken, food left, health at the boss, fight lengths, run time, deaths, comments.
+
+
+2. Compare with the targets
+
+For each target, write the measured value next to it:
+- Full run: 35-45 minutes.
+- Normal fight: 2-4 turns. Boss fight: 6-10 turns.
+- Food: the direct route plus about 3 spare steps.
+- Gold: about two village purchases per level.
+- No single route always wins: which route did each player take, and how did it end?
+Use the programmer's fight simulator for fight lengths, so you don't need dozens of playtests for those.
+
+
+3. Repeat after changes
+
+When the PM changes numbers or maps, run a shorter playtest or the simulator again and check that the change did what it should.
+
+
+Hand off at the end of stage 3
+
+- To the PM: the results table, compared with the targets, after each round.
+- To the UI / level designer: readability problems.
+- To each owner: bug reports.
+
+
+Stage 3 is done for you when the results show a full run takes 35-45 minutes and no single route always wins.

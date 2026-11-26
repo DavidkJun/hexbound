@@ -1,0 +1,40 @@
+HEXBOUND - STAGE 1 - PROGRAMMER
+
+Goal of this stage: the map, movement, food and combat systems are merged into main, and the screens run on them, so level 1 can be played from start to boss. Dates are in the team plan, section "Timeline".
+
+
+1. Land the stack
+
+Your work is written; it needs to reach main. Merge order: #37 (data format), then #38, #39, #40, #44.
+- Ask for a review on each one as soon as the one below it is merged. Do not wait for the weekly sync.
+- After merging a pull request, delete its branch. GitHub then points the next pull request at main. If it shows conflicts, rebase it on main.
+- Fix review comments the same day. Small fixes go into the same pull request.
+
+
+2. Wire the game to the screens
+
+The UI / level designer builds the map screen (#33) and the fight screen (#34) on your game state. Work with them:
+- Tell them exactly which state and actions each screen gets, as soon as #40 is merged.
+- Check the tutorial: the first monster fight of a new run uses data/tutorial/tutorial.json, its draw order and its hints.
+- Check the full level 1 loop on the deployed build: start, walk, fight, card reward, boss, level complete. Also death and retry.
+
+
+3. Small things still open
+
+- BUG-014 (#17): #44 implements the wording the PM confirmed. Merge it once the UI / level designer updates map-format.md.
+- Level 1 uses real content now (#42). If the game shows a data error, check the content first and tell the PM what is wrong.
+
+
+4. Look ahead to stage 2
+
+Read the stage 2 brief. The format additions the PM needs (keys, card rewards, random blessings, max health) block their content, so do them first in stage 2.
+
+
+Hand off at the end of stage 1
+
+- To the tester: the build link and what changed in each merge.
+- To the UI / level designer: the state and actions for every stage 1 screen.
+- To the PM: anything in the content that the code cannot express.
+
+
+Stage 1 is done for you when everything in the stack is merged, the deployed build plays level 1 to the boss, and npm run check passes on main.

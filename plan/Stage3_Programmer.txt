@@ -1,0 +1,30 @@
+HEXBOUND - STAGE 3 - PROGRAMMER
+
+Goal of this stage: give the PM and the tester the tools to balance the game fast, and fix what playtests find. Dates are in the team plan, section "Timeline".
+
+
+1. First: the debug panel and the fight simulator
+
+Balance waits on these, so build them on the first day.
+- Debug panel, only in development builds or behind a key: jump to a level, set health, gold and food, add a card or a blessing, show the whole map, win or lose the current fight.
+- Fight simulator: a script that runs a deck against an enemy many times with a seed, using the game logic without screens, and prints the average turns and the damage taken. For example npm run sim -- --deck starter --enemy goblin-chief --runs 500.
+The game logic already knows nothing about the screen, so the simulator only needs a simple "play the cards" strategy. It does not have to play well, just the same way every time.
+
+
+2. Fix bugs
+
+Playtest bugs come from the tester. Blocking bugs first, then anything that makes a playtest give wrong results.
+
+
+3. Keep balance in the data
+
+If the PM wants to tune something that is still a number in the code, move it to data/numbers.json instead of changing it in the code.
+
+
+Hand off at the end of stage 3
+
+- To the PM and the tester: the debug panel and the simulator, with how to use them in the README.
+- To the tester: a build per fix.
+
+
+Stage 3 is done for you when the tools are merged and no blocking bug from the playtests is open.

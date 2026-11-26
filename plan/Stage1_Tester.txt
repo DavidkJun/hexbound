@@ -1,0 +1,36 @@
+HEXBOUND - STAGE 1 - TESTER
+
+Goal of this stage: every level 1 system is tested as it lands, and you confirm that level 1 can be finished by someone who did not build it. Dates are in the team plan, section "Timeline".
+
+
+1. Get your work merged
+
+- #20 (stage 0 tests) is approved: it can be merged. Then rebase #41 (stage 1 rules and tests) on main and ask for a review.
+- Review the programmer's pull requests as they come up (#39 and #40 especially, since you already tested them). A review from you counts as the one approval main needs.
+
+
+2. Test as things land
+
+- Map, movement and food (#27): run your stage 1 map tests on main once #40 is merged.
+- Combat (#28): run the combat tests on main, then measure fight lengths with the real level 1 content from #42 (FIGHT-90). Targets: 2-4 turns for a normal fight, 6-10 for the boss. Send the numbers to the PM, not just pass or fail.
+- Retest BUG-014 (#17) and BUG-016 (#19) when their fixes are merged.
+
+
+3. First route check on map 1
+
+With map 1 in the game (#43), play the three routes from plan/route-intent.md. For each, write down: food left at the boss, health at the boss, fights taken, gold. Does each route offer something the others don't? Send it to the PM.
+
+
+4. Run the exit check
+
+Play level 1 on the deployed build from start to boss, or better, watch a teammate who did not build it play. Write down every place where they got stuck or where the game did something the rules don't say.
+
+
+Hand off at the end of stage 1
+
+- To the PM: fight lengths, the route check, and rule problems you found.
+- To each owner: bug reports.
+- To everyone: whether the exit check passed.
+
+
+Stage 1 is done for you when your tests run green on main, the fight lengths and the route check are with the PM, and the exit check is written up.

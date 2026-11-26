@@ -37,7 +37,7 @@ The stage 0 briefs were written before these were decided. Where a brief says ot
 | `plan/HexBound_DD.md` | Design document: what the game is, and its rules. `HexBound_DD.pdf` is exported from it | PM / Game designer |
 | `plan/reviews/`, `plan/route-intent.md` | PM answers to reviews; what each map's routes must offer | PM / Game designer |
 | `plan/HexBound_Team_Plan.md` | Stages, roles, handoffs | PM / Game designer |
-| `plan/Stage0_*.txt` | Stage 0 brief for each role | PM / Game designer |
+| `plan/Stage<N>_*.txt` | Brief for each role and stage; target dates in `plan/HexBound_Team_Plan.md` → Timeline | PM / Game designer |
 | `design/` | How the game looks: UI rules, tokens, layout, screen specs, map format. Start at `design/README.md` | UI / Level designer |
 | `data/levels/` | Map files (JSON) | UI / Level designer |
 | `data/cards/`, `enemies/`, `blessings/`, `events/` | Game content (JSON). Format in `data/README.md`, which the programmer owns | PM / Game designer |

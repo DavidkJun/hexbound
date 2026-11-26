@@ -1,0 +1,47 @@
+HEXBOUND - STAGE 2 - PROGRAMMER
+
+Goal of this stage: every location and system of the game works, so a full run from level 1 to the Ember dragon can be played. Dates are in the team plan, section "Timeline".
+
+
+1. First: the format additions
+
+The PM's content waits on these, so do them before anything else (data/README.md, "Not in the format yet"):
+- gainKey
+- a card reward with a rarity
+- a random blessing the player doesn't own
+- gainMaxHealth
+Update data/README.md with examples and tell the PM.
+
+
+2. The systems
+
+Rules are in the design document, section 4, and the tester's testable rules. Build them in this order, so the most-used ones land first:
+- Chest, locked chest and keys.
+- Village: buy food, rest (and Rested), buy a card, remove a card, bounty.
+- Shrine and blessings, with their triggers.
+- Mystery events, with costs, chances and "would kill you".
+- Hazards: ice (Chilled in the next fight) and lava (damage on the map, can kill).
+- Levels 2 and 3: moving to the next level, what carries over and what resets.
+- Lives: death, retry, Restart level, Run over.
+- Score.
+Everything random goes through the run's random generator, so a seed replays the same run.
+
+
+3. Merge small and often
+
+One pull request per system is easier to review than one big one, and the tester can test each as it lands. With little time, a stack of many pull requests waiting on each other is the main risk: ask for reviews the same day.
+
+
+4. Work with the UI / level designer
+
+They build the stage 2 screens on your state. Tell them which state and actions each screen gets as soon as each system is merged.
+
+
+Hand off at the end of stage 2
+
+- To the tester: a build per system, with what changed.
+- To the UI / level designer: the state and actions for every stage 2 screen.
+- To the PM: anything in the content that the code cannot express.
+
+
+Stage 2 is done for you when every system is merged, a full run can be played on the deployed build, and npm run check passes on main.

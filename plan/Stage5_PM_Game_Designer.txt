@@ -1,0 +1,36 @@
+HEXBOUND - STAGE 5 - PM / GAME DESIGNER
+
+Goal of this stage: the game is online, and the final design document, the course report and the presentation are ready. Dates are in the team plan, section "Timeline".
+
+
+1. Final design document
+
+Update plan/HexBound_DD.md to the game as it shipped: rules in section 4, the final numbers in 4.9, the final content counts in the scope. Export the PDF again.
+
+
+2. Course report
+
+In Ukrainian. Use what the team already wrote:
+- the design document and its rules
+- the team plan and the stage briefs (how work was split and handed off)
+- the tester's results: test cases, bugs found and fixed, playtest results against the targets
+- the balance changes from stage 3
+- what was cut and why
+
+
+3. Presentation
+
+In Ukrainian. Suggested order: the idea and the pillars, a short demo of the game, how the team worked (roles, stages, handoffs), testing and balance, results and what was left out. Get screenshots and visuals from the UI / level designer early.
+
+
+4. Rehearse
+
+Run the presentation once with the whole team, including the live demo on the deployed build. Have a backup recording of the demo in case the network fails.
+
+
+Hand off at the end of stage 5
+
+- To the course: the deployed game link, the report and the presentation.
+
+
+Stage 5 is done when the game is deployed and the presentation is ready.

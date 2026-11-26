@@ -67,6 +67,20 @@ A change to the design always goes through the same order: **PM / GD updates the
 
 A stage ends only when its "done when" check passes. Every stage ends with a playable build that the whole team tries.
 
+### Timeline
+
+The team finishes the game in about a week and a half from 26 November. These are target dates; if one moves, change it here, not in the briefs.
+
+| Stage | Target dates |
+|---|---|
+| 1. First level | Thu 26 – Sat 28 Nov |
+| 2. Full game | Sun 29 Nov – Wed 2 Dec |
+| 3. Balance | Thu 3 – Fri 4 Dec |
+| 4. Polish | Sat 5 Dec |
+| 5. Release | Sun 6 – Mon 7 Dec |
+
+With this little time, the next stage's work starts as soon as its inputs are ready, without waiting for the current stage's exit check. For example, the PM writes stage 2 content while stage 1 is still being merged. The exit checks still decide when a stage is done.
+
 ---
 
 ## 4. Stages in detail
@@ -212,8 +226,15 @@ Each stage lists the goal, what each role does, and the handoffs. Handoffs are l
 
 ## 6. Stage briefs
 
-Each stage has one short brief per role with the concrete tasks for that stage. Briefs for stage 0:
+Each stage has one short brief per role with the concrete tasks for that stage, in `plan/`, named `Stage<N>_<Role>.txt`:
 
-- `Stage0_UI_Level_Designer.txt`
-- `Stage0_Programmer.txt`
-- `Stage0_Tester.txt`
+| Stage | PM / Game designer | UI / Level designer | Programmer | Tester |
+|---|---|---|---|---|
+| 0 | — | `Stage0_UI_Level_Designer.txt` | `Stage0_Programmer.txt` | `Stage0_Tester.txt` |
+| 1 | `Stage1_PM_Game_Designer.txt` | `Stage1_UI_Level_Designer.txt` | `Stage1_Programmer.txt` | `Stage1_Tester.txt` |
+| 2 | `Stage2_PM_Game_Designer.txt` | `Stage2_UI_Level_Designer.txt` | `Stage2_Programmer.txt` | `Stage2_Tester.txt` |
+| 3 | `Stage3_PM_Game_Designer.txt` | `Stage3_UI_Level_Designer.txt` | `Stage3_Programmer.txt` | `Stage3_Tester.txt` |
+| 4 | `Stage4_PM_Game_Designer.txt` | `Stage4_UI_Level_Designer.txt` | `Stage4_Programmer.txt` | `Stage4_Tester.txt` |
+| 5 | `Stage5_PM_Game_Designer.txt` | `Stage5_UI_Level_Designer.txt` | `Stage5_Programmer.txt` | `Stage5_Tester.txt` |
+
+The stage 1 briefs name issues and pull requests, because they were written while stage 1 was under way. The later briefs name only the work, so they stay valid if details change.
