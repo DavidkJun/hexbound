@@ -4,6 +4,7 @@
   "terrain.lava": "burn",
   "build.commit": "build",
   "build.seed": "seed",
+  "build.exampleMap": "Example map",
   "dataError.title": "Data error",
   "windowTooSmall.message": "Hexbound needs a desktop browser window of at least 960 × 540."
 }

@@ -192,7 +192,10 @@ function readEntries<Entry extends { readonly id: string }>(
   return entries;
 }
 
-/** Levels in the order of levels.json. Without that file (examples): in file name order. */
+/**
+ * Levels in the order of levels.json. Only a set whose level files are all examples may leave it
+ * out, and then plays them in file name order (design/levels/map-format.md, #17).
+ */
 function readLevels(
   files: readonly RawFile[],
   enemies: ReadonlyMap<string, Enemy>,
@@ -214,7 +217,17 @@ function readLevels(
     }
   }
 
-  if (!orderFile) return [...levels.values()];
+  if (!orderFile) {
+    const realLevel = levelFiles.find((file) => !isExampleFile(file.path));
+    if (realLevel) {
+      problems.push({
+        file: 'data/levels',
+        field: '',
+        message: `levels.json is missing (it lists the levels to play, in order, e.g. ["${fileName(realLevel.path)}"])`,
+      });
+    }
+    return [...levels.values()];
+  }
 
   const order = parseFile(orderFile, levelOrderSchema, problems) ?? [];
   const fileNames = new Set(levelFiles.map((file) => fileName(file.path)));

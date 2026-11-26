@@ -20,20 +20,21 @@ function readSeed(): number {
 }
 
 /**
- * The checked data files. Until data/levels/levels.json arrives with the first real map there is
- * nothing to play, so the examples are played instead (see #17 for how that will be shown).
+ * The checked data files. Until the first real level file arrives, there is nothing to play, so
+ * the examples are played instead, with an "Example map" warning on screen
+ * (design/levels/map-format.md, #17).
  */
-function loadContent(): Content {
+function loadContent(): { content: Content; examples: boolean } {
   const numbers = loadNumbers(bundledFiles);
   const game = loadCatalogue(bundledFiles.filter((file) => !isExampleFile(file.path)));
-  const catalogue =
-    game.levels.length > 0
-      ? game
-      : loadCatalogue(bundledFiles.filter((file) => isExampleFile(file.path)));
+  const examples = game.levels.length === 0;
+  const catalogue = examples
+    ? loadCatalogue(bundledFiles.filter((file) => isExampleFile(file.path)))
+    : game;
   if (catalogue.levels.length === 0) {
     throw new DataError([{ file: 'data/levels', field: '', message: 'no level to load' }]);
   }
-  return { catalogue, numbers };
+  return { content: { catalogue, numbers }, examples };
 }
 
 /** `?debug` prints the game state as JSON in the console after every action, for bug reports. */
@@ -49,12 +50,13 @@ function logStateForDebugging(store: GameStore): void {
 function startGame(): VNode {
   const seed = readSeed();
   try {
-    const store = createGameStore(loadContent(), createGame(seed));
+    const { content, examples } = loadContent();
+    const store = createGameStore(content, createGame(seed));
     logStateForDebugging(store);
     store.dispatch({ type: 'startRun' });
     return (
       <GameContext.Provider value={store}>
-        <App />
+        <App exampleMap={examples} />
       </GameContext.Provider>
     );
   } catch (error) {
