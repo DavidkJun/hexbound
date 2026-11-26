@@ -1,0 +1,39 @@
+# npm run check, retest — 2026-11-05T22:07:24+02:00 — node v24.22.2 — commit 89e72ee (main 73f39a3 + tests)
+
+> hexbound@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run test && npm run check:data
+
+
+> hexbound@0.0.0 typecheck
+> tsc
+
+
+> hexbound@0.0.0 lint
+> eslint .
+
+
+> hexbound@0.0.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> hexbound@0.0.0 test
+> vitest run
+
+
+ RUN  v4.1.12 /root/code/js/kpi/gamedev
+
+
+ Test Files  8 passed (8)
+      Tests  67 passed (67)
+   Start at  22:07:30
+   Duration  415ms (transform 489ms, setup 0ms, import 926ms, tests 173ms, environment 1ms)
+
+
+> hexbound@0.0.0 check:data
+> tsx scripts/check-data.ts
+
+game data: ok (0 cards, 0 enemies, 0 blessings, 0 events, 0 levels)
+examples: ok (4 cards, 3 enemies, 2 blessings, 1 events, 1 levels)
+exit=0

@@ -1,0 +1,5 @@
+# BUG-010 retest: text extraction of plan/HexBound_DD.pdf on PR #21 (docs/stage-0 563f6fc) with pypdf 5.1.0
+pages: 10 | chars: 20565
+"Freeze" occurrences: 5
+context: of three build directions: Blade (weapons), Arcane (spells) or Bulwark (armour). Rules on cards use only four keywords: Freeze, Chill, Exhaust and Draw. Fights are short, turn-based battles against one enemy whose next move is always shown. Each turn the player draws 5 cards and
+"8 events": True | "4.9 Numbers": True

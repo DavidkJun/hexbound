@@ -1,0 +1,24 @@
+# loader messages on PR #36 for the fixed rules
+boss bog-rat -> [
+  {
+    file: 'data/levels/_example.json',
+    field: 'boss.enemy',
+    message: '"bog-rat" has kind "normal", the boss must have kind "boss"'
+  }
+]
+boss frost-wisp -> [
+  {
+    file: 'data/levels/_example.json',
+    field: 'boss.enemy',
+    message: '"frost-wisp" has kind "elite", the boss must have kind "boss"'
+  }
+]
+boss goblin-chief -> []
+allow repeat -> [
+  {
+    file: 'data/levels/_example.json',
+    field: 'slots[0].allow',
+    message: '"monster" is listed twice'
+  }
+]
+allow distinct -> []

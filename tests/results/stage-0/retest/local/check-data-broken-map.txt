@@ -1,0 +1,9 @@
+examples: ok (4 cards, 3 enemies, 2 blessings, 1 events, 1 levels)
+(node:6798) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6811) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6822) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+game data: 1 problem(s)
+  data/levels/whisperwood.json › start[1]: tile 0,7 is outside the grid (col 0–8, row 0–6)

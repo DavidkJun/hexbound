@@ -1,0 +1,213 @@
+<testsuites id="" name="" tests="25" failures="0" skipped="0" errors="0" time="32.102371">
+<testsuite name="data-error.spec.ts" timestamp="2026-11-15T19:50:21.766Z" hostname="chromium" tests="2" failures="0" skipped="0" time="5.574" errors="0">
+<testcase name="TC-E2E-06a a broken real level shows DataErrorScreen as screens.md specifies" classname="data-error.spec.ts" time="5.152">
+<properties>
+<property name="fail" value="waits for #38 (system screens)">
+</property>
+</properties>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/data-error-TC-E2E-06a-a-br-746c7-een-as-screens-md-specifies-chromium/test-finished-1.png]]
+
+[[ATTACHMENT|e2e-artifacts/data-error-TC-E2E-06a-a-br-746c7-een-as-screens-md-specifies-chromium/error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[(node:12450) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:12463) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+]]>
+</system-err>
+</testcase>
+<testcase name="TC-E2E-06b the same problem is reported by `npm run check:data` in the terminal" classname="data-error.spec.ts" time="0.422">
+</testcase>
+</testsuite>
+<testsuite name="smoke.spec.ts" timestamp="2026-11-15T19:50:21.766Z" hostname="chromium" tests="23" failures="0" skipped="0" time="23.95" errors="0">
+<testcase name="TC-E2E-01 the build opens › TC-E2E-01a page loads with no errors and no requests to other sites (no font CDN)" classname="smoke.spec.ts" time="0.173">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-01-the-build--f0091-to-other-sites-no-font-CDN--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-01 the build opens › TC-E2E-01b Inter and Cinzel are served from assets/fonts" classname="smoke.spec.ts" time="0.142">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-01-the-build--6d4e6-re-served-from-assets-fonts-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02a GameCanvas is exactly 1280 × 720 at a 1280 × 720 window" classname="smoke.spec.ts" time="0.14">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-02-canvas-and-7ca50--720-at-a-1280-×-720-window-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02b HexGrid sits at x 150, y 89, 644 × 597.56 (layout.json)" classname="smoke.spec.ts" time="0.145">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-02-canvas-and-467c1-9-644-×-597-56-layout-json--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02c draws 63 tiles, flat-top, odd columns pushed down" classname="smoke.spec.ts" time="0.207">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-02-canvas-and-dbd96-top-odd-columns-pushed-down-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03a every tile centre has the land colour of its terrain (pixel check on a screenshot)" classname="smoke.spec.ts" time="0.196">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-03-terrain-dr-e57d3-ixel-check-on-a-screenshot--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03b slow tiles carry a word marker too (colour is never the only signal, ui-rules.md §8)" classname="smoke.spec.ts" time="0.139">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-03-terrain-dr-3413e-only-signal-ui-rules-md-§8--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03c space outside the grid is bg.base" classname="smoke.spec.ts" time="0.174">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-03-terrain-dr-7938f-outside-the-grid-is-bg-base-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04a BuildInfo shows the commit of this build and the seed from the URL" classname="smoke.spec.ts" time="0.229">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--dcc16-d-and-the-seed-from-the-URL-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04b without ?seed a new seed 0–999999 is chosen and shown" classname="smoke.spec.ts" time="0.142">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--86ea8-–999999-is-chosen-and-shown-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04c a seed that is not a number falls back to a new seed instead of breaking" classname="smoke.spec.ts" time="0.14">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--6fcb9-ew-seed-instead-of-breaking-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04d the same seed renders the same screen twice" classname="smoke.spec.ts" time="0.178">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--0b061-nders-the-same-screen-twice-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 960 × 540 (smallest supported window) scales by 0.750, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.222">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-de414-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1920 × 1080 (full HD) scales by 1.500, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.299">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-75d65-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1280 × 1000 (tall window: bars top and bottom) scales by 1.000, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.249">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-b94cf-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1600 × 720 (wide window: bars left and right) scales by 1.000, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.24">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-4904b-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1366 × 768 (common laptop, not exactly 16:9) scales by 1.067, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.228">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-e6f92-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05f resizing the window after load rescales the canvas" classname="smoke.spec.ts" time="0.134">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-e4a72-er-load-rescales-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07a 959 × 540 shows the message instead of the canvas" classname="smoke.spec.ts" time="5.112">
+<properties>
+<property name="fail" value="waits for #38 (system screens)">
+</property>
+</properties>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-3bc63-ssage-instead-of-the-canvas-chromium/test-finished-1.png]]
+
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-3bc63-ssage-instead-of-the-canvas-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07a 960 × 539 shows the message instead of the canvas" classname="smoke.spec.ts" time="5.115">
+<properties>
+<property name="fail" value="waits for #38 (system screens)">
+</property>
+</properties>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-20898-ssage-instead-of-the-canvas-chromium/test-finished-1.png]]
+
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-20898-ssage-instead-of-the-canvas-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07a 800 × 600 shows the message instead of the canvas" classname="smoke.spec.ts" time="5.108">
+<properties>
+<property name="fail" value="waits for #38 (system screens)">
+</property>
+</properties>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-b9b25-ssage-instead-of-the-canvas-chromium/test-finished-1.png]]
+
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-b9b25-ssage-instead-of-the-canvas-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07b exactly 960 × 540 (boundary) still shows the game" classname="smoke.spec.ts" time="0.136">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-54716-undary-still-shows-the-game-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-07 WindowTooSmall below 960 × 540 › TC-E2E-07c growing the window back brings the same game back" classname="smoke.spec.ts" time="5.102">
+<properties>
+<property name="fail" value="waits for #38 (system screens)">
+</property>
+</properties>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-10d2e-k-brings-the-same-game-back-chromium/test-finished-1.png]]
+
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-07-WindowTooS-10d2e-k-brings-the-same-game-back-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

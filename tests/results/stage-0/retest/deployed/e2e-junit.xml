@@ -1,0 +1,148 @@
+<testsuites id="" name="" tests="20" failures="0" skipped="2" errors="0" time="10.6915">
+<testsuite name="data-error.spec.ts" timestamp="2026-11-05T20:03:31.234Z" hostname="chromium" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testcase name="TC-E2E-06a a broken real level shows the data error screen with file, field and problem" classname="data-error.spec.ts" time="0">
+<properties>
+<property name="skip" value="needs a local build of a broken copy">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="TC-E2E-06b the same problem is reported by `npm run check:data` in the terminal" classname="data-error.spec.ts" time="0">
+<properties>
+<property name="skip" value="needs a local build of a broken copy">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="smoke.spec.ts" timestamp="2026-11-05T20:03:31.234Z" hostname="chromium" tests="18" failures="0" skipped="0" time="9.889" errors="0">
+<testcase name="TC-E2E-01 the build opens › TC-E2E-01a page loads with no errors and no requests to other sites (no font CDN)" classname="smoke.spec.ts" time="0.932">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-01-the-build--f0091-to-other-sites-no-font-CDN--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-01 the build opens › TC-E2E-01b Inter and Cinzel are served from assets/fonts" classname="smoke.spec.ts" time="0.668">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-01-the-build--6d4e6-re-served-from-assets-fonts-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02a GameCanvas is exactly 1280 × 720 at a 1280 × 720 window" classname="smoke.spec.ts" time="0.475">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-02-canvas-and-7ca50--720-at-a-1280-×-720-window-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02b HexGrid sits at x 150, y 89, 644 × 597.56 (layout.json)" classname="smoke.spec.ts" time="0.458">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-02-canvas-and-467c1-9-644-×-597-56-layout-json--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-02 canvas and grid placement (ui-rules.md §1, §5) › TC-E2E-02c draws 63 tiles, flat-top, odd columns pushed down" classname="smoke.spec.ts" time="0.545">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-02-canvas-and-dbd96-top-odd-columns-pushed-down-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03a every tile centre has the land colour of its terrain (pixel check on a screenshot)" classname="smoke.spec.ts" time="0.492">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-03-terrain-dr-e57d3-ixel-check-on-a-screenshot--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03b slow tiles carry a word marker too (colour is never the only signal, ui-rules.md §8)" classname="smoke.spec.ts" time="0.457">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-03-terrain-dr-3413e-only-signal-ui-rules-md-§8--chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-03 terrain drawn from the map file and tokens › TC-E2E-03c space outside the grid is bg.base" classname="smoke.spec.ts" time="0.473">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-03-terrain-dr-7938f-outside-the-grid-is-bg-base-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04a BuildInfo shows the commit of this build and the seed from the URL" classname="smoke.spec.ts" time="0.595">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--dcc16-d-and-the-seed-from-the-URL-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04b without ?seed a new seed 0–999999 is chosen and shown" classname="smoke.spec.ts" time="0.44">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--86ea8-–999999-is-chosen-and-shown-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04c a seed that is not a number falls back to a new seed instead of breaking" classname="smoke.spec.ts" time="0.436">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--6fcb9-ew-seed-instead-of-breaking-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-04 build and seed are shown (Stage0_Tester.txt §4) › TC-E2E-04d the same seed renders the same screen twice" classname="smoke.spec.ts" time="0.537">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-04-build-and--0b061-nders-the-same-screen-twice-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 960 × 540 (smallest supported window) scales by 0.750, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.591">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-de414-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1920 × 1080 (full HD) scales by 1.500, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.715">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-75d65-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1280 × 1000 (tall window: bars top and bottom) scales by 1.000, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.593">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-b94cf-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1600 × 720 (wide window: bars left and right) scales by 1.000, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.522">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-4904b-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05 1366 × 768 (common laptop, not exactly 16:9) scales by 1.067, keeps 16:9 and centres the canvas" classname="smoke.spec.ts" time="0.527">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-e6f92-16-9-and-centres-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="TC-E2E-05 scaling to the window (ui-rules.md §1) › TC-E2E-05f resizing the window after load rescales the canvas" classname="smoke.spec.ts" time="0.433">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-artifacts/smoke-TC-E2E-05-scaling-to-e4a72-er-load-rescales-the-canvas-chromium/test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
