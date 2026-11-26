@@ -3,26 +3,48 @@
     "id": "strike",
     "name": "Strike",
     "family": "weapon",
+    "rarity": "starter",
+    "copies": 4,
     "cost": 1,
-    "effects": [{ "type": "dealDamage", "amount": 6 }],
+    "effects": [
+      {
+        "type": "dealDamage",
+        "amount": 6
+      }
+    ],
     "text": "Deal 6 damage."
   },
   {
     "id": "defend",
     "name": "Defend",
     "family": "armour",
+    "rarity": "starter",
+    "copies": 4,
     "cost": 1,
-    "effects": [{ "type": "gainBlock", "amount": 5 }],
+    "effects": [
+      {
+        "type": "gainBlock",
+        "amount": 5
+      }
+    ],
     "text": "Gain 5 block."
   },
   {
     "id": "ice-shard",
     "name": "Ice Shard",
     "family": "spell",
+    "rarity": "starter",
+    "copies": 1,
     "cost": 1,
     "effects": [
-      { "type": "dealDamage", "amount": 4 },
-      { "type": "applyChill", "amount": 1 }
+      {
+        "type": "dealDamage",
+        "amount": 4
+      },
+      {
+        "type": "applyChill",
+        "amount": 1
+      }
     ],
     "text": "Deal 4 damage. Apply 1 Chill."
   },
@@ -30,8 +52,52 @@
     "id": "ration",
     "name": "Ration",
     "family": "item",
+    "rarity": "starter",
+    "copies": 1,
     "cost": 0,
-    "effects": [{ "type": "gainFood", "amount": 2 }, { "type": "exhaust" }],
+    "effects": [
+      {
+        "type": "gainFood",
+        "amount": 2
+      },
+      {
+        "type": "exhaust"
+      }
+    ],
     "text": "Gain 2 food. Exhaust."
+  },
+  {
+    "id": "flurry",
+    "name": "Flurry",
+    "family": "weapon",
+    "rarity": "common",
+    "cost": 1,
+    "effects": [
+      {
+        "type": "dealDamage",
+        "amount": 3
+      },
+      {
+        "type": "draw",
+        "amount": 1
+      }
+    ],
+    "text": "Deal 3 damage. Draw 1 card."
+  },
+  {
+    "id": "deep-freeze",
+    "name": "Deep Freeze",
+    "family": "spell",
+    "rarity": "rare",
+    "cost": 2,
+    "effects": [
+      {
+        "type": "applyFreeze"
+      },
+      {
+        "type": "exhaust"
+      }
+    ],
+    "text": "Freeze the enemy. Exhaust."
   }
 ]

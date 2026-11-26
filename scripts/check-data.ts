@@ -1,18 +1,14 @@
 /**
  * Checks every data file with the same code the game uses: `npm run check:data`.
- * The game's own files and the `_` examples are checked as two separate sets.
+ * The game's own files and the `_` examples are checked as two separate sets; numbers.json is shared.
  */
 import { DataError, formatProblem } from '../src/data/data-error';
 import { readDataFiles } from '../src/data/disk-files';
-import { isExampleFile, loadCatalogue, type RawFile } from '../src/data/load';
+import { isExampleFile, loadCatalogue, loadNumbers, type RawFile } from '../src/data/load';
 
-function check(name: string, files: RawFile[]): boolean {
+function check(name: string, load: () => string): boolean {
   try {
-    const { cards, enemies, blessings, events, levels } = loadCatalogue(files);
-    console.log(
-      `${name}: ok (${cards.size} cards, ${enemies.size} enemies, ${blessings.size} blessings, ` +
-        `${events.size} events, ${levels.length} levels)`,
-    );
+    console.log(`${name}: ok (${load()})`);
     return true;
   } catch (error) {
     if (!(error instanceof DataError)) throw error;
@@ -24,14 +20,22 @@ function check(name: string, files: RawFile[]): boolean {
   }
 }
 
-const files = readDataFiles();
-const gameOk = check(
-  'game data',
-  files.filter((file) => !isExampleFile(file.path)),
-);
-const examplesOk = check(
-  'examples',
-  files.filter((file) => isExampleFile(file.path)),
-);
+function contentSummary(files: RawFile[]): string {
+  const { cards, enemies, blessings, events, levels, tutorial } = loadCatalogue(files);
+  return (
+    `${cards.size} cards, ${enemies.size} enemies, ${blessings.size} blessings, ` +
+    `${events.size} events, ${levels.length} levels, ${tutorial ? 'a' : 'no'} tutorial`
+  );
+}
 
-process.exitCode = gameOk && examplesOk ? 0 : 1;
+const files = readDataFiles();
+const results = [
+  check('numbers', () => {
+    loadNumbers(files);
+    return 'data/numbers.json';
+  }),
+  check('game data', () => contentSummary(files.filter((file) => !isExampleFile(file.path)))),
+  check('examples', () => contentSummary(files.filter((file) => isExampleFile(file.path)))),
+];
+
+process.exitCode = results.every(Boolean) ? 0 : 1;
