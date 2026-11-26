@@ -27,7 +27,8 @@ export function startLevel(content: Content, map: LevelMap, rng: RngState): Roll
 
 /**
  * Each slot gets one type from its `allow` list, all equally likely, and every location its
- * details at the same time: which enemy, or what a chest holds.
+ * details at the same time: which enemy, or what a chest holds. Enemies repeat only once every
+ * enemy of their kind is dealt (Q-M7, the PM's answer in #25).
  */
 export function dealLocations(content: Content, map: LevelMap, rng: RngState): Rolled<Location[]> {
   let state = rng;
@@ -40,13 +41,12 @@ export function dealLocations(content: Content, map: LevelMap, rng: RngState): R
     ...map.fixed,
     ...map.slots.map(({ at, allow }) => ({ at, type: roll(pick(state, allow)) })),
   ];
-  const locations = placed.map(({ at, type }): Location => ({
-    at,
-    type,
-    detail: roll(dealDetail(content, map, type, state)),
-    resolved: false,
-    seen: false,
-  }));
+  const dealtEnemies: string[] = [];
+  const locations = placed.map(({ at, type }): Location => {
+    const detail = roll(dealDetail(content, map, type, dealtEnemies, state));
+    if (detail.kind === 'enemy') dealtEnemies.push(detail.enemy);
+    return { at, type, detail, resolved: false, seen: false };
+  });
   return { value: locations, rng: state };
 }
 
@@ -54,6 +54,7 @@ function dealDetail(
   content: Content,
   map: LevelMap,
   type: LocationType,
+  dealtEnemies: readonly string[],
   rng: RngState,
 ): Rolled<LocationDetail> {
   const { enemies } = content.catalogue;
@@ -66,7 +67,8 @@ function dealDetail(
         .map(({ id }) => id);
       // The data check makes sure a level that deals these has one; without enemy files, nothing.
       if (pool.length === 0) return { value: { kind: 'none' }, rng };
-      const enemy = pick(rng, pool);
+      const notDealt = pool.filter((id) => !dealtEnemies.includes(id));
+      const enemy = pick(rng, notDealt.length > 0 ? notDealt : pool);
       return { value: { kind: 'enemy', enemy: enemy.value }, rng: enemy.rng };
     }
     case 'chest': {

@@ -106,6 +106,28 @@ describe('a new run', () => {
     }
   });
 
+  it('deals every enemy of a kind before it repeats one (Q-M7)', () => {
+    const monsters: Hex[] = [
+      [2, 6],
+      [3, 6],
+      [5, 6],
+    ];
+    const threeMonsters = {
+      ...map,
+      fixed: monsters.map((at) => ({ at, type: 'monster' as const })),
+    };
+    const withThreeMonsters = {
+      ...content,
+      catalogue: { ...content.catalogue, levels: [threeMonsters] },
+    };
+    for (let seed = 0; seed < 50; seed++) {
+      const { level } = runOf(startedRun(seed, withThreeMonsters));
+      const [first, second, third] = monsters.map((at) => enemyAt(level, at));
+      expect(new Set([first, second])).toEqual(new Set(['rat', 'wisp']));
+      expect(['rat', 'wisp']).toContainEqual(third);
+    }
+  });
+
   it('deals the same way for the same seed, and differently across seeds', () => {
     expect(startedRun(7)).toEqual(startedRun(7));
     const deals = new Set(
