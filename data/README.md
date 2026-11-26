@@ -47,7 +47,27 @@ Cards, enemy moves, blessings and event outcomes all change the game the same wa
 | `gainFood`, `loseFood`    | Changes the player's food                                               |
 | `gainGold`, `loseGold`    | Changes the player's gold                                               |
 
-`amount` is a positive whole number. The rules for each effect are in `plan/HexBound_DD.md` 4.6 and 4.7. Two of them are checked here: **a card that applies Freeze also has `exhaust`**, and **enemy moves never apply Freeze**. If you need an effect that isn't here, ask the programmer; don't work around it in text.
+**Rewards** change the run, not a fight, so only blessings and event outcomes give them:
+
+| `type`          | What it does                                                                                                                     |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `gainKey`       | Gives the player `amount` keys                                                                                                   |
+| `gainMaxHealth` | Raises max health by `amount`                                                                                                    |
+| `cardReward`    | No `amount`; `rarity` is `common` or `rare`. A card reward: `rewards.cardChoices` different cards of that rarity, take 1 or skip |
+| `gainBlessing`  | No `amount`. A random blessing the player doesn't own yet                                                                        |
+
+```json
+"effects": [{ "type": "gainKey", "amount": 1 }, { "type": "cardReward", "rarity": "rare" }]
+```
+
+`amount` is a positive whole number. The rules for each effect are in `plan/HexBound_DD.md` 4.5–4.7. These are checked here:
+
+- a card that applies Freeze also has `exhaust`
+- enemy moves never apply Freeze
+- cards and enemy moves never give a reward
+- a `fightStart` or `turnStart` blessing never uses `cardReward` or `gainBlessing`, because they open a screen of their own
+
+If you need an effect that isn't here, ask the programmer; don't work around it in text.
 
 ## Card
 
@@ -119,7 +139,7 @@ Cards, enemy moves, blessings and event outcomes all change the game the same wa
 }
 ```
 
-`trigger` says when the effects happen: `onPickup`, `levelStart`, `fightStart` or `turnStart`.
+`trigger` says when the effects happen: `onPickup`, `levelStart`, `fightStart` or `turnStart`. A blessing can also give rewards, for example `gainMaxHealth` when it's picked up (`_example.json` → Heart of oak).
 
 ## Event
 
@@ -149,7 +169,7 @@ Cards, enemy moves, blessings and event outcomes all change the game the same wa
 }
 ```
 
-An event has at least two choices. `cost` is optional and can hold `gold`, `food` and `health`. `chance` is a percentage, and the chances of a choice must add up to 100; how they are shown as dice is still an open question for the PM.
+An outcome can give rewards too: `data/events/_example.json` → The fallen knight gives a key and a rare card reward, or a blessing. An event has at least two choices. `cost` is optional and can hold `gold`, `food` and `health`. `chance` is a percentage, and the chances of a choice must add up to 100; how they are shown as dice is still an open question for the PM.
 
 ## Tutorial
 
@@ -199,7 +219,3 @@ The scripted first fight of a new run (DD 4.8). One file, `tutorial/tutorial.jso
 | `bountyGold`, `shrine`, `score` | The bounty's gold; the shrine's `choices` and `healWhenEmpty`; the score per level cleared, health, gold and life left                                                      |
 
 Food per step (1, or 2 onto a slow tile) is part of the map format, so it isn't here.
-
-## Not in the format yet
-
-For stage 2, when the PM writes events and blessings: `gainKey`, a card reward with a rarity, a random blessing, and `gainMaxHealth`. Ask the programmer when you get to them.

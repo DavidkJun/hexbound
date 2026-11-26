@@ -6,12 +6,19 @@
     "choices": [
       {
         "label": "Reach in",
-        "cost": { "health": 3 },
+        "cost": {
+          "health": 3
+        },
         "outcomes": [
           {
             "chance": 50,
             "text": "You pull out a heavy purse.",
-            "effects": [{ "type": "gainGold", "amount": 30 }]
+            "effects": [
+              {
+                "type": "gainGold",
+                "amount": 30
+              }
+            ]
           },
           {
             "chance": 50,
@@ -22,7 +29,61 @@
       },
       {
         "label": "Walk on",
-        "outcomes": [{ "chance": 100, "text": "You leave the well behind.", "effects": [] }]
+        "outcomes": [
+          {
+            "chance": 100,
+            "text": "You leave the well behind.",
+            "effects": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fallen-knight",
+    "name": "The fallen knight",
+    "text": "A knight lies under a tree, armour rusted through. A key hangs from the belt.",
+    "choices": [
+      {
+        "label": "Search the body",
+        "cost": {
+          "food": 2
+        },
+        "outcomes": [
+          {
+            "chance": 60,
+            "text": "A key, and a card wrapped in oilcloth.",
+            "effects": [
+              {
+                "type": "gainKey",
+                "amount": 1
+              },
+              {
+                "type": "cardReward",
+                "rarity": "rare"
+              }
+            ]
+          },
+          {
+            "chance": 40,
+            "text": "A charm still glows on the knight's chest.",
+            "effects": [
+              {
+                "type": "gainBlessing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Leave the knight in peace",
+        "outcomes": [
+          {
+            "chance": 100,
+            "text": "You walk on.",
+            "effects": []
+          }
+        ]
       }
     ]
   }

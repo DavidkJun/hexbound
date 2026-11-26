@@ -17,7 +17,7 @@ const amountSchema = z.number().int().positive();
 const amountEffect = <Type extends string>(type: Type) =>
   z.strictObject({ type: z.literal(type), amount: amountSchema });
 
-const effectSchema = z.discriminatedUnion('type', [
+const fightEffects = [
   // Damage and statuses hit the opponent; everything else applies to whoever uses the effect.
   amountEffect('dealDamage'),
   amountEffect('gainBlock'),
@@ -35,9 +35,35 @@ const effectSchema = z.discriminatedUnion('type', [
   amountEffect('loseFood'),
   amountEffect('gainGold'),
   amountEffect('loseGold'),
-]);
+] as const;
+
+/** Rewards that change the run, not a fight: only blessings and event outcomes give them (#29). */
+const rewardEffects = [
+  amountEffect('gainKey'),
+  amountEffect('gainMaxHealth'),
+  // A card reward of `rewards.cardChoices` different cards of this rarity: take 1 or skip.
+  z.strictObject({ type: z.literal('cardReward'), rarity: z.enum(['common', 'rare']) }),
+  // A random blessing the player doesn't own yet.
+  z.strictObject({ type: z.literal('gainBlessing') }),
+] as const;
+
+const REWARD_TYPES: readonly unknown[] = rewardEffects.map((effect) => effect.shape.type.value);
+
+/** Effects of cards and enemy moves. A reward effect there gets its own message. */
+const effectSchema = z.discriminatedUnion('type', fightEffects, {
+  error: (issue) => {
+    const type = (issue.input as { type?: unknown } | undefined)?.type;
+    return REWARD_TYPES.includes(type)
+      ? `"${String(type)}" works only in blessings and event outcomes`
+      : undefined;
+  },
+});
+
+/** Effects of blessings and event outcomes: everything. */
+const anyEffectSchema = z.discriminatedUnion('type', [...fightEffects, ...rewardEffects]);
 
 const effectsSchema = z.array(effectSchema);
+const anyEffectsSchema = z.array(anyEffectSchema);
 
 const hasEffect = (effects: readonly { type: string }[], type: string) =>
   effects.some((effect) => effect.type === type);
@@ -142,20 +168,35 @@ const enemySchema = z
 
 // Blessings
 
-const blessingSchema = z.strictObject({
-  id: idSchema,
-  name: textSchema,
-  text: textSchema,
-  trigger: z.enum(['onPickup', 'levelStart', 'fightStart', 'turnStart']),
-  effects: effectsSchema.min(1),
-});
+/** Rewards that open a screen of their own can't happen in the middle of a fight. */
+const REWARD_SCREENS = ['cardReward', 'gainBlessing'];
+
+const blessingSchema = z
+  .strictObject({
+    id: idSchema,
+    name: textSchema,
+    text: textSchema,
+    trigger: z.enum(['onPickup', 'levelStart', 'fightStart', 'turnStart']),
+    effects: anyEffectsSchema.min(1),
+  })
+  .superRefine((blessing, context) => {
+    if (blessing.trigger !== 'fightStart' && blessing.trigger !== 'turnStart') return;
+    blessing.effects.forEach((effect, i) => {
+      if (!REWARD_SCREENS.includes(effect.type)) return;
+      context.addIssue({
+        code: 'custom',
+        path: ['effects', i, 'type'],
+        message: `"${effect.type}" opens a reward screen, so it can't run at ${blessing.trigger}`,
+      });
+    });
+  });
 
 // Events
 
 const outcomeSchema = z.strictObject({
   chance: z.number().int().min(1).max(100),
   text: textSchema,
-  effects: effectsSchema,
+  effects: anyEffectsSchema,
 });
 
 const choiceSchema = z
@@ -308,6 +349,8 @@ export const eventsFileSchema = z.array(eventSchema).min(1);
 export const levelOrderSchema = z.array(idSchema);
 
 export type Effect = DeepReadonly<z.infer<typeof effectSchema>>;
+/** Any effect, including the rewards only blessings and event outcomes give. */
+export type AnyEffect = DeepReadonly<z.infer<typeof anyEffectSchema>>;
 export type Card = DeepReadonly<z.infer<typeof cardSchema>>;
 export type Rarity = Card['rarity'];
 export type Enemy = DeepReadonly<z.infer<typeof enemySchema>>;
