@@ -6,7 +6,6 @@
   background: var(--color-bg-base);
 }
 
-/* TODO(design): the spec gives no gap under the title or between lines; space.lg and space.sm. */
 .data-error-title {
   margin: 0 0 var(--space-lg);
   color: var(--color-text-danger);
