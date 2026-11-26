@@ -14,7 +14,7 @@ The repo copy is what the code is built from. Figma is where it's designed.
 | [`ui-rules.md`](ui-rules.md) | Fixed rules for all UI code: screen size, tokens, layout, names, hex grid, assets | fixed |
 | [`tokens.json`](tokens.json) | Colours, fonts, font sizes and weights, spacing, radii, sizes, opacities, strokes (exported from Figma variables) | v2 (after the stage 0 review) |
 | [`layout.json`](layout.json) | Rectangle of every named element on every screen (exported from Figma) | v0 (MapScreen, FightScreen) |
-| [`visual-direction.md`](visual-direction.md) | Chosen style, palette, lands, card families, icon list | draft, waiting for PM approval |
+| [`visual-direction.md`](visual-direction.md) | Chosen style, palette, lands, card families, icon list | approved |
 | [`screens.md`](screens.md) | Every screen, top bar, states every screen handles | draft, for tester review |
 | [`screens/map.md`](screens/map.md) + [`map.png`](screens/map.png) | Map screen spec and snapshot | draft |
 | [`screens/fight.md`](screens/fight.md) + [`fight.png`](screens/fight.png) | Fight screen spec and snapshot | draft |

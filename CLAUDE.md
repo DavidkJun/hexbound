@@ -8,12 +8,13 @@ Update this section whenever a stage ends or a decision changes.
 
 - **Stage 0 (kick-off).** See `plan/HexBound_Team_Plan.md` → Stage 0.
 - **Programmer stage 0 is done**: TypeScript, Vite and Preact, with the hex map in SVG (`README.md` has the reasons, the structure and how screens work with the game); content data format in `data/README.md`.
-  - The build draws the grid of the example map, because there is no real map yet. `src/main.tsx` switches to `data/levels/levels.json` as soon as that file exists.
+  - The build draws the grid of the first level in `data/levels/levels.json`: map 1, Whisperwood (`data/levels/whisperwood.json`).
   - GitHub Pages deploys every merge to `main`. `main` is protected: a pull request with 1 approval and a passing `build` check, for everyone.
   - The game state and actions are only what stage 0 needs. Stage 1 adds to them from the tester's rules.
 - **UI / level design stage 0 is done**, in `design/`:
   - fixed UI rules, tokens, layout, map and fight wireframes, the map file format, icons and fonts
   - the visual direction is **approved by the PM**
+  - map 1, Whisperwood: `data/levels/whisperwood.json`, built to `plan/route-intent.md`
 - **PM stage 0 is done**, in `plan/`:
   - the game rules: `plan/HexBound_DD.md` → 4. Rules, with every number in 4.9. `plan/reviews/stage-0-answers.md` maps each question of the tester's design review to its rule
   - in-game text is **English**, so Cinzel stays the heading font
